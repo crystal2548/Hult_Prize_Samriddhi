@@ -1,10 +1,17 @@
-import React from 'react'
-
+// import React, {useEffect, useState} from 'react'
+import { RouterProvider } from 'react-router-dom'
+import router from './routes'
+// import Cards1 from './Cards1'
+import './App.css'
 const App = () => {
+ 
   return (
-    <div className="bg-blue-500 py-2 px-5">
-      Hult Prize journey Begin
-    </div>
+   
+    <RouterProvider router={router} />
+ 
+    // <div>
+       // {/* <Cards1 /> */}
+    // </div>
   )
 }
 
