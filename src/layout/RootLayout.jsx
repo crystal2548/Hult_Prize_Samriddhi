@@ -32,7 +32,6 @@ const RootLayout = () => {
               <Link to="/about" style={{ color: "white", }}>About</Link>
               <Link to="/teamproject" style={{ color: "white", }}>Teams&Projects</Link>
               <Link to="/winners" style={{ color: "white", }}>Winners</Link>
-              {/* <Link to="/sponsers" style={{ color: "white",}}>Sponsers</Link> */}
               <Link to="/contact" style={{ color: "white", }}>Contact</Link>
               {/* <Button type="primary" onClick={handleLogout} style={{ color: "white",}}>
                   Logout
