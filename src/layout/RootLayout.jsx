@@ -1,7 +1,8 @@
 import { Flex, Button } from "antd";
 import { Link, Outlet, } from "react-router-dom"; //useNavigate
 import React from "react";
-
+import logo from "../assets/logo.png";
+import SamriddhiLogo from "../assets/SamriddhiLogo.png";
 const RootLayout = () => {
   //   const token = localStorage.getItem("accessToken");
   //   const navigate = useNavigate();
@@ -9,8 +10,8 @@ const RootLayout = () => {
   return (
     <div>
       <header>
-        {/* left side one */}
-        <Flex className="bg-pink-600 bg-opacity-90"
+        {/* left side one  pink-600*/}
+        <Flex className="bg-black bg-opacity-90"
           justify="space-between"
           style={{
             display: "flex",
@@ -21,7 +22,11 @@ const RootLayout = () => {
             alignItems: "center",
           }}
         >
-          <div style={{ fontWeight: "bold", color: "white", fontFamily: 'sans-serif', fontSize: '24px' }}>Hult Prize Samriddhi College</div>
+          <div style={{ fontWeight: "bold", color: "white", fontFamily: 'sans-serif', fontSize: '24px', display: "flex", alignItems: "center" }}>
+            <img src={logo} alt="LOGO" width={60} height={60} />
+            <div style={{ height: "60px", backgroundColor: "white", width: "2px", margin: "0 10px" }}></div>
+            <img src={SamriddhiLogo} alt="SamriddhiLogo" width={60} height={60} />
+          </div>
           {/* right side  */}
           <Flex gap={30} style={{ alignItems: "center" }}>
 
