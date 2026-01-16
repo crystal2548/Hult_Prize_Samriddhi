@@ -8,10 +8,8 @@ import About from "./pages/about.jsx";
 import Contact from "./pages/contact.jsx";
 import TeamsProject from "./pages/teamsProject.jsx";
 import Winners from "./pages/winner.jsx";
+import JoinUsPage from "./pages/JoinUs.jsx";
 // import Sponsers from "./pages/sponsers.jsx"
-// import SignupPage from './pages/SignupPage'
-// import Complains from './pages/Complains'
-// import Profile from './pages/Profile'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "winners",
         element: <Winners />,
+      },
+      {
+        path: "joinus",
+        element: <JoinUsPage />,
       },
       {
         path: "/",
