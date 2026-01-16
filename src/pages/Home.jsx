@@ -1,7 +1,8 @@
 import React from 'react'
 import { Carousel } from 'antd';
-import { Card, Col, Row } from 'antd';
-
+import Stats from "./stats.jsx";
+import WinningTeam from "./winningTeam.jsx";
+import CardData from "./carddata.jsx";
 const contentStyle = {
   margin: 0,
   // height: '600px',
@@ -12,6 +13,7 @@ const contentStyle = {
 };
 
 const Home = () => {
+
   return (
     <div>
       <Carousel >
@@ -19,67 +21,17 @@ const Home = () => {
           <h3 style={contentStyle} className="bg-pink-600 h-[600px] w-full">HULT PRIZE SAMRIDDHI</h3>
         </div>
       </Carousel>
-      <div className="w-full min-h-screen flex flex-col justify-center items-center !px-4 !py-10 bg-gray-50">
-        <Row
-          gutter={[24, 24]}
-          justify="center"
-          align="middle"
-          className="w-full max-w-7xl mx-auto"
-        >
-          {/* Card 1 */}
-          <Col xs={24} sm={12} md={8} className="flex justify-center">
-            <Card
-              bordered={false}
-              className="w-full max-w-[320px] shadow-sm hover:shadow-md transition-all duration-300 rounded-none border-b-4 border-amber-500"
-              bodyStyle={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '180px'
-              }}
-            >
-              <span className="text-lg font-bold uppercase tracking-wide text-gray-800">
-                Global Competition
-              </span>
-            </Card>
-          </Col>
+      <CardData />
+      <Stats />
+      <WinningTeam />
 
-          {/* Card 2 */}
-          <Col xs={24} sm={12} md={8} className="flex justify-center">
-            <Card
-              bordered={false}
-              className="w-full max-w-[320px] shadow-sm hover:shadow-md transition-all duration-300 rounded-none border-b-4 border-amber-500"
-              bodyStyle={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '180px'
-              }}
-            >
-              <span className="text-lg font-bold uppercase tracking-wide text-gray-800">
-                Social Impact
-              </span>
-            </Card>
-          </Col>
 
-          {/* Card 3 */}
-          <Col xs={24} sm={12} md={8} className="flex justify-center">
-            <Card
-              bordered={false}
-              className="w-full max-w-[320px] shadow-sm hover:shadow-md transition-all duration-300 rounded-none border-b-4 border-amber-500"
-              bodyStyle={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '180px'
-              }}
-            >
-              <span className="text-lg font-bold uppercase tracking-wide text-gray-800">
-                $1M Prize
-              </span>
-            </Card>
-          </Col>
-        </Row>
+
+      <div className='w-full min-h-[300px] bg-gray-100 flex items-center justify-center !p-4 '>
+        <div className='max-w-5xl w-full flex flex-col items-center justify-center text-center text-black !py-10 !px-10 bg-gray-50 rounded-xl shadow-lg'>
+          <h2 className='text-2xl'>Hult Prize at Samriddhi College</h2>
+          <p className='text-md'>Contact: hultprize@samriddhi.edu</p>
+        </div>
       </div>
     </div>
   )
