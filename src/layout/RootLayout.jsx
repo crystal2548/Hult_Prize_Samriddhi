@@ -3,6 +3,8 @@ import { Link, Outlet } from "react-router-dom"; //useNavigate
 import React from "react";
 import logo from "../assets/logo.png";
 import SamriddhiLogo from "../assets/SamriddhiLogo.png";
+import logo from "../assets/logo.png";
+import SamriddhiLogo from "../assets/SamriddhiLogo.png";
 const RootLayout = () => {
   //   const token = localStorage.getItem("accessToken");
   //   const navigate = useNavigate();
