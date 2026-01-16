@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Select, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import './TeamsProject.css';
@@ -6,6 +7,7 @@ import './TeamsProject.css';
 const { Option } = Select;
 
 const TeamsProject = () => {
+  const navigate = useNavigate();
   const [selectedYear, setSelectedYear] = useState('all');
   const [selectedTheme, setSelectedTheme] = useState('all');
   const [selectedTeam, setSelectedTeam] = useState('all');
@@ -152,7 +154,12 @@ const TeamsProject = () => {
             <div className="filter-group">
               <Select
                 defaultValue="all"
-                onChange={(value) => setSelectedYear(value)}
+                onChange={(value) => {
+                  setSelectedYear(value);
+                  if (value !== 'all') {
+                    navigate(`/teamproject/${value}`);
+                  }
+                }}
                 size="large"
                 className="filter-select"
                 popupClassName="filter-dropdown"
