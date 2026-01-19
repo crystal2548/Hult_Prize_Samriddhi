@@ -9,9 +9,11 @@ import Contact from "./pages/contact.jsx"
 import TeamsProject from "./pages/TeamsProject.jsx"
 import Winners from "./pages/winner.jsx"
 import Sponsers from "./pages/sponsers.jsx"
+import YearPage from "./pages/YearPage.jsx"
 // import SignupPage from './pages/SignupPage'
 // import Complains from './pages/Complains'
 // import Profile from './pages/Profile'
+
 
 const router = createBrowserRouter([
     {
@@ -32,6 +34,11 @@ const router = createBrowserRouter([
                 element: <TeamsProject />
             },
             {
+                path: 'teamproject/:year',
+                element: <YearPage />
+
+            },
+            {
                 path: 'winners',
                 element: <Winners />
             },
@@ -40,7 +47,7 @@ const router = createBrowserRouter([
                 element: <Sponsers />
             },
             {
-                path:'/',
+                
                 
                 index: true,
                 element: <Home />
