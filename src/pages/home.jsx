@@ -3,7 +3,7 @@ import React from 'react'
 import Stats from "./stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
 import CardData from "./carddata.jsx";
-import Footer from './footer.jsx'
+
 const contentStyle = {
   margin: 0,
   // height: '600px',
@@ -44,7 +44,7 @@ const Home = () => {
           <p className='text-md'>Contact: hultprize@samriddhi.edu</p>
         </div>
       </div>
-      <Footer />
+
     </div>
   )
 }

@@ -9,7 +9,7 @@ import {
   ArrowUpRight,
   Zap,
 } from "lucide-react";
-import Footer from "./footer.jsx";
+
 
 /**
  * ABOUT PAGE COMPONENT
@@ -168,7 +168,7 @@ const AboutPage = () => {
           </p>
         </div>
       </section>
-      <Footer />
+
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react'
 import Winnersdata from './winnerdate.jsx'
-import Footer from './footer'
+
 
 const Winner = () => {
   return (
@@ -51,7 +51,7 @@ const Winner = () => {
         }}
         heading="2023 Winners" />
       <div className='w-full h-[200px] bg-dark-charcoal'></div>
-      <Footer />
+
     </div>
   )
 }
