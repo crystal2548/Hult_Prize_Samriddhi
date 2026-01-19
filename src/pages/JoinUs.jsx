@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "./styles/joinus.css";
 import { UserPlus, Briefcase, HeartHandshake } from "lucide-react";
+import Footer from "./footer.jsx";
 
 /**
  * JOIN US PAGE COMPONENT
@@ -164,6 +165,7 @@ const JoinUsPage = () => {
           </form>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
