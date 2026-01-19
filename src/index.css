@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+    --color-dark-charcoal: #191919;
+}
+
 :root {
     font-family: 'Figtree', sans-serif;
 }

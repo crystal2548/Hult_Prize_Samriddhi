@@ -1,8 +1,10 @@
 import React from 'react'
-import { Carousel } from 'antd';
+// import { Carousel } from 'antd';
 import Stats from "./stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
 import CardData from "./carddata.jsx";
+// import Hultweb from "../assets/hultweb.mp4"
+// import Hultweb from "../assets/hultweb.mp4"
 const contentStyle = {
   margin: 0,
   // height: '600px',
@@ -16,17 +18,27 @@ const Home = () => {
 
   return (
     <div>
-      <Carousel >
-        <div>
-          <h3 style={contentStyle} className="bg-pink-600 h-[600px] w-full">HULT PRIZE SAMRIDDHI</h3>
-        </div>
-      </Carousel>
+      {/* <Carousel > */}
+      <div className='w-full h-[600px] overflow-hidden rounded-xl shadow-2xl mb-12 bg-black'>
+        <video
+          className='w-full h-full object-cover'
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls
+        >
+          <source src="/hultweb.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      {/* <div> */}
+      {/* <h3 style={contentStyle} className="bg-pink-600 h-[600px] w-full">HULT PRIZE SAMRIDDHI</h3> */}
+      {/* </div> */}
+      {/* </Carousel> */}
       <CardData />
       <Stats />
       <WinningTeam />
-
-
-
       <div className='w-full min-h-[300px] bg-gray-100 flex items-center justify-center !p-4 '>
         <div className='max-w-5xl w-full flex flex-col items-center justify-center text-center text-black !py-10 !px-10 bg-gray-50 rounded-xl shadow-lg'>
           <h2 className='text-2xl'>Hult Prize at Samriddhi College</h2>
