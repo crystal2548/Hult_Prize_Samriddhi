@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div>
       {/* <Carousel > */}
-      <div className='w-full h-[600px] overflow-hidden rounded-xl shadow-2xl mb-12 bg-black'>
+      <div className='w-full h-[300px] md:h-[600px] overflow-hidden rounded-xl shadow-2xl mb-12 bg-black'>
         <video
           className='w-full h-full object-cover'
           autoPlay

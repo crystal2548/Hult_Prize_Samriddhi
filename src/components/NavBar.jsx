@@ -1,9 +1,11 @@
-import { Flex, Button, Drawer } from "antd";
+import { Button, Drawer } from "antd";
 import { Link, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import SamriddhiLogo from "../assets/SamriddhiLogo.png";
 import { Menu, X } from "lucide-react";
+
+import "./styles/navbar.css";
 
 const NavBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,46 +31,42 @@ const NavBar = () => {
 
   return (
     <>
-      <header>
-        {/* left side one  pink-600*/}
-        <Flex className="bg-black bg-opacity-90"
-          justify="space-between"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "15px 20px",
-            // backgroundColor: "#1e3a64ff",
-            borderBottom: "1px solid #d9d9d9",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ fontWeight: "bold", color: "white", fontFamily: 'sans-serif', fontSize: '24px', display: "flex", alignItems: "center" }}>
+      <header className="navbar-header">
+        <div className="navbar-container">
+          {/* left side - Logo */}
+          <div className="navbar-logo-section">
             <img src={logo} alt="LOGO" width={60} height={60} />
-            <div style={{ height: "60px", backgroundColor: "white", width: "2px", margin: "0 10px" }}></div>
+            <div className="navbar-logo-divider"></div>
             <img src={SamriddhiLogo} alt="SamriddhiLogo" width={60} height={60} />
           </div>
-          {/* right side  */}
-          <Flex gap={30} style={{ alignItems: "center" }}>
+          
 
+          {/* right side - Mobile Menu Button */}
+          <div className="mobile-menu-btn-container">
+             <Button 
+               type="text" 
+               onClick={toggleMobileMenu} 
+               icon={<Menu color="white" size={24} />} 
+               style={{ border: 'none' }}
+             />
+          </div>
+
+          {/* right side - Desktop Menu */}
+          <div className="navbar-desktop-menu">
             <>
-              <Link to="/" style={{ color: "white", }}>Home</Link>
-              {/* <Link to="/profile" style={{ color: "white",}}>Profile</Link> */}
-              {/* <Link to="/complain" style={{ color: "white",}}>Complain</Link> */}
-              <Link to="/about" style={{ color: "white", }}>About</Link>
-              <Link to="/teamproject" style={{ color: "white", }}>Teams&Projects</Link>
-              <Link to="/winners" style={{ color: "white", }}>Winners</Link>
-              <Link to="/contact" style={{ color: "white", }}>Contact</Link>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/about" className="nav-link">About</Link>
+              <Link to="/teamproject" className="nav-link">Teams&Projects</Link>
+              <Link to="/winners" className="nav-link">Winners</Link>
+              <Link to="/contact" className="nav-link">Contact</Link>
               <Link to="/joinus">
-                <Button type="primary" style={{ backgroundColor: "#E5007E", borderColor: "#E5007E", fontWeight: "bold" }}>
+                <Button type="primary" className="join-us-btn">
                   Join Us
                 </Button>
               </Link>
-              {/* <Button type="primary" onClick={handleLogout} style={{ color: "white",}}>
-                  Logout
-                </Button> */}
             </>
-          </Flex>
-        </Flex>
+          </div>
+        </div>
       </header>
 
       {/* Mobile Navigation Drawer */}

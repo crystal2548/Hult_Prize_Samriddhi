@@ -1,0 +1,85 @@
+/* Navbar Container */
+
+.navbar-header {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid #d9d9d9;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo Section */
+.navbar-logo-section {
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 24px;
+}
+
+.navbar-logo-divider {
+    height: 60px;
+    background-color: white;
+    width: 2px;
+    margin: 0 10px;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+/* Desktop Menu */
+.navbar-desktop-menu {
+    display: none;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #E5007E;
+}
+
+.join-us-btn {
+    background-color: #E5007E !important;
+    border-color: #E5007E !important;
+    font-weight: bold !important;
+    color: white !important;
+}
+
+.join-us-btn:hover {
+    background-color: #c0006a !important;
+    border-color: #c0006a !important;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .mobile-menu-btn-container {
+        display: none;
+    }
+
+    .navbar-desktop-menu {
+        display: flex;
+    }
+
+    .navbar-logo-section {
+        display: flex;
+        /* Ensure logos are visible on desktop */
+    }
+}

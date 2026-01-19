@@ -9,6 +9,7 @@ import Contact from "./pages/contact.jsx";
 import TeamsProject from "./pages/teamsProject.jsx";
 import Winners from "./pages/winner.jsx";
 import JoinUsPage from "./pages/JoinUs.jsx";
+import OrganizerMentor from "./pages/organizerMentor.jsx";
 // import Sponsers from "./pages/sponsers.jsx"
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
 
         index: true,
         element: <Home />,
+      },
+      {
+        path: "organizerMentor",
+        element: <OrganizerMentor />,
       },
     ],
   },
