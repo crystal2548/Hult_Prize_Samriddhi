@@ -24,8 +24,8 @@ const Home = () => {
           autoPlay
           loop
           muted
-          playsInline
-          controls
+        // playsInline
+        // controls
         >
           <source src="/hultweb.mp4" type="video/mp4" />
           Your browser does not support the video tag.
