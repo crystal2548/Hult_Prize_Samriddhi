@@ -96,27 +96,24 @@ const NavBar = () => {
         }}
         closeIcon={<X color="white" />}
       >
-        <div className="flex flex-col p-4 space-y-2 bg-black h-full">
+        <div className="mobile-menu-content">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               onClick={closeMobileMenu}
-              className={`px-4 py-3 rounded-lg text-lg font-medium transition-all ${location.pathname === link.path
-                ? "bg-[#E5007E]/10 text-[#E5007E]"
-                : "text-gray-300 hover:bg-white/5 hover:text-white"
-                }`}
+              className={`mobile-nav-link ${location.pathname === link.path ? "active" : ""}`}
             >
               {link.name}
             </Link>
           ))}
-          <div className="pt-4 mt-4 border-t border-white/10">
-            <Link to="/joinus" onClick={closeMobileMenu} className="block">
+          <div className="mobile-menu-separator">
+            <Link to="/joinus" onClick={closeMobileMenu} className="mobile-join-us-link">
               <Button
                 type="primary"
                 block
                 size="large"
-                className="bg-[#E5007E] hover:bg-[#c0006a] border-[#E5007E] font-bold h-12"
+                className="join-us-btn"
               >
                 Join Us
               </Button>

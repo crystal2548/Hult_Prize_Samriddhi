@@ -17,7 +17,7 @@ function Footer() {
                 </div>
 
                 {/* Links Section */}
-                {/* <div className="footer-links-section"> */}
+                <div className="footer-links-section">
                 <div className="footer-column">
                     <h3 className="footer-heading">About</h3>
                     <a href="">Our Story</a>
@@ -36,7 +36,7 @@ function Footer() {
                     <a href="">Careers</a>
                     <a href="">Support</a>
                 </div>
-                {/* </div> */}
+                </div>
             </div>
             <br />
             <hr />

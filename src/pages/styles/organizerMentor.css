@@ -1,9 +1,12 @@
 .organizer-mentor-page {
-    background-color: white;
+    background-color: black;
+    color: white;
     min-height: 100vh;
-    padding: 4rem 2rem;
+    padding: 8rem 2rem 4rem 2rem;
+    /* Added top padding to account for fixed navbar if needed, or just visual spacing */
     display: flex;
     justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .organizer-container {
@@ -14,16 +17,18 @@
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 3rem;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: #E5007E;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
 }
 
 .organizer-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 @media (min-width: 640px) {
@@ -39,28 +44,31 @@
 }
 
 .organizer-card {
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
+    background-color: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.5rem;
     padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .organizer-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    border-color: #d1d5db;
+    border-color: rgba(229, 0, 126, 0.5);
+    background-color: #0a0a0a;
+    box-shadow: 0 10px 30px -10px rgba(229, 0, 126, 0.2);
 }
 
 .image-placeholder {
     width: 120px;
     height: 120px;
-    background-color: #f3f4f6;
-    border-radius: 4px;
+    background-color: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    /* Making it circular for a more modern look, or keep rounded-rect */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,19 +76,21 @@
 }
 
 .placeholder-icon {
-    color: #9ca3af;
-    opacity: 0.5;
+    color: #E5007E;
+    opacity: 0.8;
 }
 
 .member-name {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #1f2937;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: white;
     margin-bottom: 0.5rem;
 }
 
 .member-role {
     font-size: 0.875rem;
-    color: #4b5563;
+    color: #9ca3af;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
