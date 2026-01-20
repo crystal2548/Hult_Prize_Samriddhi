@@ -7,11 +7,13 @@ import Home from './pages/Home'
 import About from "./pages/about.jsx"
 import Contact from "./pages/contact.jsx"
 import TeamsProject from "./pages/TeamsProject.jsx"
+import YearPage from "./pages/YearPage.jsx"
 import Winners from "./pages/winner.jsx"
 // import Sponsers from "./pages/sponsers.jsx"
 // import SignupPage from './pages/SignupPage'
 // import Complains from './pages/Complains'
 // import Profile from './pages/Profile'
+
 
 const router = createBrowserRouter([
     {
@@ -32,12 +34,15 @@ const router = createBrowserRouter([
                 element: <TeamsProject />
             },
             {
+                path: 'teamproject/:year',
+                element: <YearPage />
+
+            },
+            {
                 path: 'winners',
                 element: <Winners />
             },
             {
-                path: '/',
-
                 index: true,
                 element: <Home />
             }
