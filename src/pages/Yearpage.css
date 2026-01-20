@@ -1,0 +1,664 @@
+/* ============================================
+   YEAR PAGE - MODERN DESIGN
+   Following Hult Prize Official Brand Guidelines
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;900&display=swap');
+
+/* Official Hult Prize Colors */
+:root {
+  --heritage: #EC2088;      /* Primary - Heritage Magenta */
+  --purple: #8A2890;        /* Purple */
+  --sky: #12B1E7;          /* Sky Blue */
+  --sun: #FDD40E;          /* Sun Yellow */
+  --midnight: #292563;      /* Midnight Blue */
+  --black: #191919;         /* Black */
+  --white: #FFFFFF;         /* Gallery White */
+  
+  /* Additional */
+  --dark: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text-gray: #d1d5db;
+  --text-light: #9ca3af;
+}
+
+.yearpage-modern {
+  background: var(--black);
+  min-height: 100vh;
+  color: var(--white);
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.yearpage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.yearpage-animate {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   BACK BUTTON
+   ============================================ */
+
+.yearpage-back-section {
+  background: var(--dark);
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(236, 32, 136, 0.15);
+}
+
+.yearpage-back-btn {
+  background: var(--heritage) !important;
+  border: none !important;
+  color: var(--white) !important;
+  font-family: 'Figtree', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  height: 44px !important;
+  padding: 0 28px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 12px rgba(236, 32, 136, 0.25) !important;
+}
+
+.yearpage-back-btn:hover {
+  background: var(--purple) !important;
+  transform: translateX(-6px) !important;
+  box-shadow: 0 6px 20px rgba(236, 32, 136, 0.35) !important;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.yearpage-hero-section {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(236, 32, 136, 0.15);
+}
+
+.yearpage-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.yearpage-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(236, 32, 136, 0.85) 0%,
+    rgba(138, 40, 144, 0.75) 50%,
+    rgba(18, 177, 231, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+.yearpage-hero-section .yearpage-container {
+  position: relative;
+  z-index: 2;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.yearpage-hero-title {
+  font-size: clamp(42px, 7vw, 72px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+/* ============================================
+   THEME CARDS
+   ============================================ */
+
+.yearpage-themes-section {
+  padding: 80px 0;
+  background: var(--dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.yearpage-themes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.yearpage-theme-card {
+  background: var(--card-bg);
+  border: 2px solid rgba(236, 32, 136, 0.2);
+  border-radius: 16px;
+  padding: 40px 32px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.yearpage-theme-card:hover {
+  border-color: var(--heritage);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(236, 32, 136, 0.25);
+}
+
+.yearpage-theme-label {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--heritage);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.yearpage-theme-title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.yearpage-theme-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+/* ============================================
+   SECTION STYLING
+   ============================================ */
+
+.yearpage-section {
+  padding: 100px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.yearpage-section-dark {
+  background: var(--dark);
+}
+
+.yearpage-section-heading {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 900;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 64px;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.yearpage-section-heading::after {
+  display: none;
+}
+
+/* ============================================
+   ORGANIZING COMMITTEE
+   ============================================ */
+
+.yearpage-committee-grid,
+.yearpage-judges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 48px;
+}
+
+.yearpage-committee-item,
+.yearpage-judge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.yearpage-committee-item:hover,
+.yearpage-judge-item:hover {
+  transform: translateY(-8px);
+}
+
+.yearpage-avatar {
+  background: linear-gradient(135deg, var(--heritage), var(--purple)) !important;
+  border: 3px solid var(--sky) !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 8px 24px rgba(236, 32, 136, 0.3) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.yearpage-avatar:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 36px rgba(236, 32, 136, 0.4) !important;
+  border-color: var(--sun) !important;
+}
+
+.yearpage-avatar-judge {
+  background: linear-gradient(135deg, var(--purple), var(--sky)) !important;
+}
+
+.yearpage-member-name,
+.yearpage-judge-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.yearpage-member-role,
+.yearpage-judge-role {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* ============================================
+   TEAMS
+   ============================================ */
+
+.yearpage-teams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.yearpage-team-card {
+  background: var(--card-bg);
+  border: 2px solid rgba(236, 32, 136, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.yearpage-team-card:hover {
+  border-color: var(--heritage);
+  box-shadow: 0 12px 32px rgba(236, 32, 136, 0.25);
+}
+
+.yearpage-team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 32px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.yearpage-team-header:hover {
+  background: rgba(236, 32, 136, 0.05);
+}
+
+.yearpage-team-header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.yearpage-team-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--heritage);
+  flex-shrink: 0;
+}
+
+.yearpage-team-name {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--white);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.yearpage-team-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--heritage);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.yearpage-team-icon:hover {
+  background: var(--sky);
+  transform: rotate(180deg) scale(1.1);
+}
+
+.yearpage-team-details {
+  padding: 0 32px 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  animation: expandDown 0.4s ease-out;
+}
+
+@keyframes expandDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    padding-top: 32px;
+  }
+}
+
+.yearpage-team-block {
+  margin-bottom: 24px;
+}
+
+.yearpage-team-block:last-of-type {
+  margin-bottom: 28px;
+}
+
+.yearpage-team-block h4 {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--heritage);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.yearpage-team-block p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+.yearpage-team-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.yearpage-tag {
+  background: rgba(236, 32, 136, 0.1);
+  color: var(--heritage);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(236, 32, 136, 0.3);
+  transition: all 0.3s ease;
+}
+
+.yearpage-tag:hover {
+  background: var(--heritage);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   WINNERS
+   ============================================ */
+
+.yearpage-winners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.yearpage-winner-card {
+  background: var(--card-bg);
+  border: 2px solid rgba(236, 32, 136, 0.2);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.yearpage-winner-card:hover {
+  border-color: var(--sun);
+  transform: translateY(-12px);
+  box-shadow: 0 20px 48px rgba(253, 212, 14, 0.3);
+}
+
+.yearpage-winner-image {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 2px solid rgba(236, 32, 136, 0.2);
+}
+
+.yearpage-winner-content {
+  padding: 32px 28px;
+}
+
+.yearpage-winner-place {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--sun);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  display: inline-block;
+  background: rgba(253, 212, 14, 0.1);
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(253, 212, 14, 0.3);
+}
+
+.yearpage-winner-team {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.yearpage-winner-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* ============================================
+   SPONSORS
+   ============================================ */
+
+.yearpage-sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.yearpage-sponsor-card {
+  background: var(--card-bg);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 40px 32px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.yearpage-sponsor-card:hover {
+  border-color: var(--heritage);
+  background: rgba(236, 32, 136, 0.05);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(236, 32, 136, 0.2);
+}
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  padding: 60px 24px 32px;
+  background: var(--dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--heritage);
+  margin-bottom: 12px;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.footer-heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-links li:hover {
+  color: var(--heritage);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .yearpage-container {
+    padding: 0 32px;
+  }
+
+  .yearpage-themes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yearpage-winners-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .yearpage-container {
+    padding: 0 20px;
+  }
+
+  .yearpage-section {
+    padding: 60px 0;
+  }
+
+  .yearpage-section-heading {
+    font-size: 32px;
+    margin-bottom: 48px;
+  }
+
+  .yearpage-committee-grid,
+  .yearpage-judges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+
+  .yearpage-team-header {
+    padding: 20px;
+  }
+
+  .yearpage-team-details {
+    padding: 20px 20px 24px;
+  }
+
+  .yearpage-team-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .yearpage-sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .yearpage-hero-title {
+    font-size: 32px;
+  }
+
+  .yearpage-themes-section {
+    padding: 60px 0;
+  }
+
+  .yearpage-theme-card {
+    padding: 28px 24px;
+  }
+
+  .yearpage-committee-grid,
+  .yearpage-judges-grid {
+    grid-template-columns: 1fr;
+  }
+}
