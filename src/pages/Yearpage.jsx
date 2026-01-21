@@ -8,7 +8,7 @@ const YearPage = () => {
   const { year } = useParams();
   const navigate = useNavigate();
   const [expandedTeams, setExpandedTeams] = useState({});
-  const [isVisible, setIsVisible] = useState({});
+  // const [isVisible, setIsVisible] = useState({});
 
   // Scroll animations
   useEffect(() => {
