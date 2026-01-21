@@ -6,6 +6,7 @@ import CardData from "../components/carddata.jsx";
 import "./styles/home.css";
 import left from '../assets/Left.svg'
 import right from '../assets/Right.svg'
+import logo from '../assets/SamriddhiLogo.png'
 
 const contentStyle = {
   margin: 0,
@@ -42,12 +43,21 @@ const Home = () => {
         <img className="home-hero-right-shape" src={right} alt="RIGHT" />
 
         <div className="home-hero-content">
-            <h1 className="home-hero-title">
-                One million to change the world
-            </h1>
-            <p className="home-hero-subtitle">
-                Join the world's largest student startup competition.
-            </p>
+            <div className="hero-anim-container">
+                <div className="hero-text-anim-wrapper">
+                    <div className="hero-title-row">
+                        <h1 className="home-hero-title">
+                            One million to change the world
+                        </h1>
+                    </div>
+                    <p className="home-hero-subtitle">
+                        Join the world's largest student startup competition.
+                    </p>
+                </div>
+                <div className="home-hero-logo-wrapper">
+                    <img className="home-hero-logo" src={logo} alt="LOGO" />
+                </div>
+            </div>
            {/* Overlay Content */}
            {/* <CardData /> */}
         </div>

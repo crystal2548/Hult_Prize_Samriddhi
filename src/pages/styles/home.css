@@ -66,13 +66,55 @@
 .home-hero-content {
     position: relative;
     z-index: 2;
+    /* background-color: red; */
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
+    height: 100%;
+    max-height: 400px;
     padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* Allow content to move freely within this container */
+    overflow: hidden;
+}
+
+.hero-anim-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 20px;
+    height: 100%;
+    max-height: 400px;
+    width: 100%;
+    /* Initial State for Animation */
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-text-anim-wrapper {
+    display: flex;
+    /* width: auto; Let flex handle width */
+    flex-direction: column;
+    align-items: center;
+    /* Only fade in internally if needed, or just let parent handle opacity */
+    opacity: 1; 
+}
+
+.hero-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.home-hero-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    animation: fadeInUp 1s ease-out 0.4s forwards;
 }
 
 .home-hero-title {
@@ -94,6 +136,27 @@
     margin: 0 auto 40px;
     line-height: 1.6;
     animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+@media (min-width: 768px) {
+    .hero-anim-container {
+        flex-direction: row;
+        animation: fadeInUp 1s ease-out forwards, moveToLeftAndScale 1.5s ease-in-out 2.5s forwards;
+    }
+
+    .home-hero-logo {
+        width: 250px;
+        height: 250px;
+        animation: moveLogo 1.5s ease-in-out 2.5s forwards;
+    }
+
+    .home-hero-title {
+        animation: fadeInUp 0.8s ease-out, maxWidthForBreak 1.5s ease-in-out 2.5s forwards;
+    }
+
+    .home-hero-subtitle {
+        animation: fadeInUp 0.8s ease-out 0.2s both, subtitleAlignLeft 1.5s ease-in-out 2.5s forwards;
+    }
 }
 
 /* Hero Shapes */
@@ -404,14 +467,51 @@
     animation-delay: 0.6s;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes moveToLeftAndScale {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        text-align: center;
     }
 
-    to {
+    100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-30%, 20%) scale(0.6);
+        text-align: left;
+    }
+}
+
+@keyframes subtitleAlignLeft {
+    0% {
+        margin: 0 0 0 0;
+        text-align: center;
+    }
+    100% {
+        margin: 0 0 0 70px;
+        text-align: left;
+    }
+}
+
+@keyframes moveLogo {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-590px, -300px) scale(1.3) ;
+    }
+}
+
+@keyframes maxWidthForBreak {
+    0% {
+        max-width: 1200px;
+    }
+    100% {
+        max-width: 500px;
+        text-align: left;
     }
 }
