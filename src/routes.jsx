@@ -8,7 +8,7 @@ import Winners from "./pages/winner.jsx";
 import JoinUsPage from "./pages/JoinUs.jsx";
 import OrganizerMentor from "./pages/organizerMentor.jsx";
 // import Sponsers from "./pages/sponsers.jsx"
-import YearPage from "./pages/YearPage.jsx"
+import YearPage from "./pages/Yearpage.jsx"
 // import SignupPage from './pages/SignupPage'
 // import Complains from './pages/Complains'
 // import Profile from './pages/Profile'
@@ -48,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "organizerMentor",
         element: <OrganizerMentor />,
+      },
+      {
+        path: "teamproject/:year",
+        element: <YearPage />,
       },
     ],
   },

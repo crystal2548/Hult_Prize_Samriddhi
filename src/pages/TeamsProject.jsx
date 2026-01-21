@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Select, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import './TeamsProject.css';
+import './styles/TeamsProject.css';
+import Yearpage from './Yearpage.jsx';
 
 const { Option } = Select;
 
@@ -298,51 +299,6 @@ const TeamsProject = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-col">
-              <h3 className="footer-brand">Hult Prize Samriddhi</h3>
-              <p className="footer-text">
-                Empowering the next generation of social entrepreneurs
-              </p>
-            </div>
-
-            <div className="footer-col">
-              <h4 className="footer-heading">About</h4>
-              <ul className="footer-links">
-                <li>Our Story</li>
-                <li>Mission</li>
-                <li>Impact</li>
-              </ul>
-            </div>
-
-            <div className="footer-col">
-              <h4 className="footer-heading">Resources</h4>
-              <ul className="footer-links">
-                <li>Past Challenges</li>
-                <li>FAQ</li>
-                <li>Blog</li>
-              </ul>
-            </div>
-
-            <div className="footer-col">
-              <h4 className="footer-heading">Connect</h4>
-              <ul className="footer-links">
-                <li>Partners</li>
-                <li>Careers</li>
-                <li>Support</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>© 2026 Hult Prize Samriddhi. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

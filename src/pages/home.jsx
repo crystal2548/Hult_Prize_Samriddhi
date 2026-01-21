@@ -1,8 +1,8 @@
 import React from 'react'
 // import { Carousel } from 'antd';
-import Stats from "./stats.jsx";
+import Stats from "../components/stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
-import CardData from "./carddata.jsx";
+import CardData from "../components/carddata.jsx";
 
 const contentStyle = {
   margin: 0,
@@ -24,8 +24,8 @@ const Home = () => {
           autoPlay
           loop
           muted
-          playsInline
-          controls
+          // playsInline
+          // controls
         >
           <source src="/hultweb.mp4" type="video/mp4" />
           Your browser does not support the video tag.
