@@ -1,4 +1,7 @@
 import React from 'react';
+import logo from "../assets/logo.png";
+import SamriddhiLogo from "../assets/SamriddhiLogo.png";
+import './styles/navbar.css';
 import './styles/footer.css';
 
 function Footer() {
@@ -8,9 +11,11 @@ function Footer() {
 
                 {/* Brand Section */}
                 <div className="footer-brand">
-                    <h1 className="footer-logo">
-                        Hult Prize Samriddhi
-                    </h1>
+                    <div className="footer-logo-section">
+                        <img src={logo} alt="LOGO" width={60} height={60} />
+                        <div className="footer-logo-divider"></div>
+                        <img src={SamriddhiLogo} alt="SamriddhiLogo" width={60} height={60} />
+                    </div>
                     <p className="footer-tagline">
                         Empowering the next generation of social entrepreneurs.
                     </p>

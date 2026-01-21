@@ -1,4 +1,6 @@
-const winningTeam = () => {
+import React from 'react';
+
+const WinningTeam = () => {
     const winners = [
         { 
             title: "Stick 'Em", 
@@ -26,11 +28,17 @@ const winningTeam = () => {
     return (
         <div className="home-winners-section">
             <h2 className="section-heading-home">Meet Our Global Winners</h2>
+            
             <div className="home-winners-grid">
                 {winners.map((item, index) => (
-                    <div key={index} className="winner-card-wrapper home-animate">
+                    <div 
+                        key={index} 
+                        className="winner-card-wrapper home-animate"
+                        style={{ animationDelay: `${index * 0.2}s` }}
+                    >
                         <div className="winner-card">
                             <div className="winner-card-front">
+                                <div className="winner-lighting-overlay"></div>
                                 <div className="winner-image" style={{ backgroundImage: `url(${item.image})` }}></div>
                                 <div className="winner-info">
                                     <h3 className="winner-title">{item.title}</h3>
@@ -38,6 +46,7 @@ const winningTeam = () => {
                                 </div>
                             </div>
                             <div className="winner-card-back">
+                                <div className="winner-lighting-overlay"></div>
                                 <p className="winner-quote">"{item.quote}"</p>
                                 <span className="winner-author">- {item.author}</span>
                             </div>
@@ -48,4 +57,4 @@ const winningTeam = () => {
         </div>
     )
 }
-export default winningTeam
+export default WinningTeam;

@@ -76,7 +76,7 @@
 
 .footer-heading {
     font-weight: 600;
-    color: #E5007E;
+    color: #E5007E !important;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.05em;

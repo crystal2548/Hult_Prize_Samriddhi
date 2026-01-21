@@ -4,7 +4,7 @@ import Winnersdata from './winnerdate.jsx'
 
 const Winner = () => {
   return (
-    <div>
+    <div className="home-container">
       {/* 2025 */}
       <Winnersdata
         first={{
