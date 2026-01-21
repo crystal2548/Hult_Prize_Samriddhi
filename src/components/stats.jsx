@@ -2,61 +2,25 @@ import React from 'react';
 import { Card, Col, Row } from 'antd';
 
 const StatsSection = () => {
+    // Official Data from Hult Prize Website
     const statsData = [
-        { value: "2023- Present", label: "" },
-        { value: "40+ Teams", label: "" },
-        { value: "200+", label: "Participants" },
-        { value: "4", label: "Themes" }
+        { value: "130+", label: "Participating Countries" },
+        { value: "50K+", label: "Entrepreneurs" },
+        { value: "200K+", label: "Annual Participants" },
+        { value: "$1M", label: "Annual Prize Funding" }
     ];
 
     return (
-        <div className="w-full py-12 bg-gray-100 !px-10">
-            <Row
-                gutter={[16, 24]}
-                justify="center"
-                align="middle"
-                className="w-full max-w-7xl mx-auto px-4 !py-4"
-            >
+        <div className="home-stats-section">
+            <div className="home-stats-grid">
                 {statsData.map((item, index) => (
-                    <Col
-                        key={index}
-                        xs={24}
-                        sm={12}
-                        md={6}
-                        lg={5}
-                        className="flex justify-center !py-3"
-                    >
-                        <Card
-                            bordered={false}
-                            className="w-full max-w-[320px] transition-all duration-300 bg-gray-200 h-20"
-                            styles={{
-                                body: {
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    padding: '20px',
-                                    textAlign: 'center'
-                                }
-                            }}
-                        >
-                            {/* The Large Stat Values */}
-                            <div className="text-2xl  font-black text-gray-800 tracking-tight">
-                                {item.value}
-                            </div>
-
-                            {/* The Label (only shows if label exists) */}
-                            {item.label && (
-                                <div className="text-sm font-medium text-gray-500 uppercase mt-1 tracking-wider">
-                                    {item.label}
-                                </div>
-                            )}
-                        </Card>
-                    </Col>
+                    <div key={index} className="home-stat-item home-animate">
+                        <div className="home-stat-number">{item.value}</div>
+                        <div className="home-stat-label">{item.label}</div>
+                    </div>
                 ))}
-            </Row>
+            </div>
         </div>
     );
 };
-
 export default StatsSection;

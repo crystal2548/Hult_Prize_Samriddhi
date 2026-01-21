@@ -3,36 +3,37 @@ import { Card, Col, Row } from 'antd';
 
 const CardData = () => {
     const cardData = [
-        { title: "Global Competition" },
-        { title: "Social Impact" },
-        { title: "$1M Prize" }
+        { title: "Compete" },
+        { title: "Mentor" },
+        { title: "Sponsor" }
     ];
     return (
-        <div className="w-full flex flex-col  items-center px-4 !py-10 bg-gray-100">
+        <div className="home-cards-overlay">
             <Row
-                gutter={[24, 24]}
+                gutter={[32, 32]}
                 justify="center"
                 align="middle"
-                className="w-full max-w-7xl mx-auto"
+                className="hult-card-row"
             >
-                {/* Card 1 */}
                 {cardData.map((item, index) => (
-                    <Col key={index} xs={24} sm={12} md={8} lg={7} className="flex justify-center !py-2">
+                    <Col key={index} xs={24} sm={12} md={8} lg={7} className="flex justify-center">
                         <Card
                             hoverable
                             bordered={false}
-                            className="w-full max-w-[320px]  !shadow-lg hover:shadow-lg transition-all duration-300 rounded-none  "
+                            className="home-glass-card"
                             bodyStyle={{
                                 display: 'flex',
-                                // background: 'gray',
+                                flexDirection: 'column',
                                 alignItems: 'center',
                                 justifyContent: 'center',
-                                height: '180px'
+                                padding: 0,
+                                width: '100%',
+                                background: 'transparent'
                             }}
                         >
-                            <span className="text-lg font-bold uppercase tracking-wide text-gray-800">
+                            <h3 className="home-card-title">
                                 {item.title}
-                            </span>
+                            </h3>
                         </Card>
                     </Col>
                 ))}
@@ -41,4 +42,4 @@ const CardData = () => {
     )
 }
 
-export default CardData
+export default CardData;

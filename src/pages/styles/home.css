@@ -1,0 +1,391 @@
+/* Matches TeamsProject.css Dark Theme & Styles */
+:root {
+    --heritage: #EC2088;
+    --purple: #8A2890;
+    --sky: #12B1E7;
+    --sun: #FDD40E;
+    --black: #191919;
+    --dark: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-gray: #d1d5db;
+    --text-light: #9ca3af;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;900&display=swap');
+
+.home-container {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--black);
+    color: #fff;
+    font-family: 'Figtree', sans-serif;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.home-hero-section {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+    border-bottom: 1px solid rgba(236, 32, 136, 0.15);
+}
+
+.home-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+}
+
+.home-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-hero-title {
+    font-size: clamp(48px, 8vw, 82px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    /* Gradient text matching TeamsPage but Light for video contrast */
+    color: #ffffff;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.home-hero-subtitle {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Hero Shapes */
+.home-hero-left-shape,
+.home-hero-right-shape {
+    position: absolute;
+    z-index: 2;
+    width: 15vw;
+    /* Responsive size */
+    max-width: 200px;
+    opacity: 0.9;
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+.home-hero-left-shape {
+    left: 0;
+    bottom: 0;
+}
+
+.home-hero-right-shape {
+    right: 0;
+    bottom: 0;
+}
+
+/* ============================================
+   OVERLAY CARDS (Get Involved)
+   ============================================ */
+.home-cards-overlay {
+    width: 100%;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.hult-card-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.home-glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 180px;
+}
+
+.home-glass-card:hover {
+    transform: translateY(-10px);
+    background: rgba(236, 32, 136, 0.9);
+    border-color: var(--heritage);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.home-card-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* ============================================
+   STATS SECTION (Official Numbers)
+   ============================================ */
+.home-stats-section {
+    padding: 100px 24px;
+    background: var(--dark);
+    border-top: 1px solid rgba(236, 32, 136, 0.1);
+}
+
+.home-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.home-stat-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.home-stat-number {
+    font-size: clamp(42px, 5vw, 56px);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--heritage), var(--sky));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.home-stat-label {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ============================================
+   WINNERS SECTION (3D Flip)
+   ============================================ */
+.home-winners-section {
+    padding: 100px 24px;
+    background: var(--black);
+}
+
+.section-heading-home {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 900;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 64px;
+}
+
+.home-winners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.winner-card-wrapper {
+    perspective: 1000px;
+    height: 400px;
+    /* Fixed height for flip */
+}
+
+.winner-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.winner-card-wrapper:hover .winner-card {
+    transform: rotateY(180deg);
+}
+
+.winner-card-front,
+.winner-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
+}
+
+/* Front Styling */
+.winner-card-front {
+    display: flex;
+    flex-direction: column;
+}
+
+.winner-image {
+    height: 60%;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.winner-info {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(180deg, var(--card-bg) 0%, #111 100%);
+}
+
+.winner-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.winner-year {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--sun);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Back Styling */
+.winner-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--heritage), var(--purple));
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    text-align: center;
+}
+
+.winner-quote {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.winner-author {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.home-contact-wrapper {
+    padding: 80px 24px;
+    background: var(--dark);
+}
+
+.home-contact-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-contact-title {
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.home-contact-text {
+    font-size: 18px;
+    color: var(--text-light);
+}
+
+/* Animation Utilities */
+.home-animate {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

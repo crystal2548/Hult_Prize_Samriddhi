@@ -3,6 +3,9 @@ import React from 'react'
 import Stats from "../components/stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
 import CardData from "../components/carddata.jsx";
+import "./styles/home.css";
+import left from '../assets/Left.svg'
+import right from '../assets/Right.svg'
 
 const contentStyle = {
   margin: 0,
@@ -16,32 +19,54 @@ const contentStyle = {
 const Home = () => {
 
   return (
-    <div>
-      {/* <Carousel > */}
-      <div className='w-full h-[300px] md:h-[600px] overflow-hidden rounded-xl shadow-2xl mb-12 bg-black'>
-        <video
-          className='w-full h-full object-cover'
-          autoPlay
-          loop
-          muted
-          // playsInline
-          // controls
-        >
-          <source src="/hultweb.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+    <div className="home-container">
+      {/* Hero Section */}
+      <div className="home-hero-section">
+        <div className="home-hero-bg">
+            <video
+            className="hero-video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            >
+            <source src="/hultweb.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div className="home-hero-overlay"></div>
+        
+        {/* Decorative Shapes */ }
+        <img className="home-hero-left-shape" src={left} alt="LEFT" />
+        <img className="home-hero-right-shape" src={right} alt="RIGHT" />
+
+        <div className="home-hero-content">
+            <h1 className="home-hero-title">
+                One million to change the world
+            </h1>
+            <p className="home-hero-subtitle">
+                Join the world's largest student startup competition.
+            </p>
+           {/* Overlay Content */}
+           {/* <CardData /> */}
+        </div>
       </div>
-      {/* <div> */}
-      {/* <h3 style={contentStyle} className="bg-pink-600 h-[600px] w-full">HULT PRIZE SAMRIDDHI</h3> */}
-      {/* </div> */}
-      {/* </Carousel> */}
-      <CardData />
-      <Stats />
-      <WinningTeam />
-      <div className='w-full min-h-[300px] bg-gray-100 flex items-center justify-center !p-4 '>
-        <div className='max-w-5xl w-full flex flex-col items-center justify-center text-center text-black !py-10 !px-10 bg-gray-50 rounded-xl shadow-lg'>
-          <h2 className='text-2xl'>Hult Prize at Samriddhi College</h2>
-          <p className='text-md'>Contact: hultprize@samriddhi.edu</p>
+
+      {/* <CardData /> */}
+      <div className="home-animate visible delay-2">
+        <Stats />
+      </div>
+      <div className="home-animate visible delay-3">
+        <WinningTeam />
+      </div>
+
+      <div className="home-contact-wrapper home-animate visible delay-3">
+        <div className="home-section">
+            <div className="home-contact-card home-section-inner">
+                <h2 className="home-contact-title">Hult Prize at Samriddhi College</h2>
+                <p className="home-contact-text">Contact: hultprize@samriddhi.edu</p>
+            </div>
         </div>
       </div>
 

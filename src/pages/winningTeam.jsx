@@ -1,43 +1,51 @@
-import React from 'react'
-import { Card, Col, Row } from 'antd';
-
 const winningTeam = () => {
-    const WinnerData = [
-        { title: "Winner Team", image: "" },
-        { title: "Winner Team", image: "" },
-        { title: "Winner Team", image: "" },
+    const winners = [
+        { 
+            title: "Stick 'Em", 
+            year: "2025 Winner",
+            image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=1000",
+            quote: "Every child deserves access to STEAM education. We simplify technology to unlock creativity in students everywhere.",
+            author: "Adam & Kai"
+        },
+        { 
+            title: "Korion Health", 
+            year: "2024 Winner", 
+            image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000",
+            quote: "The Hult Prize shifted our horizons to think more globally. We really liked the opportunity to travel internationally.",
+            author: "Akshaya Anand"
+        },
+        { 
+            title: "Ecobana", 
+            year: "2022 Winner", 
+            image: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?auto=format&fit=crop&q=80&w=1000",
+            quote: "I believe there should be no barriers to young women achieving their dreams. We removed the dilemma of affording period products.",
+            author: "Lennox Omondi"
+        },
     ];
+
     return (
-        <div className="w-full flex flex-col items-center !px-4 !py-6 bg-gray-100">
-            <Row
-                gutter={[24, 24]}
-                justify="center"
-                align="middle"
-                className="w-full max-w-7xl mx-auto"
-            >
-                {/* Card 1 */}
-                {WinnerData.map((item, index) => (
-                    <Col key={index} xs={24} sm={12} md={8} lg={7} className="flex justify-center !py-2">
-                        <Card
-                            hoverable
-                            bordered={true}
-                            className="w-full max-w-[300px]  !shadow-lg hover:shadow-lg transition-all duration-300 rounded-xl bg-gray-100 "
-                            bodyStyle={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                height: '120px'
-                            }}
-                        >
-                            <span className="text-lg font-bold uppercase tracking-wide text-gray-800">
-                                {item.title}
-                            </span>
-                        </Card>
-                    </Col>
+        <div className="home-winners-section">
+            <h2 className="section-heading-home">Meet Our Global Winners</h2>
+            <div className="home-winners-grid">
+                {winners.map((item, index) => (
+                    <div key={index} className="winner-card-wrapper home-animate">
+                        <div className="winner-card">
+                            <div className="winner-card-front">
+                                <div className="winner-image" style={{ backgroundImage: `url(${item.image})` }}></div>
+                                <div className="winner-info">
+                                    <h3 className="winner-title">{item.title}</h3>
+                                    <span className="winner-year">{item.year}</span>
+                                </div>
+                            </div>
+                            <div className="winner-card-back">
+                                <p className="winner-quote">"{item.quote}"</p>
+                                <span className="winner-author">- {item.author}</span>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </Row>
+            </div>
         </div>
     )
 }
-
 export default winningTeam
