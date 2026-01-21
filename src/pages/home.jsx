@@ -3,7 +3,7 @@ import React from 'react'
 import Stats from "./stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
 import CardData from "./carddata.jsx";
-
+import AnimatedStats from './animatedStats.jsx';
 const contentStyle = {
   margin: 0,
   // height: '600px',

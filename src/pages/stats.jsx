@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
-
+import AnimatedStats from './animatedStats';
 const StatsSection = () => {
     const statsData = [
-        { value: "2023- Present", label: "" },
-        { value: "40+ Teams", label: "" },
-        { value: "200+", label: "Participants" },
-        { value: "4", label: "Themes" }
+        { value: "", label: "", extra: "2023- Present" },
+        { value: "40", label: "", extra: "+ Teams" },
+        { value: "200", label: "Participants", extra: "" },
+        { value: "4", label: "Themes", extra: "" }
     ];
 
     return (
@@ -41,9 +41,14 @@ const StatsSection = () => {
                             }}
                         >
                             {/* The Large Stat Values */}
-                            <div className="text-2xl  font-black text-gray-800 tracking-tight">
-                                {item.value}
-                            </div>
+                            {item.value == 0 ? <div className="text-2xl  font-black text-gray-800 tracking-tight flex">
+                                {/* {item.value} */}
+                                {item.extra}
+                            </div> :
+                                <div className="text-2xl  font-black text-gray-800 tracking-tight flex">
+                                    {/* {item.value} */}
+                                    <AnimatedStats participation={item.value} />{item.extra}
+                                </div>}
 
                             {/* The Label (only shows if label exists) */}
                             {item.label && (
