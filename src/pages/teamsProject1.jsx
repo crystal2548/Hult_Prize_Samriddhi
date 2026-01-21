@@ -17,7 +17,7 @@ const TeamsProject = () => {
   useEffect(() => {
     const observers = [];
     const elements = document.querySelectorAll('.animate-on-scroll');
-    
+
     elements.forEach((el, index) => {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -30,7 +30,7 @@ const TeamsProject = () => {
         },
         { threshold: 0.1 }
       );
-      
+
       observer.observe(el);
       observers.push(observer);
     });
@@ -115,7 +115,7 @@ const TeamsProject = () => {
 
   return (
     <div className="teams-page">
-      
+
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-background"></div>
@@ -134,8 +134,8 @@ const TeamsProject = () => {
         <div className="container">
           <div className="stats-grid">
             {stats.map((stat, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="stat-item animate-on-scroll"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -214,7 +214,7 @@ const TeamsProject = () => {
       <section className="teams-section">
         <div className="container">
           <h2 className="section-heading animate-on-scroll">Featured Teams</h2>
-          
+
           <div className="teams-grid">
             {teams.map((team, index) => (
               <div key={index} className="team-card-wrapper animate-on-scroll">
@@ -245,11 +245,11 @@ const TeamsProject = () => {
             <div className="about-text">
               <h2 className="section-heading">About Our Initiatives</h2>
               <p className="about-paragraph">
-                The Hult Prize at Samriddhi College champions innovative solutions to pressing global challenges. 
+                The Hult Prize at Samriddhi College champions innovative solutions to pressing global challenges.
                 Our teams comprise bright, driven students dedicated to creating scalable and sustainable social enterprises.
               </p>
               <p className="about-paragraph">
-                Each project represents a commitment to positive change, fostering entrepreneurship, and addressing 
+                Each project represents a commitment to positive change, fostering entrepreneurship, and addressing
                 critical issues within our communities and beyond.
               </p>
             </div>
@@ -264,7 +264,7 @@ const TeamsProject = () => {
       <section className="judges-section">
         <div className="container">
           <h2 className="section-heading animate-on-scroll">Our Esteemed Judges & Mentors</h2>
-          
+
           <div className="judges-grid">
             {judgesMentors.map((person, index) => (
               <div key={index} className="judge-card animate-on-scroll">
