@@ -13,23 +13,32 @@ const TeamsProject = () => {
 
   // Year cards data
   const yearCards = [
-    {
-      year: '2026',
-      theme: 'Innovation for Tomorrow',
+       {
+      year: '2027',
+      theme: 'Tech for Good',
       status: 'Upcoming',
       teams: 0,
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
-      description: 'Registration opens Q1 2026',
+      description: 'Registration opening soon for next year\'s challenge',
       participants: 0
+    },
+    {
+      year: '2026',
+      theme: 'Innovation for Tomorrow',
+      status: 'In Progress',
+      teams: 10,
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
+      description: 'Ongoing competition focused on cutting-edge solutions',
+      participants: 30
     },
     {
       year: '2025',
       theme: 'Climate Action',
-      status: 'In Progress',
-      teams: 3,
+      status: 'Completed',
+      teams: 12,
       image: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=600&fit=crop',
-      description: 'Ongoing competition focused on environmental sustainability',
-      participants: 15
+      description: 'Driving sustainable solutions to combat climate change',
+      participants: 35
     },
     {
       year: '2024',

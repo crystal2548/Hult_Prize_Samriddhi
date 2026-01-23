@@ -8,42 +8,18 @@ const YearPage = () => {
   const { year } = useParams();
   const navigate = useNavigate();
   const [expandedTeams, setExpandedTeams] = useState({});
-  // const [isVisible, setIsVisible] = useState({});
 
   // Scroll animations
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    const observers = [];
-    const elements = document.querySelectorAll('.yearpage-animate');
-    
-    elements.forEach((el, index) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible(prev => ({ ...prev, [index]: true }));
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach(observer => observer.disconnect());
   }, [year]);
 
   // ⭐ YEAR-SPECIFIC DATA - Each year has completely different content
   const yearData = {
     '2023': {
-      heroImage: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&auto=format&fit=crop', // Different image for 2023
+      heroImage: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&auto=format&fit=crop',
       globalTheme: 'Youth Employment',
       globalDescription: 'Tackling youth unemployment through sustainable business solutions focused on job creation and skills development.',
-      collegeTheme: 'Local Solutions, Global Impact: Addressing Community Youth Employment',
       organizingCommittee: [
         { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
         { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
@@ -104,17 +80,12 @@ const YearPage = () => {
         { name: 'Prof. Suresh Rana', role: 'Dean, Samriddhi College', image: null },
       ],
       sponsors: ['Nepal Telecom', 'Nabil Bank', 'Vianet Communications', 'Chaudhary Nepal', 'Surya Bank', 'Laxmi Group'],
-      eventPhotos: [
-        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=400&auto=format&fit=crop',
-      ]
     },
     
     '2024': {
-      heroImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&auto=format&fit=crop', // Different image for 2024
+      heroImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&auto=format&fit=crop',
       globalTheme: 'Food Security',
       globalDescription: 'Building resilient food systems to ensure access to nutritious food for all communities worldwide.',
-      collegeTheme: 'Local Solutions, Global Impact: Addressing Community Food Security',
       organizingCommittee: [
         { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
         { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
@@ -168,16 +139,14 @@ const YearPage = () => {
         { name: 'Ms. Kamala Devi', role: 'Impact Investor', image: null },
       ],
       sponsors: ['Nepal Telecom', 'Nabil Bank', 'Vianet Communications', 'Coca-Cola Nepal', 'Surya Bank', 'Laxmi Group'],
-      eventPhotos: []
     },
 
     '2025': {
       heroImage: 'https://images.unsplash.com/photo-1569163139394-de4798aa62b4?w=1200&auto=format&fit=crop',
       globalTheme: 'Climate Action',
       globalDescription: 'Developing innovative approaches to combat climate change and environmental degradation.',
-      collegeTheme: 'Local Solutions, Global Impact: Climate Change Solutions',
       organizingCommittee: [
-        { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
+        { name: 'Kritika karki', role: 'Lead Organizer', image: null },
         { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
         { name: 'Anup Basnet', role: 'Logistics Head', image: null },
         { name: 'Priya Rai', role: 'Marketing Lead', image: null },
@@ -205,14 +174,12 @@ const YearPage = () => {
         { name: 'Prof. Suresh Rana', role: 'Dean', image: null },
       ],
       sponsors: ['Nepal Telecom', 'Nabil Bank', 'Vianet Communications', 'Coca-Cola Nepal'],
-      eventPhotos: []
     },
 
     '2026': {
       heroImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop',
       globalTheme: 'Innovation for Tomorrow',
       globalDescription: 'Pioneering breakthrough solutions for emerging global challenges using cutting-edge technology.',
-      collegeTheme: 'Local Solutions, Global Impact: Tomorrow\'s Solutions',
       organizingCommittee: [
         { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
         { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
@@ -228,7 +195,6 @@ const YearPage = () => {
       ],
       judges: [],
       sponsors: [],
-      eventPhotos: []
     },
   };
 
@@ -263,48 +229,25 @@ const YearPage = () => {
         </div>
         <div className="yearpage-container">
           <h1 className="yearpage-hero-title yearpage-animate">
-            Hult Prize @SAMRIDDHI COLLEGE {year}
+            Hult Prize at SAMRIDDHI COLLEGE {year}
           </h1>
         </div>
       </section>
 
-      {/* Theme Cards */}
+      {/* Global Theme - SINGLE CARD */}
       <section className="yearpage-themes-section">
         <div className="yearpage-container">
-          <div className="yearpage-themes-grid">
+          <div className="yearpage-single-theme">
             <div className="yearpage-theme-card yearpage-animate">
               <div className="yearpage-theme-label">Global Theme</div>
               <h2 className="yearpage-theme-title">{currentYearData.globalTheme}</h2>
               <p className="yearpage-theme-desc">{currentYearData.globalDescription}</p>
             </div>
-            
-            <div className="yearpage-theme-card yearpage-animate">
-              <div className="yearpage-theme-label">Samriddhi College Theme</div>
-              <h2 className="yearpage-theme-title">{currentYearData.collegeTheme}</h2>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Organizing Committee */}
-      {currentYearData.organizingCommittee.length > 0 && (
-        <section className="yearpage-section">
-          <div className="yearpage-container">
-            <h2 className="yearpage-section-heading yearpage-animate">Organizing Committee</h2>
-            <div className="yearpage-committee-grid">
-              {currentYearData.organizingCommittee.map((member, idx) => (
-                <div key={idx} className="yearpage-committee-item yearpage-animate">
-                  <Avatar size={100} icon={<UserOutlined />} className="yearpage-avatar" />
-                  <h3 className="yearpage-member-name">{member.name}</h3>
-                  <p className="yearpage-member-role">{member.role}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Teams */}
+      {/* Teams - SECTION 1 */}
       {currentYearData.teams.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
@@ -355,7 +298,7 @@ const YearPage = () => {
         </section>
       )}
 
-      {/* Winners */}
+      {/* Winners - SECTION 2 */}
       <section className="yearpage-section">
         <div className="yearpage-container">
           <h2 className="yearpage-section-heading yearpage-animate">Hult Prize {year} Winners</h2>
@@ -376,7 +319,7 @@ const YearPage = () => {
         </div>
       </section>
 
-      {/* Judges */}
+      {/* Judges - SECTION 3 */}
       {currentYearData.judges.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
@@ -394,9 +337,27 @@ const YearPage = () => {
         </section>
       )}
 
-      {/* Sponsors */}
-      {currentYearData.sponsors.length > 0 && (
+      {/* Organizing Committee - SECTION 4 */}
+      {currentYearData.organizingCommittee.length > 0 && (
         <section className="yearpage-section">
+          <div className="yearpage-container">
+            <h2 className="yearpage-section-heading yearpage-animate">Organizing Committee</h2>
+            <div className="yearpage-committee-grid">
+              {currentYearData.organizingCommittee.map((member, idx) => (
+                <div key={idx} className="yearpage-committee-item yearpage-animate">
+                  <Avatar size={100} icon={<UserOutlined />} className="yearpage-avatar" />
+                  <h3 className="yearpage-member-name">{member.name}</h3>
+                  <p className="yearpage-member-role">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Sponsors - SECTION 5 (LAST) */}
+      {currentYearData.sponsors.length > 0 && (
+        <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Our Valued Sponsors</h2>
             <div className="yearpage-sponsors-grid">
