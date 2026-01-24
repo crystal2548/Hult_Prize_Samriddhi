@@ -39,11 +39,14 @@ const Home = () => {
         <div className="home-hero-overlay"></div>
         
         {/* Decorative Shapes */ }
-        <img className="home-hero-left-shape" src={left} alt="LEFT" />
+        <img className="home-hero-left-shape" src={left} alt="LEFT"  />
         <img className="home-hero-right-shape" src={right} alt="RIGHT" />
 
         <div className="home-hero-content">
             <div className="hero-anim-container">
+                <div className="home-hero-logo-wrapper">
+                    <img className="home-hero-logo" src={logo} alt="LOGO" />
+                </div>
                 <div className="hero-text-anim-wrapper">
                     <div className="hero-title-row">
                         <h1 className="home-hero-title">
@@ -53,9 +56,6 @@ const Home = () => {
                     <p className="home-hero-subtitle">
                         Join the world's largest student startup competition.
                     </p>
-                </div>
-                <div className="home-hero-logo-wrapper">
-                    <img className="home-hero-logo" src={logo} alt="LOGO" />
                 </div>
             </div>
            {/* Overlay Content */}
