@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col } from 'antd';
 import { TeamOutlined, TrophyOutlined, RocketOutlined, CalendarOutlined, BulbOutlined, GlobalOutlined } from '@ant-design/icons';
@@ -6,39 +6,85 @@ import './styles/teamsProject.css';
 
 const TeamsProject = () => {
   const navigate = useNavigate();
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Count-up animation function
+  const animateNumbers = useCallback(() => {
+    const counters = document.querySelectorAll('.tpp-stat-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+        }
+      };
+      updateCounter();
+    });
+  }, []);
+
+  // Count-up animation
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setHasAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasAnimated]);
+
+  // Trigger animation when hasAnimated becomes true
+  useEffect(() => {
+    if (hasAnimated) {
+      animateNumbers();
+    }
+  }, [hasAnimated, animateNumbers]);
+
   // Year cards data
   const yearCards = [
-       {
-      year: '2027',
-      theme: 'Tech for Good',
-      status: 'Upcoming',
-      teams: 0,
-      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
-      description: 'Registration opening soon for next year\'s challenge',
-      participants: 0
-    },
     {
       year: '2026',
       theme: 'Innovation for Tomorrow',
-      status: 'In Progress',
-      teams: 10,
+      status: 'Upcoming',
+      teams: 0,
       image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
-      description: 'Ongoing competition focused on cutting-edge solutions',
-      participants: 30
+      description: 'Registration opens Q1 2026',
+      participants: 0
     },
     {
       year: '2025',
       theme: 'Climate Action',
-      status: 'Completed',
-      teams: 12,
+      status: 'In Progress',
+      teams: 3,
       image: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=600&fit=crop',
-      description: 'Driving sustainable solutions to combat climate change',
-      participants: 35
+      description: 'Ongoing competition focused on environmental sustainability',
+      participants: 15
     },
     {
       year: '2024',
@@ -66,9 +112,6 @@ const TeamsProject = () => {
     return '#6b7280';
   };
 
-  const totalTeams = yearCards.reduce((acc, year) => acc + year.teams, 0);
-  const totalParticipants = yearCards.reduce((acc, year) => acc + year.participants, 0);
-
   return (
     <div className="tpp-wrapper">
       
@@ -85,30 +128,30 @@ const TeamsProject = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="tpp-stats-section">
+      <section className="tpp-stats-section" ref={statsRef}>
         <div className="tpp-stats-container">
           <Row gutter={[48, 48]}>
             <Col xs={24} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number">14+</div>
+                <div className="tpp-stat-number" data-target="14">0+</div>
                 <div className="tpp-stat-label">Total Teams</div>
               </div>
             </Col>
             <Col xs={24} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number">70+</div>
+                <div className="tpp-stat-number" data-target="70">0+</div>
                 <div className="tpp-stat-label">Students Engaged</div>
               </div>
             </Col>
             <Col xs={24} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number">4</div>
+                <div className="tpp-stat-number" data-target="4">0</div>
                 <div className="tpp-stat-label">Years of Impact</div>
               </div>
             </Col>
             <Col xs={24} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number">350+</div>
+                <div className="tpp-stat-number" data-target="350">0+</div>
                 <div className="tpp-stat-label">Total Participants</div>
               </div>
             </Col>
@@ -186,10 +229,7 @@ const TeamsProject = () => {
             <p className="tpp-cta-text">
               Join the next generation of social entrepreneurs and help solve the world's biggest challenges
             </p>
-            <button className="tpp-cta-button" onClick={() => {
-              navigate('/contact');
-              setTimeout(() => window.scrollTo(0, 0), 100);
-            }}>
+            <button className="tpp-cta-button" onClick={() => navigate('/contact')}>
               Get Involved
             </button>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Input, Select, Button, message } from 'antd';
 import { 
   MailOutlined, 
@@ -25,6 +25,10 @@ const Contact = () => {
     message: ''
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Handle form input changes
   const handleChange = (field, value) => {
