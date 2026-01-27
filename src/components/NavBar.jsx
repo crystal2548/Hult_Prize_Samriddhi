@@ -1,5 +1,5 @@
 import { Button, Drawer } from "antd";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import SamriddhiLogo from "../assets/SamriddhiLogo.png";
@@ -10,7 +10,10 @@ import "./styles/navbar.css";
 const NavBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(2); // Home is at index 2 (center)
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -19,6 +22,26 @@ const NavBar = () => {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
+
+  // Scroll handler for navbar visibility
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past threshold
+        setIsVisible(false);
+      } else {
+        // Scrolling up or at top
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -48,13 +71,13 @@ const NavBar = () => {
   return (
     <>
       {/* Desktop/Top Navbar */}
-      <header className="navbar-header">
+      <header className={`navbar-header ${!isVisible ? 'navbar-hidden' : ''}`}>
         <div className="navbar-container">
           {/* Left side - Logo */}
-          <div className="navbar-logo-section">
+          <div className="navbar-logo-section" onClick={() => navigate('/')}>
             <img src={logo} alt="LOGO" width={60} height={60} />
-            {/* <div className="navbar-logo-divider"></di`v>
-            <img src={SamriddhiLogo} alt="SamriddhiLogo`" width={60} height={60} /> */}
+            <div className="navbar-logo-divider"></div>
+            <img src={SamriddhiLogo} alt="SamriddhiLogo`" width={60} height={60} />
           </div>
 
           {/* Right side - Mobile Menu Button (Hidden, using bottom nav instead) */}
@@ -69,18 +92,20 @@ const NavBar = () => {
 
           {/* Right side - Desktop Menu */}
           <div className="navbar-desktop-menu">
-            <>
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="/about" className="nav-link">About</Link>
-              <Link to="/teamproject" className="nav-link">Teams&Projects</Link>
-              <Link to="/winners" className="nav-link">Winners</Link>
-              <Link to="/contact" className="nav-link">Contact</Link>
-              <Link to="/joinus">
-                <Button type="primary" className="join-us-btn">
-                  Join Us
-                </Button>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                to={link.path} 
+                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+              >
+                {link.name}
               </Link>
-            </>
+            ))}
+            <Link to="/joinus">
+              <Button type="primary" className="join-us-btn">
+                Join Us
+              </Button>
+            </Link>
           </div>
         </div>
       </header>

@@ -18,7 +18,8 @@
    ============================================ */
 .tpp-hero {
   position: relative;
-  height: 550px;
+  padding-top: 8rem;
+  height: 500px;
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
   display: flex;
   align-items: center;
@@ -113,9 +114,9 @@
    STATS SECTION - LIKE HULT PRIZE OFFICIAL
    ============================================ */
 .tpp-stats-section {
-  background: #000000;
-  padding: 80px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px 24px;
+  background: var(--dark);
+  border-top: 1px solid rgba(236, 32, 136, 0.1);
 }
 
 .tpp-stats-container {
@@ -155,7 +156,7 @@
    ============================================ */
 .tpp-cards-section {
   background: #0a0a0a;
-  padding: 80px 0;
+  padding: 40px 0;
 }
 
 .tpp-cards-container {
@@ -316,7 +317,7 @@
    ============================================ */
 .tpp-cta-section {
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  padding: 100px 0;
+  padding: 40px 0;
   position: relative;
   overflow: hidden;
 }

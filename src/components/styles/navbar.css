@@ -10,6 +10,15 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 15px 20px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
 }
 
 .navbar-container {
@@ -29,6 +38,8 @@
     font-weight: bold;
     color: white;
     font-size: 24px;
+    cursor: pointer;
+    
 }
 
 .navbar-logo-divider,
@@ -51,10 +62,33 @@
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #E5007E;
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover {
     color: #E5007E;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #E5007E;
+    font-weight: 600;
 }
 
 .join-us-btn {

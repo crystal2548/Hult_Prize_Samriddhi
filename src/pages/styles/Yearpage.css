@@ -14,7 +14,6 @@
   --midnight: #292563;
   --black: #191919;
   --white: #FFFFFF;
-  
   --dark: #0a0a0a;
   --card-bg: #1a1a1a;
   --text-gray: #d1d5db;
@@ -61,7 +60,8 @@
 
 .yearpage-back-section {
   background: var(--dark);
-  padding: 24px 0;
+  padding-top: 8rem;
+  padding-bottom: 28px;
   border-bottom: 1px solid rgba(236, 32, 136, 0.15);
 }
 
@@ -440,10 +440,34 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.yearpage-winner-card:hover {
-  border-color: var(--sun);
+/* 1ST PLACE - GOLDEN GLOW */
+.yearpage-winner-first:hover {
+  border-color: #FFD700;
   transform: translateY(-12px);
-  box-shadow: 0 20px 48px rgba(253, 212, 14, 0.3);
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 215, 0, 0.4),
+    0 20px 48px rgba(255, 215, 0, 0.3);
+}
+
+/* 2ND PLACE - SILVER GLOW */
+.yearpage-winner-second:hover {
+  border-color: #C0C0C0;
+  transform: translateY(-12px);
+  box-shadow: 
+    0 0 30px rgba(192, 192, 192, 0.6),
+    0 0 60px rgba(192, 192, 192, 0.4),
+    0 20px 48px rgba(192, 192, 192, 0.3);
+}
+
+/* 3RD PLACE - BRONZE GLOW */
+.yearpage-winner-third:hover {
+  border-color: #CD7F32;
+  transform: translateY(-12px);
+  box-shadow: 
+    0 0 30px rgba(205, 127, 50, 0.6),
+    0 0 60px rgba(205, 127, 50, 0.4),
+    0 20px 48px rgba(205, 127, 50, 0.3);
 }
 
 .yearpage-winner-image {

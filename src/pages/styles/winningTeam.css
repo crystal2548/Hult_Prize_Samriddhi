@@ -1,0 +1,212 @@
+/* Winners Section (3D Flip) */
+.home-winners-section {
+    padding-top: 8rem !important;
+    padding-bottom: 0 !important;
+    margin-bottom: -80px;
+    background: var(--black);
+    font-family: 'Figtree', sans-serif;
+}
+
+.section-heading-home {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 900;
+    text-align: center;
+    color: #E5007E;
+    margin-bottom: 64px;
+}
+
+.home-winners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.winner-card-wrapper {
+    perspective: 1000px;
+    height: 400px;
+}
+
+.winner-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+/* 1ST PLACE - GOLDEN GLOW */
+.winner-first:hover .winner-card {
+    transform: rotateY(180deg);
+    box-shadow: 
+        0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.4),
+        0 20px 48px rgba(255, 215, 0, 0.3);
+}
+
+.winner-first .winner-card-front,
+.winner-first .winner-card-back {
+    border: 2px solid rgba(255, 215, 0, 0.2);
+}
+
+.winner-first:hover .winner-card-front,
+.winner-first:hover .winner-card-back {
+    border-color: #FFD700;
+}
+
+/* 2ND PLACE - SILVER GLOW */
+.winner-second:hover .winner-card {
+    transform: rotateY(180deg);
+    box-shadow: 
+        0 0 30px rgba(192, 192, 192, 0.6),
+        0 0 60px rgba(192, 192, 192, 0.4),
+        0 20px 48px rgba(192, 192, 192, 0.3);
+}
+
+.winner-second .winner-card-front,
+.winner-second .winner-card-back {
+    border: 2px solid rgba(192, 192, 192, 0.2);
+}
+
+.winner-second:hover .winner-card-front,
+.winner-second:hover .winner-card-back {
+    border-color: #C0C0C0;
+}
+
+/* 3RD PLACE - BRONZE GLOW */
+.winner-third:hover .winner-card {
+    transform: rotateY(180deg);
+    box-shadow: 
+        0 0 30px rgba(205, 127, 50, 0.6),
+        0 0 60px rgba(205, 127, 50, 0.4),
+        0 20px 48px rgba(205, 127, 50, 0.3);
+}
+
+.winner-third .winner-card-front,
+.winner-third .winner-card-back {
+    border: 2px solid rgba(205, 127, 50, 0.2);
+}
+
+.winner-third:hover .winner-card-front,
+.winner-third:hover .winner-card-back {
+    border-color: #CD7F32;
+}
+
+.winner-card-wrapper:hover .winner-lighting-overlay {
+    opacity: 1;
+    transform: translateX(100%);
+    transition: transform 0.8s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.winner-card-front,
+.winner-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
+}
+
+.winner-lighting-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(105deg,
+            transparent 20%,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.2) 30%,
+            transparent 35%);
+    z-index: 10;
+    pointer-events: none;
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.winner-card-front {
+    display: flex;
+    flex-direction: column;
+}
+
+.winner-image {
+    height: 60%;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.winner-info {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(180deg, var(--card-bg) 0%, #111 100%);
+}
+
+.winner-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.winner-year {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--sun);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.winner-card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, var(--heritage), var(--purple));
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    text-align: center;
+}
+
+.winner-quote {
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.winner-author {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+.home-animate {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

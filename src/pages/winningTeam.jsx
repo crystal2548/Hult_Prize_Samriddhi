@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/winningTeam.css';
 
 const WinningTeam = () => {
     const winners = [
@@ -33,7 +34,11 @@ const WinningTeam = () => {
                 {winners.map((item, index) => (
                     <div 
                         key={index} 
-                        className="winner-card-wrapper home-animate"
+                        className={`winner-card-wrapper home-animate ${
+                            index === 0 ? 'winner-first' : 
+                            index === 1 ? 'winner-second' : 
+                            'winner-third'
+                        }`}
                         style={{ animationDelay: `${index * 0.2}s` }}
                     >
                         <div className="winner-card">

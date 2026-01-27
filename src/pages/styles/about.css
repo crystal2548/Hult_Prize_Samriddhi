@@ -9,7 +9,7 @@
 /* Hero Section */
 .hero-section {
     position: relative;
-    padding-top: 10rem;
+    padding-top: 9rem;
     padding-bottom: 5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -76,10 +76,7 @@
 
 /* Story Section */
 .story-section {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 30px 24px;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -247,10 +244,7 @@
 
 /* Mission Section */
 .mission-section {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 30px 24px;
     background-color: #080808;
 }
 
@@ -314,10 +308,7 @@
 
 /* Global Impact Section */
 .global-section {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 30px 24px;
     text-align: center;
 }
 

@@ -304,7 +304,14 @@ const YearPage = () => {
           <h2 className="yearpage-section-heading yearpage-animate">Hult Prize {year} Winners</h2>
           <div className="yearpage-winners-grid">
             {currentYearData.winners.map((winner, idx) => (
-              <div key={idx} className="yearpage-winner-card yearpage-animate">
+              <div 
+                key={idx} 
+                className={`yearpage-winner-card yearpage-animate ${
+                  idx === 0 ? 'yearpage-winner-first' : 
+                  idx === 1 ? 'yearpage-winner-second' : 
+                  'yearpage-winner-third'
+                }`}
+              >
                 {winner.image && (
                   <div className="yearpage-winner-image" style={{ backgroundImage: `url(${winner.image})` }}></div>
                 )}
