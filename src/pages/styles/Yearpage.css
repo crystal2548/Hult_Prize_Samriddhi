@@ -7,15 +7,14 @@
 
 /* Official Hult Prize Colors */
 :root {
-  --heritage: #EC2088;      /* Primary - Heritage Magenta */
-  --purple: #8A2890;        /* Purple */
-  --sky: #12B1E7;          /* Sky Blue */
-  --sun: #FDD40E;          /* Sun Yellow */
-  --midnight: #292563;      /* Midnight Blue */
-  --black: #191919;         /* Black */
-  --white: #FFFFFF;         /* Gallery White */
+  --heritage: #EC2088;
+  --purple: #8A2890;
+  --sky: #12B1E7;
+  --sun: #FDD40E;
+  --midnight: #292563;
+  --black: #191919;
+  --white: #FFFFFF;
   
-  /* Additional */
   --dark: #0a0a0a;
   --card-bg: #1a1a1a;
   --text-gray: #d1d5db;
@@ -139,7 +138,7 @@
 }
 
 /* ============================================
-   THEME CARDS
+   THEME SECTION - SINGLE CARD CENTERED
    ============================================ */
 
 .yearpage-themes-section {
@@ -148,17 +147,17 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.yearpage-themes-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+.yearpage-single-theme {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .yearpage-theme-card {
   background: var(--card-bg);
   border: 2px solid rgba(236, 32, 136, 0.2);
   border-radius: 16px;
-  padding: 40px 32px;
+  padding: 48px 40px;
+  text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -174,19 +173,19 @@
   color: var(--heritage);
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .yearpage-theme-title {
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 900;
   color: var(--white);
-  margin-bottom: 16px;
-  line-height: 1.3;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .yearpage-theme-desc {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.7;
   color: var(--text-gray);
   margin: 0;
@@ -213,10 +212,6 @@
   margin-bottom: 64px;
   letter-spacing: -0.02em;
   position: relative;
-}
-
-.yearpage-section-heading::after {
-  display: none;
 }
 
 /* ============================================
@@ -520,72 +515,6 @@
   transform: translateY(-6px);
   box-shadow: 0 12px 28px rgba(236, 32, 136, 0.2);
 }
-/* ============================================
-   FOOTER
-   ============================================ */
-.footer {
-  padding: 60px 24px 32px;
-  background: var(--dark);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 48px;
-  margin-bottom: 48px;
-}
-
-.footer-brand {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--heritage);
-  margin-bottom: 12px;
-}
-
-.footer-text {
-  font-size: 14px;
-  color: var(--text-light);
-  line-height: 1.6;
-}
-
-.footer-heading {
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  font-size: 14px;
-  color: var(--text-light);
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.footer-links li:hover {
-  color: var(--heritage);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.footer-bottom p {
-  font-size: 14px;
-  color: var(--text-light);
-}
-
 
 /* ============================================
    RESPONSIVE DESIGN
@@ -594,10 +523,6 @@
 @media (max-width: 1024px) {
   .yearpage-container {
     padding: 0 32px;
-  }
-
-  .yearpage-themes-grid {
-    grid-template-columns: 1fr;
   }
 
   .yearpage-winners-grid {
@@ -617,6 +542,14 @@
   .yearpage-section-heading {
     font-size: 32px;
     margin-bottom: 48px;
+  }
+
+  .yearpage-themes-section {
+    padding: 60px 0;
+  }
+
+  .yearpage-theme-card {
+    padding: 36px 28px;
   }
 
   .yearpage-committee-grid,
@@ -647,10 +580,6 @@
 @media (max-width: 480px) {
   .yearpage-hero-title {
     font-size: 32px;
-  }
-
-  .yearpage-themes-section {
-    padding: 60px 0;
   }
 
   .yearpage-theme-card {

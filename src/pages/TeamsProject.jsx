@@ -1,304 +1,241 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Select, Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import './styles/TeamsProject.css';
-import Yearpage from './Yearpage.jsx';
-
-const { Option } = Select;
+import { Card, Row, Col } from 'antd';
+import { TeamOutlined, TrophyOutlined, RocketOutlined, CalendarOutlined, BulbOutlined, GlobalOutlined } from '@ant-design/icons';
+import './styles/teamsProject.css';
 
 const TeamsProject = () => {
   const navigate = useNavigate();
-  const [selectedYear, setSelectedYear] = useState('all');
-  const [selectedTheme, setSelectedTheme] = useState('all');
-  const [selectedTeam, setSelectedTeam] = useState('all');
-  const [isVisible, setIsVisible] = useState({});
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = useRef(null);
 
-  // Intersection Observer for scroll animations
   useEffect(() => {
-    const observers = [];
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    
-    elements.forEach((el, index) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setIsVisible(prev => ({ ...prev, [index]: true }));
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach(observer => observer.disconnect());
+    window.scrollTo(0, 0);
   }, []);
 
-  // Years data - newest first
-  const years = ['2026', '2025', '2024', '2023'];
+  // Count-up animation function
+  const animateNumbers = useCallback(() => {
+    const counters = document.querySelectorAll('.tpp-stat-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
 
-  // Themes data
-  const themes = [
-    { value: 'innovation', label: 'Innovation for Tomorrow (2026)' },
-    { value: 'climate-action', label: 'Climate Action (2025)' },
-    { value: 'food-security', label: 'Food Security (2024)' },
-    { value: 'youth-employment', label: 'Youth Employment (2023)' },
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+        }
+      };
+      updateCounter();
+    });
+  }, []);
+
+  // Count-up animation
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setHasAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasAnimated]);
+
+  // Trigger animation when hasAnimated becomes true
+  useEffect(() => {
+    if (hasAnimated) {
+      animateNumbers();
+    }
+  }, [hasAnimated, animateNumbers]);
+
+  // Year cards data
+  const yearCards = [
+    {
+      year: '2026',
+      theme: 'Innovation for Tomorrow',
+      status: 'Upcoming',
+      teams: 0,
+      image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop',
+      description: 'Registration opens Q1 2026',
+      participants: 0
+    },
+    {
+      year: '2025',
+      theme: 'Climate Action',
+      status: 'In Progress',
+      teams: 3,
+      image: 'https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&h=600&fit=crop',
+      description: 'Ongoing competition focused on environmental sustainability',
+      participants: 15
+    },
+    {
+      year: '2024',
+      theme: 'Food Security',
+      status: 'Completed',
+      teams: 6,
+      image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=600&fit=crop',
+      description: 'Addressing global hunger and sustainable agriculture',
+      participants: 30
+    },
+    {
+      year: '2023',
+      theme: 'Youth Employment',
+      status: 'Completed',
+      teams: 5,
+      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop',
+      description: 'Creating opportunities for young entrepreneurs',
+      participants: 25
+    }
   ];
 
-  // Featured teams data
-  const teams = [
-    {
-      name: 'Innovate Nexus',
-      tagline: 'Clean Water for All',
-      description: 'Developed a low-cost, portable water filtration system using sustainable materials to tackle water scarcity in rural communities.',
-      impact: '10,000+ lives affected',
-      year: 2024
-    },
-    {
-      name: 'EcoVisionaries',
-      tagline: 'Zero Food Waste',
-      description: 'Created a community-based composting and food redistribution program to combat urban food waste.',
-      impact: '5 tons waste reduced monthly',
-      year: 2024
-    },
-    {
-      name: 'EduConnect',
-      tagline: 'Education for Every Child',
-      description: 'Launched a mobile learning platform providing free educational resources and mentorship for underprivileged children.',
-      impact: '2,000+ students reached',
-      year: 2025
-    },
-    {
-      name: 'GreenFuture Tech',
-      tagline: 'Smart Energy Solutions',
-      description: 'Designed a smart home energy management system that optimizes usage and reduces carbon footprint.',
-      impact: '30% energy reduction',
-      year: 2025
-    },
-    {
-      name: 'HealthBridge Solutions',
-      tagline: 'Mental Health Matters',
-      description: 'Implemented a peer-support network and digital therapy platform for young adults mental health.',
-      impact: '500+ users supported',
-      year: 2023
-    },
-    {
-      name: 'AgriHarvest Innovations',
-      tagline: 'AI-Powered Farming',
-      description: 'Introduced an AI-powered agricultural advisory system helping local farmers increase crop yields.',
-      impact: '40% yield increase',
-      year: 2023
-    },
-  ];
-
-  // Judges and mentors
-  const judgesMentors = [
-    { name: 'Dr. Maya Sharma', role: 'Judge', expertise: 'Social Innovation' },
-    { name: 'Mr. Raj Kumar', role: 'Mentor', expertise: 'Entrepreneurship' },
-    { name: 'Ms. Alisha Rai', role: 'Judge', expertise: 'Sustainability' },
-    { name: 'Eng. Suresh Singh', role: 'Mentor', expertise: 'Technology' },
-    { name: 'Dr. Dina Devi', role: 'Judge', expertise: 'Public Health' },
-    { name: 'Mr. Pujan Giri', role: 'Mentor', expertise: 'Business Strategy' },
-  ];
-
-  // Stats data
-  const stats = [
-    { number: '100+', label: 'Students Participated' },
-    { number: '25+', label: 'Innovative Teams' },
-    { number: '4', label: 'Years Running' },
-    { number: '$1M', label: 'Grand Prize' },
-  ];
+  const getStatusColor = (status) => {
+    if (status === 'Completed') return '#10b981';
+    if (status === 'In Progress') return '#3b82f6';
+    return '#6b7280';
+  };
 
   return (
-    <div className="teams-page">
+    <div className="tpp-wrapper">
       
       {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-background"></div>
-        <div className="container hero-content">
-          <h1 className="hero-title">
-            Teams & Projects
-          </h1>
-          <p className="hero-subtitle">
-            Empowering students to build startups that change the world
+      <section className="tpp-hero">
+        <div className="tpp-hero-bg"></div>
+        <div className="tpp-hero-inner">
+          <p className="tpp-hero-label">SAMRIDDHI COLLEGE</p>
+          <h1 className="tpp-hero-title">Teams & Projects</h1>
+          <p className="tpp-hero-subtitle">
+            Empowering students to create impactful solutions for global challenges through innovation and entrepreneurship
           </p>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="stat-item animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="stat-number">{stat.number}</div>
-                <div className="stat-label">{stat.label}</div>
+      <section className="tpp-stats-section" ref={statsRef}>
+        <div className="tpp-stats-container">
+          <Row gutter={[48, 48]}>
+            <Col xs={24} sm={12} md={6}>
+              <div className="tpp-stat-box">
+                <div className="tpp-stat-number" data-target="14">0+</div>
+                <div className="tpp-stat-label">Total Teams</div>
               </div>
-            ))}
-          </div>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <div className="tpp-stat-box">
+                <div className="tpp-stat-number" data-target="70">0+</div>
+                <div className="tpp-stat-label">Students Engaged</div>
+              </div>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <div className="tpp-stat-box">
+                <div className="tpp-stat-number" data-target="4">0</div>
+                <div className="tpp-stat-label">Years of Impact</div>
+              </div>
+            </Col>
+            <Col xs={24} sm={12} md={6}>
+              <div className="tpp-stat-box">
+                <div className="tpp-stat-number" data-target="350">0+</div>
+                <div className="tpp-stat-label">Total Participants</div>
+              </div>
+            </Col>
+          </Row>
         </div>
       </section>
 
-      {/* Filter Section */}
-      <section className="filter-section">
-        <div className="container">
-          <div className="filters">
-            <div className="filter-group">
-              <Select
-                defaultValue="all"
-                onChange={(value) => {
-                  setSelectedYear(value);
-                  if (value !== 'all') {
-                    navigate(`/teamproject/${value}`);
-                  }
-                }}
-                size="large"
-                className="filter-select"
-                popupClassName="filter-dropdown"
-                getPopupContainer={(trigger) => trigger.parentElement}
-                placement="bottomLeft"
-              >
-                <Option value="all">All Years</Option>
-                {years.map(year => (
-                  <Option key={year} value={year}>{year}</Option>
-                ))}
-              </Select>
-            </div>
-
-            <div className="filter-group">
-              <Select
-                defaultValue="all"
-                onChange={(value) => setSelectedTheme(value)}
-                size="large"
-                className="filter-select"
-                popupClassName="filter-dropdown"
-                getPopupContainer={(trigger) => trigger.parentElement}
-                placement="bottomLeft"
-              >
-                <Option value="all">All Themes</Option>
-                {themes.map(theme => (
-                  <Option key={theme.value} value={theme.value}>{theme.label}</Option>
-                ))}
-              </Select>
-            </div>
-
-            <div className="filter-group">
-              <Select
-                defaultValue="all"
-                onChange={(value) => setSelectedTeam(value)}
-                size="large"
-                className="filter-select"
-                popupClassName="filter-dropdown"
-                getPopupContainer={(trigger) => trigger.parentElement}
-                placement="bottomLeft"
-              >
-                <Option value="all">All Teams</Option>
-                {teams.map((team, index) => (
-                  <Option key={index} value={team.name}>{team.name}</Option>
-                ))}
-              </Select>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Teams Section */}
-      <section className="teams-section">
-        <div className="container">
-          <h2 className="section-heading animate-on-scroll">Featured Teams</h2>
+      {/* Year Cards Section */}
+      <section className="tpp-cards-section">
+        <div className="tpp-cards-container">
+          <h2 className="tpp-section-heading">Explore by Year</h2>
+          <p className="tpp-section-subheading">Browse through our journey across different competition years</p>
           
-          <div className="teams-grid">
-            {teams.map((team, index) => (
-              <div key={index} className="team-card-wrapper animate-on-scroll">
-                <div className="team-card">
-                  <div className="team-card-front">
-                    <div className="team-year-tag">Year {team.year}</div>
-                    <h3 className="team-name">{team.name}</h3>
-                    <p className="team-tagline">{team.tagline}</p>
-                    <div className="flip-indicator">Hover to learn more</div>
-                  </div>
-                  <div className="team-card-back">
-                    <p className="team-description">{team.description}</p>
-                    <div className="team-impact">
-                      <strong>Impact:</strong> {team.impact}
+          <Row gutter={[24, 24]}>
+            {yearCards.map((yearData) => (
+              <Col xs={24} sm={12} lg={6} key={yearData.year}>
+                <Card 
+                  className="tpp-year-card"
+                  hoverable
+                  onClick={() => navigate(`/teamproject/${yearData.year}`)}
+                  cover={
+                    <div className="tpp-year-img-box">
+                      <img 
+                        alt={`Hult Prize ${yearData.year}`}
+                        src={yearData.image}
+                        className="tpp-year-img"
+                      />
+                      <div className="tpp-year-badge" style={{ background: getStatusColor(yearData.status) }}>
+                        {yearData.year} {yearData.status}
+                      </div>
+                    </div>
+                  }
+                >
+                  <div className="tpp-year-content">
+                    <h3 className="tpp-year-name">{yearData.theme}</h3>
+                    
+                    <p className="tpp-year-description">{yearData.description}</p>
+                    
+                    <div className="tpp-year-info">
+                      <div className="tpp-info-item">
+                        <TeamOutlined className="tpp-info-icon" />
+                        <span className="tpp-info-text">{yearData.teams} Teams</span>
+                      </div>
+                      
+                      <div className="tpp-info-item">
+                        <GlobalOutlined className="tpp-info-icon" />
+                        <span className="tpp-info-text">{yearData.participants} Students</span>
+                      </div>
+                      
+                      {yearData.status === 'Completed' && (
+                        <div className="tpp-info-item">
+                          <TrophyOutlined className="tpp-info-icon" />
+                          <span className="tpp-info-text">Winners Announced</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="tpp-card-footer">
+                      <span className="tpp-view-link">View Details →</span>
                     </div>
                   </div>
-                </div>
-              </div>
+                </Card>
+              </Col>
             ))}
-          </div>
+          </Row>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="about-section animate-on-scroll">
-        <div className="container">
-          <div className="about-grid">
-            <div className="about-text">
-              <h2 className="section-heading">About Our Initiatives</h2>
-              <p className="about-paragraph">
-                The Hult Prize at Samriddhi College champions innovative solutions to pressing global challenges. 
-                Our teams comprise bright, driven students dedicated to creating scalable and sustainable social enterprises.
-              </p>
-              <p className="about-paragraph">
-                Each project represents a commitment to positive change, fostering entrepreneurship, and addressing 
-                critical issues within our communities and beyond.
-              </p>
-            </div>
-            <div className="about-visual">
-              <div className="about-shape"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Judges Section */}
-      <section className="judges-section">
-        <div className="container">
-          <h2 className="section-heading animate-on-scroll">Our Esteemed Judges & Mentors</h2>
-          
-          <div className="judges-grid">
-            {judgesMentors.map((person, index) => (
-              <div key={index} className="judge-card animate-on-scroll">
-                <div className="judge-avatar-wrapper">
-                  <Avatar
-                    size={110}
-                    icon={<UserOutlined />}
-                    className="judge-avatar"
-                  />
-                </div>
-                <h4 className="judge-name">{person.name}</h4>
-                <p className="judge-role">{person.role}</p>
-                <p className="judge-expertise">{person.expertise}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="contact-section animate-on-scroll">
-        <div className="container">
-          <div className="contact-content">
-            <h3 className="contact-heading">Get In Touch</h3>
-            <p className="contact-text">
-              For inquiries about teams or projects
+      {/* CTA Section */}
+      <section className="tpp-cta-section">
+        <div className="tpp-cta-container">
+          <div className="tpp-cta-content">
+            <BulbOutlined className="tpp-cta-icon" />
+            <h2 className="tpp-cta-title">Ready to Make an Impact?</h2>
+            <p className="tpp-cta-text">
+              Join the next generation of social entrepreneurs and help solve the world's biggest challenges
             </p>
-            <a href="mailto:hultprize@samriddhi.edu" className="contact-button">
-              hultprize@samriddhi.edu
-            </a>
+            <button className="tpp-cta-button" onClick={() => navigate('/contact')}>
+              Get Involved
+            </button>
           </div>
         </div>
       </section>
+
     </div>
   );
 };
