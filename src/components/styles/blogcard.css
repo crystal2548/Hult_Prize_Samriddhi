@@ -1,0 +1,296 @@
+/* ============================================
+   BLOG CARD COMPONENT STYLES
+   Using Hult Prize Official Colors & Figtree Font
+   ============================================ */
+
+:root {
+    --heritage: #EC2088;
+    --purple: #8A2890;
+    --sky: #12B1E7;
+    --sun: #FDD40E;
+    --black: #191919;
+    --dark: #0a0a0a;
+    --card-bg: #141414;
+    --border-color: #303030;
+    --text-gray: #a6a6a6;
+    --text-light: #d9d9d9;
+}
+
+/* ============================================
+   BLOG PAGE WRAPPER
+   ============================================ */
+.blog-container {
+    padding: 80px;
+    margin: 60px;
+    background: transparent;
+}
+
+/* ============================================
+   SECTION TITLES
+   ============================================ */
+.blog-section-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+    color: #e5007e;
+    font-family: 'Figtree', sans-serif;
+}
+
+.blog-section-title-large {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-transform: uppercase;
+    color: #e5007e;
+    font-family: 'Figtree', sans-serif;
+}
+
+/* ============================================
+   RECENT BLOG CARDS - LARGE FORMAT
+   ============================================ */
+.recent-blog-col {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+}
+
+.blog-card-recent {
+    border-radius: 16px;
+    background: var(--card-bg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.blog-card-recent:hover {
+    border-color: var(--heritage);
+    box-shadow: 0 0 20px rgba(230, 0, 126, 0.4);
+}
+
+.recent-card-cover {
+    overflow: hidden;
+    height: 320px;
+    position: relative;
+}
+
+.recent-card-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.recent-card-cover:hover img {
+    transform: scale(1.1);
+}
+
+.recent-card-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+.recent-card-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.recent-card-title {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.recent-card-desc {
+    color: var(--text-light);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.recent-card-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1890ff;
+}
+
+.meta-item-text {
+    color: #ffffff;
+    font-size: 12px;
+}
+
+/* ============================================
+   STANDARD BLOG CARDS - GRID FORMAT
+   ============================================ */
+.blog-card-standard {
+    border-radius: 16px;
+    background: var(--card-bg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.blog-card-standard:hover {
+    border-color: var(--heritage);
+    box-shadow: 0 0 20px rgba(230, 0, 126, 0.4);
+}
+
+.standard-card-cover {
+    overflow: hidden;
+    height: 220px;
+}
+
+.standard-card-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.standard-card-cover:hover img {
+    transform: scale(1.1);
+}
+
+.standard-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.standard-card-title {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.standard-card-desc {
+    color: var(--text-gray);
+    font-size: 14px;
+    min-height: 60px;
+    display: block;
+}
+
+.standard-card-meta {
+    display: flex;
+    gap: 16px;
+    color: #ffffff;
+}
+
+.standard-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.standard-meta-text {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.view-details-link {
+    color: var(--heritage);
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-details-link:hover {
+    text-decoration: underline;
+}
+
+.view-details-icon {
+    margin-left: 6px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .blog-container {
+        padding: 40px 20px;
+        margin: 30px 0;
+    }
+
+    .blog-section-title {
+        font-size: 1.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-section-title-large {
+        font-size: 1.75rem;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    .recent-blog-col {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .recent-card-cover {
+        height: 250px;
+    }
+
+    .standard-card-cover {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-container {
+        padding: 20px 10px;
+        margin: 20px 0;
+    }
+
+    .blog-section-title {
+        font-size: 1.5rem;
+    }
+
+    .blog-section-title-large {
+        font-size: 1.5rem;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .recent-card-cover {
+        height: 200px;
+    }
+
+    .recent-card-title {
+        font-size: 18px;
+    }
+
+    .standard-card-title {
+        font-size: 16px;
+    }
+
+    .standard-card-desc {
+        min-height: auto;
+    }
+}

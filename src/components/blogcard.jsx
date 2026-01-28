@@ -1,6 +1,8 @@
 import React from 'react';
-import { Row, Col, Card, Badge, Typography } from 'antd';
+import { Row, Col, Card, Typography } from 'antd';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import './styles/blogcard.css';
+
 const { Title, Text } = Typography;
 
 const BlogCard = () => {
@@ -53,88 +55,40 @@ const BlogCard = () => {
     ];
 
     return (
-        <div style={{ padding: '80px !important', margin: '60px !important', background: '' }}>
-            {/* Recent Blogs Topic */}
-            <h2 className='text-4xl font-bold text-center !my-10 uppercase text-white'>Recent Blogs</h2>
-            <Row gutter={[16, 16]} justify="center" >
+        <div className="blog-container">
+            {/* Recent Blogs Section */}
+            <h2 className="blog-section-title">Recent Blogs</h2>
+            <Row gutter={[16, 16]} justify="center">
                 {recentCards.map((item) => (
-                    <Col xs={24} sm={16} lg={10} key={item.year} className="!mx-5">
+                    <Col xs={24} sm={16} lg={10} key={item.year} className="recent-blog-col">
                         <Card
                             hoverable
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = '#e5007e';
-                                e.currentTarget.style.boxShadow = '0 0 20px rgba(230, 0, 126,0.4)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = '#303030';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
-                            style={{
-                                borderRadius: '16px',
-                                background: '#141414',
-                                overflow: 'hidden',
-                                border: '1px solid #303030',
-                                transition: 'all 0.3s ease',
-                            }}
-                            // We keep the body empty or minimal because the content is now in the 'cover'
+                            className="blog-card-recent"
                             bodyStyle={{ display: 'none' }}
                             cover={
-                                <div
-                                    style={{ overflow: 'hidden', height: '320px', position: 'relative' }}
-                                    onMouseEnter={(e) => {
-                                        const img = e.currentTarget.querySelector('img');
-                                        if (img) img.style.transform = 'scale(1.1)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        const img = e.currentTarget.querySelector('img');
-                                        if (img) img.style.transform = 'scale(1)';
-                                    }}
-                                >
+                                <div className="recent-card-cover">
                                     <img
                                         alt={item.year}
                                         src={item.image}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            transition: 'transform 0.5s ease'
-                                        }}
                                     />
-                                    <div style={{
-                                        position: 'absolute',
-                                        bottom: 0,
-                                        left: 0,
-                                        right: 0,
-                                        height: '70%',
-                                        background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)',
-                                        zIndex: 1
-                                    }} />
-                                    <div style={{
-                                        position: 'absolute',
-                                        bottom: '20px',
-                                        left: '20px',
-                                        right: '20px',
-                                        zIndex: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: '8px'
-                                    }}>
-                                        <Title level={4} style={{ color: '#ffffff ', margin: '0 !important', fontSize: '22px', fontWeight: 'bold' }}>
+                                    <div className="recent-card-gradient" />
+                                    <div className="recent-card-content">
+                                        <Title level={4} className="recent-card-title">
                                             Hult Prize {item.year}
                                         </Title>
 
-                                        <Text style={{ color: '#d9d9d9', fontSize: '14px', lineHeight: '1.4' }}>
+                                        <Text className="recent-card-desc">
                                             {item.desc}
                                         </Text>
 
-                                        <div style={{ display: 'flex', gap: '16px', marginTop: '8px' }}>
-                                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#1890ff' }}>
+                                        <div className="recent-card-meta">
+                                            <span className="meta-item">
                                                 <Calendar size={14} />
-                                                <Text style={{ color: '#ffffff', fontSize: '12px' }}>{item.year}</Text>
+                                                <Text className="meta-item-text">{item.year}</Text>
                                             </span>
-                                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#1890ff' }}>
+                                            <span className="meta-item">
                                                 <Clock size={14} />
-                                                <Text style={{ color: '#ffffff', fontSize: '12px' }}>12:00 PM</Text>
+                                                <Text className="meta-item-text">12:00 PM</Text>
                                             </span>
                                         </div>
                                     </div>
@@ -144,89 +98,54 @@ const BlogCard = () => {
                     </Col>
                 ))}
             </Row>
-            {/* For All Blogs */}
-            <h2 className='text-4xl font-bold text-center !my-[100px] uppercase !text-white' >samriddhi blogs</h2>
+
+            {/* All Blogs Section */}
+            <h2 className="blog-section-title-large">Samriddhi Blogs</h2>
             <Row gutter={[24, 24]}>
                 {yearCards.map((item) => (
                     <Col xs={24} sm={12} lg={6} key={item.year}>
-                        {/* <Badge.Ribbon
-                            text={item.status}
-                            color={item.status === 'Active' ? '#52c41a' : '#434343'}
-                        > */}
                         <Card
                             hoverable
-                            // CARD HOVER: Only controls Border and Glow
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = '#1890ff';
-                                e.currentTarget.style.boxShadow = '0 0 20px rgba(24, 144, 255, 0.3)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = '#303030';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
-                            style={{
-                                borderRadius: '16px',
-                                background: '#141414',
-                                overflow: 'hidden',
-                                border: '1px solid #303030',
-                                transition: 'all 0.3s ease',
-                            }}
-                            bodyStyle={{ padding: '24px !important' }}
+                            className="blog-card-standard"
+                            bodyStyle={{ padding: '24px' }}
                             cover={
-                                <div
-                                    style={{ overflow: 'hidden', height: '220px' }}
-                                    // IMAGE AREA HOVER: Only controls Zoom
-                                    onMouseEnter={(e) => {
-                                        const img = e.currentTarget.querySelector('img');
-                                        if (img) img.style.transform = 'scale(1.1)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        const img = e.currentTarget.querySelector('img');
-                                        if (img) img.style.transform = 'scale(1)';
-                                    }}
-                                >
+                                <div className="standard-card-cover">
                                     <img
                                         alt={item.year}
                                         src={item.image}
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            transition: 'transform 0.5s ease'
-                                        }}
                                     />
                                 </div>
                             }
                         >
-                            <div className='flex flex-col gap-3'>
-                                <Title level={4} style={{ color: '#ffffff ', margin: '0 !important' }}>
+                            <div className="standard-card-body">
+                                <Title level={4} className="standard-card-title">
                                     Hult Prize {item.year}
                                 </Title>
 
-                                <Text style={{ color: '#a6a6a6 ', fontSize: '14px', minHeight: '60px', display: 'block' }}>
+                                <Text className="standard-card-desc">
                                     {item.desc}
                                 </Text>
 
-                                <div style={{ display: 'flex', gap: '16px', color: '#ffffff' }}>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <div className="standard-card-meta">
+                                    <span className="standard-meta-item">
                                         <Calendar size={14} color="#e5007e" />
-                                        <Text style={{ color: '#ffffff' }}>{item.year}</Text>
+                                        <Text className="standard-meta-text">{item.year}</Text>
                                     </span>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <span className="standard-meta-item">
                                         <Clock size={14} color="#e5007e" />
-                                        <Text style={{ color: '#ffffff' }}>12:00 PM</Text>
+                                        <Text className="standard-meta-text">12:00 PM</Text>
                                     </span>
                                 </div>
 
-                                <div style={{ color: '#e5007e', display: 'flex', alignItems: 'center', fontWeight: 'bold', marginTop: '8px' }}>
-                                    View details <ArrowRight size={16} style={{ marginLeft: '6px' }} />
+                                <div className="view-details-link">
+                                    View details <ArrowRight size={16} className="view-details-icon" />
                                 </div>
                             </div>
                         </Card>
                     </Col>
                 ))}
             </Row>
-        </div >
+        </div>
     );
 };
 

@@ -1,8 +1,10 @@
 import React from 'react'
 import BlogCard from '../components/blogcard'
+import './styles/blog.css'
+
 const Blog = () => {
     return (
-        <div className='blog-page !mt-20 !p-7 !bg-black !pb-20'>
+        <div className="blog-page">
             <BlogCard />
         </div>
     )
