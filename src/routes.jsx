@@ -9,6 +9,7 @@ import JoinUsPage from "./pages/JoinUs.jsx";
 import OrganizerMentor from "./pages/organizerMentor.jsx";
 // import Sponsers from "./pages/sponsers.jsx"
 import YearPage from "./pages/Yearpage.jsx"
+import Blog from "./pages/Blog.jsx"
 // import SignupPage from './pages/SignupPage'
 // import Complains from './pages/Complains'
 // import Profile from './pages/Profile'
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "joinus",
         element: <JoinUsPage />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
       },
       {
         path: "/",
