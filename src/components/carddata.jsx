@@ -1,12 +1,10 @@
 import React from 'react'
 import { Card, Col, Row } from 'antd';
 
+import homeCardsData from '../data/homeCardsData.js';
+
 const CardData = () => {
-    const cardData = [
-        { title: "Compete" },
-        { title: "Mentor" },
-        { title: "Sponsor" }
-    ];
+    const cardData = homeCardsData;
     return (
         <div className="home-cards-overlay">
             <Row

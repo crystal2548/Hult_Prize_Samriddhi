@@ -13,6 +13,7 @@ import {
 import { UserPlus, Briefcase, HeartHandshake } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import './styles/joinUs.css';
+import { contactSubjects } from '../data/formOptions.js';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -93,14 +94,7 @@ const JoinUsPage = () => {
     }
   };
 
-  const subjects = [
-    'General Inquiry',
-    'Team Registration',
-    'Sponsorship Opportunities',
-    'Media & Press',
-    'Partnership Inquiry',
-    'Other'
-  ];
+  const subjects = contactSubjects;
 
   return (
     <div className="joinus-page">

@@ -1,14 +1,11 @@
 import React from 'react';
 import CountUp from 'react-countup';
 
+import homeStatsData from '../data/homeStatsData.js';
+
 const StatsSection = () => {
     // Official Data from Hult Prize Website
-    const statsData = [
-        { value: 130, suffix: "+", label: "Participating Countries" },
-        { value: 50, suffix: "K+", label: "Entrepreneurs" },
-        { value: 200, suffix: "K+", label: "Annual Participants" },
-        { value: 1, prefix: "$", suffix: "M", label: "Annual Prize Funding" }
-    ];
+    const statsData = homeStatsData;
 
     return (
         <div className="home-stats-section">
