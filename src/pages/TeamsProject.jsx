@@ -14,6 +14,63 @@ const TeamsProject = () => {
   // Use data from external file
   const yearCards = teamsProjectData;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Count-up animation function
+  const animateNumbers = useCallback(() => {
+    const counters = document.querySelectorAll('.tpp-stat-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.floor(current) + (counter.textContent.includes('+') ? '+' : '');
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target + (counter.textContent.includes('+') ? '+' : '');
+        }
+      };
+      updateCounter();
+    });
+  }, []);
+
+  // Count-up animation
+  useEffect(() => {
+    if (hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setHasAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasAnimated]);
+
+  // Trigger animation when hasAnimated becomes true
+  useEffect(() => {
+    if (hasAnimated) {
+      animateNumbers();
+    }
+  }, [hasAnimated, animateNumbers]);
+
   const getStatusColor = (status) => {
     if (status === 'Completed') return '#10b981';
     if (status === 'In Progress') return '#3b82f6';
