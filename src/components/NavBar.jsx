@@ -48,7 +48,6 @@ const NavBar = () => {
     { name: "About", path: "/about" },
     { name: "Teams & Projects", path: "/teamproject" },
     { name: "Winners", path: "/winners" },
-    { name: "Contact", path: "/contact" },
   ];
 
   // Mobile bottom navbar items

@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons';
 import emailjs from '@emailjs/browser';
 import './styles/contact.css';
+import { contactSubjects } from '../data/formOptions.js';
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -92,14 +93,7 @@ const Contact = () => {
     }
   };
 
-  const subjects = [
-    'General Inquiry',
-    'Team Registration',
-    'Sponsorship Opportunities',
-    'Media & Press',
-    'Partnership Inquiry',
-    'Other'
-  ];
+  const subjects = contactSubjects;
 
   return (
     <div className="contact-page">
