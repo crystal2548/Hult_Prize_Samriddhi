@@ -244,7 +244,7 @@
 
 /* Winners Section (3D Flip) */
 .home-winners-section {
-    padding: 30px 24px !important;
+    padding: 120px 24px 0px  !important;
     background: var(--black);
     font-family: 'Figtree', sans-serif;
 }
@@ -253,7 +253,7 @@
     font-size: clamp(32px, 4vw, 48px);
     font-weight: 900;
     text-align: center;
-    color: #fff;
+    color: #EC2088;
     margin-bottom: 64px;
 }
 

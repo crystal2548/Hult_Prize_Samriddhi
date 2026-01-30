@@ -2,7 +2,8 @@ import React from 'react'
 // import { Carousel } from 'antd';
 import Stats from "../components/stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
-import CardData from "../components/carddata.jsx";
+import HomeOrganizers from "../components/HomeOrganizers.jsx";
+// import CardData from "../components/carddata.jsx";
 import "./styles/home.css";
 import left from '../assets/Left.svg'
 import right from '../assets/Right.svg'
@@ -58,7 +59,7 @@ const Home = () => {
                     </p>
                 </div>
             </div>
-           {/* Overlay Content */}
+           {/* Overlay Content cmd*/}
            {/* <CardData /> */}
         </div>
       </div>
@@ -69,6 +70,10 @@ const Home = () => {
       </div>
       <div className="home-animate visible delay-3">
         <WinningTeam />
+      </div>
+
+      <div className="home-animate visible delay-3">
+        <HomeOrganizers />
       </div>
 
       <div className="home-contact-wrapper home-animate visible delay-3">
