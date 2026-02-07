@@ -18,8 +18,9 @@ function Footer() {
                         <div className="footer-logo-divider"></div>
                         <img src={SamriddhiLogo} alt="SamriddhiLogo" width={60} height={60} />
                     </div>
-                    <p className="footer-tagline">
-                        Empowering the next generation of social entrepreneurs.
+                    <p className="footer-tagline ">
+                        Changing the World through
+                        <span className="footer-tagline-highlight">Social Enterprise</span>
                     </p>
                 </div>
 

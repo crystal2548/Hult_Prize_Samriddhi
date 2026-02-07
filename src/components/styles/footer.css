@@ -37,13 +37,20 @@
     font-size: 0.875rem;
     max-width: 20rem;
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-copyright {
-    color: #6b7280;
+    color: #E5007E !important;
     text-align: center;
     font-size: 0.75rem;
     margin-top: 0.5rem;
+}
+
+.footer-tagline-highlight {
+    color: #E5007E !important;
 }
 
 .footer-links-section {
