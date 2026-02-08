@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from "framer-motion";
 import { Input, Select, Button, message } from 'antd';
-import { 
-  MailOutlined, 
-  PhoneOutlined, 
+import {
+  MailOutlined,
+  PhoneOutlined,
   EnvironmentOutlined,
   FacebookFilled,
   InstagramFilled,
@@ -59,9 +59,9 @@ const JoinUsPage = () => {
 
     try {
       // EmailJS configuration
-      const serviceID = 'service_nelj5wg';
-      const templateID = 'template_509ll5s';
-      const publicKey = 'Ju6hxXF_UcByabTqM';
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       await emailjs.send(
         serviceID,
@@ -77,7 +77,7 @@ const JoinUsPage = () => {
       );
 
       message.success('Message sent successfully! We will get back to you soon.');
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -122,11 +122,11 @@ const JoinUsPage = () => {
       <section className="contact-main">
         <div className="container">
           <div className="contact-grid">
-            
+
             {/* Contact Form */}
             <div className="contact-form-wrapper">
               <h2 className="contact-section-title">Send us a Message</h2>
-              
+
               <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-group">
                   <label className="form-label">
@@ -214,7 +214,7 @@ const JoinUsPage = () => {
             {/* Contact Information */}
             <div className="contact-info-wrapper">
               <h2 className="contact-section-title">Contact Information</h2>
-              
+
               <div className="contact-info-list">
                 <div className="contact-info-item">
                   <div className="contact-icon">
@@ -259,33 +259,33 @@ const JoinUsPage = () => {
               <div className="social-section">
                 <h3 className="social-title">Follow Us</h3>
                 <div className="social-links">
-                  <a 
-                    href="https://facebook.com/hultprizesamriddhi" 
-                    target="_blank" 
+                  <a
+                    href="https://facebook.com/hultprizesamriddhi"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="social-link facebook"
                   >
                     <FacebookFilled />
                   </a>
-                  <a 
-                    href="https://instagram.com/hultprizesamriddhi" 
-                    target="_blank" 
+                  <a
+                    href="https://instagram.com/hultprizesamriddhi"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="social-link instagram"
                   >
                     <InstagramFilled />
                   </a>
-                  <a 
-                    href="https://linkedin.com/company/hultprizesamriddhi" 
-                    target="_blank" 
+                  <a
+                    href="https://linkedin.com/company/hultprizesamriddhi"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="social-link linkedin"
                   >
                     <LinkedinFilled />
                   </a>
-                  <a 
-                    href="https://twitter.com/hultprizesamri" 
-                    target="_blank" 
+                  <a
+                    href="https://twitter.com/hultprizesamri"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="social-link twitter"
                   >
@@ -294,24 +294,7 @@ const JoinUsPage = () => {
                 </div>
               </div>
 
-              {/* Office Hours */}
-              <div className="office-hours">
-                <h3 className="office-hours-title">Office Hours</h3>
-                <div className="office-hours-list">
-                  <div className="office-hour-item">
-                    <span className="day">Monday - Friday:</span>
-                    <span className="time">9:00 AM - 5:00 PM</span>
-                  </div>
-                  <div className="office-hour-item">
-                    <span className="day">Saturday:</span>
-                    <span className="time">10:00 AM - 2:00 PM</span>
-                  </div>
-                  <div className="office-hour-item">
-                    <span className="day">Sunday:</span>
-                    <span className="time">Closed</span>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -322,13 +305,13 @@ const JoinUsPage = () => {
         <div className="container">
           <h2 className="map-title">Find Us</h2>
           <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-            <iframe 
+            <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.1464676940967!2d85.37957831506215!3d27.676668782795677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1a1bed1bdd29%3A0x70040fb78c745729!2sSamriddhi%20College!5e0!3m2!1sen!2snp!4v1234567890123!5m2!1sen!2snp"
-              width="100%" 
-              height="400" 
-              style={{ border: 0, borderRadius: '16px' }} 
-              allowFullScreen="" 
-              loading="lazy" 
+              width="100%"
+              height="400"
+              style={{ border: 0, borderRadius: '16px' }}
+              allowFullScreen=""
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade">
             </iframe>
           </div>

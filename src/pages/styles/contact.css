@@ -36,9 +36,9 @@
 .contact-hero {
   padding-top: 8rem;
   padding-bottom: 28px;
-  background: linear-gradient(135deg, 
-    rgba(236, 32, 136, 0.1) 0%, 
-    rgba(18, 177, 231, 0.05) 100%);
+  background: linear-gradient(135deg,
+      rgba(236, 32, 136, 0.1) 0%,
+      rgba(18, 177, 231, 0.05) 100%);
   text-align: center;
 }
 
@@ -339,48 +339,7 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* ============================================
-   OFFICE HOURS
-   ============================================ */
-.office-hours {
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 32px;
-}
 
-.office-hours-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.office-hours-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.office-hour-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.office-hour-item:last-child {
-  border-bottom: none;
-}
-
-.day {
-  font-weight: 600;
-  color: var(--text-gray);
-}
-
-.time {
-  color: var(--heritage);
-  font-weight: 700;
-}
 
 /* ============================================
    MAP SECTION
@@ -475,8 +434,4 @@
     gap: 20px;
   }
 
-  .office-hour-item {
-    flex-direction: column;
-    gap: 4px;
-  }
 }
