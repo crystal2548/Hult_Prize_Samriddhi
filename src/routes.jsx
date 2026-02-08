@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy } from 'react';
 import RootLayout from "./layout/RootLayout";
 import About from "./pages/about.jsx";
 import Winners from "./pages/winner.jsx";
