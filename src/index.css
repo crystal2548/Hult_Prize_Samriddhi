@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;900&display=swap');
 @import "tailwindcss";
 
-@theme {
-    --color-dark-charcoal: #191919;
-}
-
+/* dark-charcoal : #191919 */
+/* heritage : #EC2088 */
+/* purple : #8A2890 */
+/* sky : #12B1E7 */
+/* sun : #FDD40E */
 :root {
     font-family: 'Figtree', sans-serif;
 }

@@ -1,6 +1,8 @@
 /* ============================================
    CSS VARIABLES & IMPORTS
    ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;900&display=swap');
+
 :root {
     --heritage: #EC2088;
     --purple: #8A2890;
@@ -12,8 +14,6 @@
     --text-gray: #d1d5db;
     --text-light: #9ca3af;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;900&display=swap');
 
 /* ============================================
    DESKTOP VIEW - Base & Desktop Styles
@@ -244,7 +244,7 @@
 
 /* Winners Section (3D Flip) */
 .home-winners-section {
-    padding: 120px 24px 0px  !important;
+    padding: 120px 24px 0px !important;
     background: var(--black);
     font-family: 'Figtree', sans-serif;
 }
@@ -436,6 +436,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -448,6 +449,7 @@
         transform: translate(0, 0) scale(1);
         text-align: center;
     }
+
     100% {
         opacity: 1;
         transform: translate(-45%, 20%) scale(0.5);
@@ -460,6 +462,7 @@
         margin: 0 0 0 0;
         text-align: center;
     }
+
     100% {
         margin: 0 0 0 70px;
         text-align: left;
@@ -470,6 +473,7 @@
     0% {
         transform: translate(0, 0);
     }
+
     100% {
         transform: translate(335px, -300px) scale(1.3);
     }
@@ -479,6 +483,7 @@
     0% {
         max-width: 1200px;
     }
+
     100% {
         max-width: 500px;
         text-align: left;

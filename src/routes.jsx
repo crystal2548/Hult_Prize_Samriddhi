@@ -1,8 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
-import Home from "./pages/Home";
 import About from "./pages/about.jsx";
-import TeamsProject from "./pages/TeamsProject.jsx"
 import Winners from "./pages/winner.jsx";
 import JoinUsPage from "./pages/joinUs.jsx";
 import OrganizerMentor from "./pages/organizerMentor.jsx";
@@ -13,6 +11,8 @@ import Blog from "./pages/Blog.jsx"
 // import Complains from './pages/Complains'
 // import Profile from './pages/Profile'
 
+const Home = lazy(() => import("./pages/Home.jsx"))
+const TeamsProject = lazy(() => import('./pages/TeamsProject.jsx'));
 
 const router = createBrowserRouter([
   {

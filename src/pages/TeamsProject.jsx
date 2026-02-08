@@ -3,14 +3,34 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col } from 'antd';
 import { TeamOutlined, TrophyOutlined, RocketOutlined, CalendarOutlined, BulbOutlined, GlobalOutlined } from '@ant-design/icons';
 import './styles/teamsProject.css';
-
-import teamsProjectData from '../data/teamsProjectData.js';
+import { getAllProjects } from '../lib/services/teamsPrj.service.js';
+// import teamsProjectData from '../data/teamsProjectData.js';
 
 const TeamsProject = () => {
   const navigate = useNavigate();
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef(null);
-  
+
+  const [teamsProjectData, setTeamsProjectData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    async function getTeamsProjects() {
+      try {
+        const data = await getAllProjects();
+        if (!data) {
+          return
+        }
+        setTeamsProjectData(data);
+        console.log(teamsProjectData);
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+
+    getTeamsProjects();
+  }, [])
+
   // Use data from external file
   const yearCards = teamsProjectData;
 
@@ -79,7 +99,7 @@ const TeamsProject = () => {
 
   return (
     <div className="tpp-wrapper">
-      
+
       {/* Hero Section */}
       <section className="tpp-hero">
         <div className="tpp-hero-bg"></div>
@@ -129,17 +149,17 @@ const TeamsProject = () => {
         <div className="tpp-cards-container">
           <h2 className="tpp-section-heading">Explore by Year</h2>
           <p className="tpp-section-subheading">Browse through our journey across different competition years</p>
-          
+
           <Row gutter={[24, 24]}>
             {yearCards.map((yearData) => (
               <Col xs={24} sm={12} lg={6} key={yearData.year}>
-                <Card 
+                <Card
                   className="tpp-year-card"
                   hoverable
                   onClick={() => navigate(`/teamproject/${yearData.year}`)}
                   cover={
                     <div className="tpp-year-img-box">
-                      <img 
+                      <img
                         alt={`Hult Prize ${yearData.year}`}
                         src={yearData.image}
                         className="tpp-year-img"
@@ -152,20 +172,20 @@ const TeamsProject = () => {
                 >
                   <div className="tpp-year-content">
                     <h3 className="tpp-year-name">{yearData.theme}</h3>
-                    
+
                     <p className="tpp-year-description">{yearData.description}</p>
-                    
+
                     <div className="tpp-year-info">
                       <div className="tpp-info-item">
                         <TeamOutlined className="tpp-info-icon" />
                         <span className="tpp-info-text">{yearData.teams} Teams</span>
                       </div>
-                      
+
                       <div className="tpp-info-item">
                         <GlobalOutlined className="tpp-info-icon" />
                         <span className="tpp-info-text">{yearData.participants} Students</span>
                       </div>
-                      
+
                       {yearData.status === 'Completed' && (
                         <div className="tpp-info-item">
                           <TrophyOutlined className="tpp-info-icon" />

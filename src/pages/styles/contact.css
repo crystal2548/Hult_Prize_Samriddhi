@@ -36,9 +36,9 @@
 .contact-hero {
   padding-top: 8rem;
   padding-bottom: 28px;
-  background: linear-gradient(135deg, 
-    rgba(236, 32, 136, 0.1) 0%, 
-    rgba(18, 177, 231, 0.05) 100%);
+  background: linear-gradient(135deg,
+      rgba(236, 32, 136, 0.1) 0%,
+      rgba(18, 177, 231, 0.05) 100%);
   text-align: center;
 }
 
