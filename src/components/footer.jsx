@@ -33,7 +33,7 @@ function Footer() {
                     </div>
                     <div className="footer-column">
                         <h3 className="footer-heading">Resources</h3>
-                        <a href="">Past Challenges</a>
+                        <Link to="/learnMore">Learn More</Link>
                         <a href="">FAQ</a>
                         <Link to="/blog">Blog</Link>
                     </div>
