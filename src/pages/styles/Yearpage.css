@@ -3,7 +3,7 @@
    Following Hult Prize Official Brand Guidelines
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700;900&display=swap');
+
 
 /* Official Hult Prize Colors */
 :root {
@@ -48,6 +48,7 @@
     opacity: 0;
     transform: translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -111,12 +112,10 @@
 .yearpage-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(236, 32, 136, 0.85) 0%,
-    rgba(138, 40, 144, 0.75) 50%,
-    rgba(18, 177, 231, 0.65) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(236, 32, 136, 0.85) 0%,
+      rgba(138, 40, 144, 0.75) 50%,
+      rgba(18, 177, 231, 0.65) 100%);
   z-index: 1;
 }
 
@@ -368,6 +367,7 @@
     max-height: 0;
     padding-top: 0;
   }
+
   to {
     opacity: 1;
     max-height: 1000px;
@@ -444,7 +444,7 @@
 .yearpage-winner-first:hover {
   border-color: #FFD700;
   transform: translateY(-12px);
-  box-shadow: 
+  box-shadow:
     0 0 30px rgba(255, 215, 0, 0.6),
     0 0 60px rgba(255, 215, 0, 0.4),
     0 20px 48px rgba(255, 215, 0, 0.3);
@@ -454,7 +454,7 @@
 .yearpage-winner-second:hover {
   border-color: #C0C0C0;
   transform: translateY(-12px);
-  box-shadow: 
+  box-shadow:
     0 0 30px rgba(192, 192, 192, 0.6),
     0 0 60px rgba(192, 192, 192, 0.4),
     0 20px 48px rgba(192, 192, 192, 0.3);
@@ -464,7 +464,7 @@
 .yearpage-winner-third:hover {
   border-color: #CD7F32;
   transform: translateY(-12px);
-  box-shadow: 
+  box-shadow:
     0 0 30px rgba(205, 127, 50, 0.6),
     0 0 60px rgba(205, 127, 50, 0.4),
     0 20px 48px rgba(205, 127, 50, 0.3);

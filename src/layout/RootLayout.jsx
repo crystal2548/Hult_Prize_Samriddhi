@@ -1,13 +1,17 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/footer.jsx";
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 const RootLayout = () => {
+  const location = useLocation();
+
   return (
-    <div>
+    <div className="w-full">
+      <ScrollToTop />
       <NavBar />
-      <main className="min-h-[calc(100vh-80px)]">
-        <Outlet />
+      <main className="w-full min-h-screen pt-24 pb-20 md:pb-0">
+        <Outlet key={location.pathname} />
       </main>
       <Footer />
     </div>
