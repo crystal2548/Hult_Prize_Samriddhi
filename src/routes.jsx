@@ -1,23 +1,28 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy } from 'react';
 import RootLayout from "./layout/RootLayout";
-import Home from "./pages/Home";
-import About from "./pages/about.jsx";
-import TeamsProject from "./pages/TeamsProject.jsx"
-import Winners from "./pages/winner.jsx";
-import JoinUsPage from "./pages/joinUs.jsx";
-import OrganizerMentor from "./pages/organizerMentor.jsx";
-import YearPage from "./pages/Yearpage.jsx"
-import Blog from "./pages/Blog.jsx"
-import LearnMore from "./pages/LearnMore.jsx"
-import Contact from "./pages/contact.jsx"
 
-// New pages
-import OurStory from "./pages/Ourstory.jsx"
-import Mission from "./pages/Mission.jsx"
-import Impact from "./pages/Impact.jsx"
-import FAQ from "./pages/Faq.jsx"
-import Partners from "./pages/Partners.jsx"
-import Support from "./pages/Support.jsx"
+// --- NON-LAZY (EAGER) IMPORTS ---
+// These are usually in the Footer or are critical for the brand
+import Home from "./pages/Home.jsx";
+import About from "./pages/about.jsx";
+import Mission from "./pages/Mission.jsx";
+import Contact from "./pages/contact.jsx";
+import Impact from "./pages/Impact.jsx";
+import FAQ from "./pages/Faq.jsx";
+
+// --- LAZY IMPORTS (Navbar / Heavy Pages) ---
+// These only download when clicked
+const Winners = lazy(() => import("./pages/winner.jsx"));
+const TeamsProject = lazy(() => import('./pages/TeamsProject.jsx'));
+const JoinUsPage = lazy(() => import("./pages/joinUs.jsx"));
+const OrganizerMentor = lazy(() => import("./pages/organizerMentor.jsx"));
+const YearPage = lazy(() => import("./pages/Yearpage.jsx"));
+const Blog = lazy(() => import("./pages/Blog.jsx"));
+const LearnMore = lazy(() => import("./pages/LearnMore.jsx"));
+const OurStory = lazy(() => import("./pages/Ourstory.jsx"));
+const Partners = lazy(() => import("./pages/Partners.jsx"));
+const Support = lazy(() => import("./pages/Support.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -25,70 +30,27 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: "/",
         index: true,
         element: <Home />,
       },
-      {
-        path: "about",
-        element: <About />,
-      },
-      {
-        path: "our-story",
-        element: <OurStory />,
-      },
-      {
-        path: "mission",
-        element: <Mission />,
-      },
-      {
-        path: "impact",
-        element: <Impact />,
-      },
-      {
-        path: "teamproject",
-        element: <TeamsProject />,
-      },
-      {
-        path: "winners",
-        element: <Winners />,
-      },
-      {
-        path: "joinus",
-        element: <JoinUsPage />,
-      },
-      {
-        path: "blog",
-        element: <Blog />,
-      },
-      {
-        path: "learnMore",
-        element: <LearnMore />,
-      },
-      {
-        path: "faq",
-        element: <FAQ />,
-      },
-      {
-        path: "partners",
-        element: <Partners />,
-      },
-      {
-        path: "support",
-        element: <Support />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "organizerMentor",
-        element: <OrganizerMentor />,
-      },
-      {
-        path: "teamproject/:year",
-        element: <YearPage />,
-      },
+      // Footer / Identity Routes (Instant)
+      { path: "about", element: <About /> },
+      { path: "mission", element: <Mission /> },
+      { path: "impact", element: <Impact /> },
+      { path: "contact", element: <Contact /> },
+      { path: "faq", element: <FAQ /> },
+
+      // Navbar / Heavy Routes (Lazy)
+      { path: "winners", element: <Winners /> },
+      { path: "teamproject", element: <TeamsProject /> },
+      { path: "teamproject/:year", element: <YearPage /> },
+      { path: "joinus", element: <JoinUsPage /> },
+      { path: "blog", element: <Blog /> },
+      { path: "learnMore", element: <LearnMore /> },
+      { path: "our-story", element: <OurStory /> },
+      { path: "partners", element: <Partners /> },
+      { path: "support", element: <Support /> },
+      { path: "organizerMentor", element: <OrganizerMentor /> },
     ],
   },
 ]);

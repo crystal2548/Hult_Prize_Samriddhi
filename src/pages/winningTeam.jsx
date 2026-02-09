@@ -1,27 +1,47 @@
-import globalWinners from '../data/globalWinnersData.js';
+import React, { useEffect, useState } from 'react';
 
+// import globalWinners from '../data/globalWinnersData.js';
+import { getAllWinners } from '../lib/services/winners.service.js';
 const WinningTeam = () => {
-    const winners = globalWinners;
+    const [winner, setwinner] = useState([]);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        async function getWinners() {
+            try {
+                const data = await getAllWinners();
+                if (!data) {
+                    return
+                }
+                setwinner(data);
+                console.log(winner);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+
+        getWinners();
+    }, [])
+    const winnersInfo = winner;
 
     return (
         <div className="home-winners-section">
             <h2 className="section-heading-home">Meet Our Global Winners</h2>
-            
+
             <div className="home-winners-grid">
-                {winners.map((item, index) => (
-                    <div 
-                        key={index} 
-                        className={`winner-card-wrapper home-animate ${
-                            index === 0 ? 'winner-first' : 
-                            index === 1 ? 'winner-second' : 
-                            'winner-third'
-                        }`}
+                {winnersInfo.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`winner-card-wrapper home-animate ${index === 0 ? 'winner-first' :
+                            index === 1 ? 'winner-second' :
+                                'winner-third'
+                            }`}
                         style={{ animationDelay: `${index * 0.2}s` }}
                     >
                         <div className="winner-card">
                             <div className="winner-card-front">
                                 <div className="winner-lighting-overlay"></div>
-                                <div className="winner-image" style={{ backgroundImage: `url(${item.image})` }}></div>
+                                <div className="winner-image" style={{ backgroundImage: item.image ? `url(${item.image})` : 'none' }}></div>
                                 <div className="winner-info">
                                     <h3 className="winner-title">{item.title}</h3>
                                     <span className="winner-year">{item.year}</span>

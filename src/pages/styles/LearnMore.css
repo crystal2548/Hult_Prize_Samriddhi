@@ -183,33 +183,21 @@
 
 .learn-stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 24px;
   margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
 }
 
 .learn-stat-card {
-  background: var(--card-bg);
-  border: 2px solid rgba(236, 32, 136, 0.2);
-  border-radius: 16px;
-  padding: 40px 24px;
   text-align: center;
-  transition: all 0.3s ease;
-}
-
-.learn-stat-card:hover {
-  border-color: var(--heritage);
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(236, 32, 136, 0.3);
 }
 
 .learn-stat-number {
   font-size: 48px;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--heritage), var(--sky));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--heritage);
   margin-bottom: 12px;
   line-height: 1;
 }

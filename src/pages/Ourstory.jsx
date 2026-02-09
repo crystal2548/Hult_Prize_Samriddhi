@@ -1,4 +1,5 @@
 import React from 'react';
+import CountUp from 'react-countup';
 import './styles/ourstory.css';
 
 const OurStory = () => {
@@ -50,19 +51,27 @@ const OurStory = () => {
           {/* Stats Section */}
           <div className="ourstory-stats">
             <div className="ourstory-stat">
-              <div className="ourstory-stat-number">4+</div>
+              <div className="ourstory-stat-number">
+                <CountUp end={4} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              </div>
               <div className="ourstory-stat-label">Years Active</div>
             </div>
             <div className="ourstory-stat">
-              <div className="ourstory-stat-number">14+</div>
+              <div className="ourstory-stat-number">
+                <CountUp end={14} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              </div>
               <div className="ourstory-stat-label">Teams Formed</div>
             </div>
             <div className="ourstory-stat">
-              <div className="ourstory-stat-number">70+</div>
+              <div className="ourstory-stat-number">
+                <CountUp end={70} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              </div>
               <div className="ourstory-stat-label">Students Engaged</div>
             </div>
             <div className="ourstory-stat">
-              <div className="ourstory-stat-number">350+</div>
+              <div className="ourstory-stat-number">
+                <CountUp end={350} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              </div>
               <div className="ourstory-stat-label">Total Participants</div>
             </div>
           </div>

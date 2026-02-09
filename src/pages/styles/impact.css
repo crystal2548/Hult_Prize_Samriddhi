@@ -26,10 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg,
-            rgba(236, 32, 136, 0.3),
-            rgba(138, 40, 144, 0.25),
-            rgba(18, 177, 231, 0.2));
+    background: linear-gradient(45deg, #EC2088, #12B1E7);
 }
 
 .impact-hero-content {
@@ -38,8 +35,8 @@
 }
 
 .impact-hero-label {
-    color: var(--sky);
-    font-size: 12px;
+    color: #ffffff;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 16px;
@@ -67,44 +64,23 @@
 
 .impact-metrics {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 32px;
     margin-bottom: 64px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .impact-metric {
     text-align: center;
-    padding: 32px;
-    background: linear-gradient(to bottom right, rgba(236, 32, 136, 0.1), transparent);
-    border-radius: 16px;
-    border: 1px solid rgba(236, 32, 136, 0.2);
-    transition: all 0.3s ease;
 }
 
-.impact-metric:hover {
-    transform: translateY(-4px);
-    border-color: rgba(236, 32, 136, 0.4);
-}
+
 
 .impact-metric-number {
     font-size: clamp(40px, 6vw, 56px);
     font-weight: 900;
     margin-bottom: 8px;
-}
-
-.impact-metric:nth-child(1) .impact-metric-number {
-    color: var(--heritage);
-}
-
-.impact-metric:nth-child(2) .impact-metric-number {
-    color: var(--purple);
-}
-
-.impact-metric:nth-child(3) .impact-metric-number {
-    color: var(--sky);
-}
-
-.impact-metric:nth-child(4) .impact-metric-number {
     color: var(--heritage);
 }
 

@@ -19,14 +19,16 @@ const CardData = () => {
                             hoverable
                             bordered={false}
                             className="home-glass-card"
-                            bodyStyle={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                padding: 0,
-                                width: '100%',
-                                background: 'transparent'
+                            styles={{
+                                body: {
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    padding: 0,
+                                    width: '100%',
+                                    background: 'transparent'
+                                }
                             }}
                         >
                             <h3 className="home-card-title">

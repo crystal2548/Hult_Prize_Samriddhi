@@ -37,11 +37,11 @@
 }
 
 .hero-subtitle {
-    color: #E5007E;
+    color: #ffffff;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.4em;
-    font-size: 10px;
+    font-size: 16px;
     margin-bottom: 1.5rem;
     display: block;
 }
@@ -170,7 +170,7 @@
 .gradient-overlay {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(to top right, rgba(229, 0, 126, 0.2), transparent);
+    background-image: linear-gradient(45deg, #EC2088, #12B1E7);
 }
 
 .video-content {

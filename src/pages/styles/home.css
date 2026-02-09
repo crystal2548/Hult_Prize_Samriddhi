@@ -1,6 +1,8 @@
 /* ============================================
    CSS VARIABLES & IMPORTS
    ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;900&display=swap');
+
 :root {
     --heritage: #EC2088;
     --purple: #8A2890;
@@ -13,8 +15,11 @@
     --text-light: #9ca3af;
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> samit
 /* ============================================
    DESKTOP VIEW - Base & Desktop Styles
    ============================================ */

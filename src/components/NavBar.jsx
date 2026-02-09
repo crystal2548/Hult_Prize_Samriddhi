@@ -27,7 +27,7 @@ const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Scrolling down and past threshold
         setIsVisible(false);
@@ -35,7 +35,7 @@ const NavBar = () => {
         // Scrolling up or at top
         setIsVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -73,10 +73,10 @@ const NavBar = () => {
       <header className={`navbar-header ${!isVisible ? 'navbar-hidden' : ''}`}>
         <div className="navbar-container">
           {/* Left side - Logo */}
-          <div className="navbar-logo-section" onClick={() => navigate('/')}>
-            <img src={logo} alt="LOGO" width={60} height={60} />
+          <div className="navbar-logo-section">
+            <img src={logo} alt="LOGO" width={60} height={60} onClick={() => navigate('/')} />
             <div className="navbar-logo-divider"></div>
-            <img src={SamriddhiLogo} alt="SamriddhiLogo`" width={60} height={60} />
+            <img src={SamriddhiLogo} alt="SamriddhiLogo" width={60} height={60} onClick={() => navigate('/')} />
           </div>
 
           {/* Right side - Mobile Menu Button (Hidden, using bottom nav instead) */}
@@ -92,9 +92,9 @@ const NavBar = () => {
           {/* Right side - Desktop Menu */}
           <div className="navbar-desktop-menu">
             {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path} 
+              <Link
+                key={link.name}
+                to={link.path}
                 className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
               >
                 {link.name}
