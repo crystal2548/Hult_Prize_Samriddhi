@@ -50,7 +50,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 6rem;
+  padding-top: 2rem;
+  margin-top: 6rem;
   z-index: 2;
   overflow: hidden;
 }
@@ -272,7 +273,7 @@
 
 .dev-card:hover .dev-tech {
   background: rgba(188, 19, 254, 0.2);
-  color: var(--neon-purple);
+  color: var(--neon-primary);
 }
 
 /* Socials */
@@ -291,6 +292,51 @@
   color: var(--neon-blue);
   transform: translateY(-3px);
   text-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Social Buttons */
+.dev-social-btn {
+  /* Reset button styles */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  
+  /* Custom styles */
+  color: var(--text-secondary);
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dev-social-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 243, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dev-social-btn:hover {
+  color: var(--neon-blue);
+  transform: scale(1.25);
+}
+
+.dev-social-btn:hover::before {
+  opacity: 1;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 40px rgba(0, 243, 255, 0.3);
+}
+
+.dev-social-btn:active {
+  transform: scale(1.15);
 }
 
 /* Animations */
