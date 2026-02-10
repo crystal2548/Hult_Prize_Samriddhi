@@ -26,16 +26,13 @@ const WinningTeam = () => {
 
     return (
         <div className="home-winners-section">
-            <h2 className="section-heading-home">Meet Our Global Winners</h2>
+            <h2 className="section-heading-home">Meet Our Winners</h2>
 
             <div className="home-winners-grid">
                 {winnersInfo.map((item, index) => (
                     <div
                         key={index}
-                        className={`winner-card-wrapper home-animate ${index === 0 ? 'winner-first' :
-                            index === 1 ? 'winner-second' :
-                                'winner-third'
-                            }`}
+                        className={`winner-card-wrapper home-animate winner-first`}
                         style={{ animationDelay: `${index * 0.2}s` }}
                     >
                         <div className="winner-card">

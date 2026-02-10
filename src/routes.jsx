@@ -2,14 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 import { lazy } from 'react';
 import RootLayout from "./layout/RootLayout";
 
-// --- NON-LAZY (EAGER) IMPORTS ---
-// These are usually in the Footer or are critical for the brand
-import Home from "./pages/Home.jsx";
-import About from "./pages/about.jsx";
-import Mission from "./pages/Mission.jsx";
-import Contact from "./pages/contact.jsx";
-import Impact from "./pages/Impact.jsx";
-import FAQ from "./pages/Faq.jsx";
+import Home from "./pages/home.jsx";
+const About = lazy(() => import("./pages/about.jsx"));
+const Mission = lazy(() => import("./pages/Mission.jsx"));
+const Contact = lazy(() => import("./pages/contact.jsx"));
+const Impact = lazy(() => import("./pages/Impact.jsx"));
+const FAQ = lazy(() => import("./pages/Faq.jsx"));
 
 // --- LAZY IMPORTS (Navbar / Heavy Pages) ---
 // These only download when clicked
