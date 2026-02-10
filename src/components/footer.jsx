@@ -1,9 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import hultLogo from '../assets/Logo.png';
 import samriddhiLogo from '../assets/SamriddhiLogo.png';
 import './styles/footer.css';
-import hultLogo from '../assets/Logo.png';
-import samriddhiLogo from '../assets/SamriddhiLogo.png';
 
 const Footer = () => {
     return (

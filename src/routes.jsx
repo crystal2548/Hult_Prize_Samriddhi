@@ -23,6 +23,7 @@ const LearnMore = lazy(() => import("./pages/LearnMore.jsx"));
 const OurStory = lazy(() => import("./pages/Ourstory.jsx"));
 const Partners = lazy(() => import("./pages/Partners.jsx"));
 const Support = lazy(() => import("./pages/Support.jsx"));
+const Developer = lazy(() => import("./pages/Developer.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,7 @@ const router = createBrowserRouter([
       { path: "partners", element: <Partners /> },
       { path: "support", element: <Support /> },
       { path: "organizerMentor", element: <OrganizerMentor /> },
+      { path: "developer", element: <Developer /> },
     ],
   },
 ]);
