@@ -15,11 +15,6 @@
     --text-light: #9ca3af;
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> samit
 /* ============================================
    DESKTOP VIEW - Base & Desktop Styles
    ============================================ */
@@ -280,11 +275,52 @@
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    border-radius: 20px;
+
 }
 
 .winner-card-wrapper:hover .winner-card {
     transform: rotateY(180deg);
     box-shadow: 0 0 30px rgba(236, 32, 136, 0.6);
+}
+
+/* 1ST PLACE - GOLDEN GLOW */
+.winner-first:hover .winner-card {
+    box-shadow:
+        0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 215, 0, 0.4),
+        0 20px 48px rgba(255, 215, 0, 0.3);
+}
+
+.winner-first:hover .winner-card-front,
+.winner-first:hover .winner-card-back {
+    border-color: #FFD700;
+}
+
+/* 2ND PLACE - SILVER GLOW */
+.winner-second:hover .winner-card {
+    box-shadow:
+        0 0 30px rgba(192, 192, 192, 0.6),
+        0 0 60px rgba(192, 192, 192, 0.4),
+        0 20px 48px rgba(192, 192, 192, 0.3);
+}
+
+.winner-second:hover .winner-card-front,
+.winner-second:hover .winner-card-back {
+    border-color: #C0C0C0;
+}
+
+/* 3RD PLACE - BRONZE GLOW */
+.winner-third:hover .winner-card {
+    box-shadow:
+        0 0 30px rgba(205, 127, 50, 0.6),
+        0 0 60px rgba(205, 127, 50, 0.4),
+        0 20px 48px rgba(205, 127, 50, 0.3);
+}
+
+.winner-third:hover .winner-card-front,
+.winner-third:hover .winner-card-back {
+    border-color: #CD7F32;
 }
 
 .winner-card-wrapper:hover .winner-lighting-overlay {
