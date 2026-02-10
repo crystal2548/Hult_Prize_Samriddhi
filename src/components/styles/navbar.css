@@ -1,0 +1,229 @@
+/* ============================================
+   DESKTOP VIEW - Top Navbar Styles
+   ============================================ */
+
+/* Top Navbar Container */
+.navbar-header {
+    background-color: #191919 !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Logo Section */
+.navbar-logo-section,
+.footer-logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    
+}
+
+.navbar-logo-divider,
+.footer-logo-divider {
+    height: 60px;
+    background-color: white;
+    width: 2px;
+    margin: 0 10px;
+}
+
+/* Desktop Menu */
+.navbar-desktop-menu {
+    display: none;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #E5007E;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #E5007E;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #E5007E;
+    font-weight: 600;
+}
+
+.join-us-btn {
+    background-color: #E5007E !important;
+    border-color: #E5007E !important;
+    font-weight: bold !important;
+    color: white !important;
+}
+
+.join-us-btn:hover {
+    background-color: #c0006a !important;
+    border-color: #c0006a !important;
+}
+
+/* Desktop Responsive Styles */
+@media (min-width: 768px) {
+    .mobile-menu-btn-container {
+        display: none;
+    }
+
+    .navbar-desktop-menu {
+        display: flex;
+    }
+
+    .navbar-logo-section {
+        display: flex;
+    }
+}
+
+/* ============================================
+   MOBILE VIEW - Bottom Navbar Styles
+   ============================================ */
+
+/* Mobile Menu Button - Hidden as we are using Bottom Navbar */
+.mobile-menu-btn-container {
+    display: none !important;
+}
+
+/* Mobile Bottom Navbar Container */
+.mobile-navbar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+    filter: drop-shadow(0 -5px 10px rgba(0, 0, 0, 0.1));
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mobile-navbar {
+    position: relative;
+    background-color: #222;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+}
+
+/* Mobile Bottom Navbar Items */
+.mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #888;
+    font-size: 12px;
+    font-weight: 500;
+    width: 20%;
+    height: 100%;
+    z-index: 2;
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+    z-index: 3;
+    position: relative;
+}
+
+.mobile-nav-item.active {
+    color: white;
+}
+
+.mobile-nav-item.active .nav-icon {
+    transform: translateY(-20px);
+    color: white;
+}
+
+.mobile-nav-item.active span {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* The Moving Indicator (Pink Circle) */
+.active-indicator {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    width: 20%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.indicator-circle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #E5007E, #990054);
+    border-radius: 50%;
+    border: 5px solid #222;
+    box-shadow: 0 0 10px rgba(229, 0, 126, 0.5);
+}
+
+/* Show Mobile Bottom Navbar on Mobile Devices */
+@media (max-width: 768px) {
+    .mobile-navbar-container {
+        display: block;
+    }
+    .navbar-container {
+        justify-content: center;
+    }
+}

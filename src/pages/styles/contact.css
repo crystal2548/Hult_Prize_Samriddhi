@@ -1,0 +1,437 @@
+/* ============================================
+   CONTACT PAGE - PROFESSIONAL DARK THEME
+   Hult Prize Official Colors & Figtree Font
+   ============================================ */
+
+
+
+:root {
+  --heritage: #EC2088;
+  --purple: #8A2890;
+  --sky: #12B1E7;
+  --sun: #FDD40E;
+  --black: #191919;
+  --dark: #0a0a0a;
+  --card-bg: #1a1a1a;
+  --text-gray: #d1d5db;
+  --text-light: #9ca3af;
+}
+
+.contact-page {
+  background: var(--black);
+  color: white;
+  font-family: 'Figtree', sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.contact-hero {
+  padding-top: 8rem;
+  padding-bottom: 28px;
+  background: linear-gradient(135deg,
+      rgba(236, 32, 136, 0.1) 0%,
+      rgba(18, 177, 231, 0.05) 100%);
+  text-align: center;
+}
+
+.contact-hero-title {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 900;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.contact-hero-subtitle {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--text-light);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ============================================
+   MAIN CONTACT SECTION
+   ============================================ */
+.contact-main {
+  padding: 80px 24px;
+  background: var(--black);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 64px;
+}
+
+.contact-section-title {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 900;
+  margin-bottom: 32px;
+  color: white;
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact-form-wrapper {
+  background: var(--card-bg);
+  border: 1px solid rgba(236, 32, 136, 0.2);
+  border-radius: 16px;
+  padding: 48px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.required {
+  color: var(--heritage);
+}
+
+/* Input Styling */
+.form-input,
+.form-textarea {
+  background: var(--dark) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  border-color: var(--heritage) !important;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--heritage) !important;
+  box-shadow: 0 0 0 3px rgba(236, 32, 136, 0.1) !important;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-light) !important;
+}
+
+/* Select Styling */
+.form-select {
+  width: 100%;
+}
+
+.form-select .ant-select-selector {
+  background: var(--dark) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  padding: 8px 12px !important;
+  height: auto !important;
+  min-height: 48px !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-select .ant-select-selector:hover {
+  border-color: var(--heritage) !important;
+}
+
+.form-select-focused .ant-select-selector {
+  border-color: var(--heritage) !important;
+  box-shadow: 0 0 0 3px rgba(236, 32, 136, 0.1) !important;
+}
+
+.form-select .ant-select-arrow {
+  color: var(--heritage) !important;
+}
+
+.form-select .ant-select-selection-item {
+  color: white !important;
+}
+
+.form-select .ant-select-selection-placeholder {
+  color: var(--text-light) !important;
+}
+
+/* Dropdown menu */
+.ant-select-dropdown {
+  background: var(--card-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+.ant-select-item {
+  color: white !important;
+}
+
+.ant-select-item-option-selected {
+  background: var(--heritage) !important;
+  font-weight: 700 !important;
+}
+
+.ant-select-item-option-active {
+  background: rgba(236, 32, 136, 0.15) !important;
+}
+
+/* Submit Button */
+.submit-button {
+  background: var(--heritage) !important;
+  border: none !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  height: 56px !important;
+  margin-top: 8px;
+  transition: all 0.3s ease !important;
+}
+
+.submit-button:hover {
+  background: var(--purple) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(236, 32, 136, 0.3) !important;
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   CONTACT INFO
+   ============================================ */
+.contact-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--heritage), var(--purple));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.contact-info-item:hover .contact-icon {
+  transform: scale(1.1);
+}
+
+.contact-details {
+  flex: 1;
+}
+
+.contact-detail-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.contact-detail-text {
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.contact-detail-text:hover {
+  color: var(--heritage);
+}
+
+/* ============================================
+   SOCIAL MEDIA
+   ============================================ */
+.social-section {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.social-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.social-link {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link.facebook {
+  background: #1877F2;
+}
+
+.social-link.instagram {
+  background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF);
+}
+
+.social-link.linkedin {
+  background: #0A66C2;
+}
+
+.social-link.twitter {
+  background: #1DA1F2;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* ============================================
+   MAP SECTION
+   ============================================ */
+.map-section {
+  padding: 80px 24px;
+  background: var(--dark);
+}
+
+.map-title {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.map-placeholder {
+  background: var(--card-bg);
+  border: 2px dashed rgba(236, 32, 136, 0.3);
+  border-radius: 16px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 18px;
+}
+
+.map-note {
+  font-size: 14px;
+  color: var(--heritage);
+  margin-top: 8px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact-form-wrapper {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .contact-hero {
+    padding: 60px 16px 40px;
+  }
+
+  .contact-main {
+    padding: 60px 16px;
+  }
+
+  .contact-form-wrapper {
+    padding: 24px;
+  }
+
+  .contact-section-title {
+    font-size: 24px;
+  }
+
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  .social-links {
+    flex-wrap: wrap;
+  }
+
+  .map-section {
+    padding: 60px 16px;
+  }
+
+  .map-placeholder {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form {
+    gap: 20px;
+  }
+
+}
