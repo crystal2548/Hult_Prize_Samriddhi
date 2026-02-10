@@ -36,7 +36,7 @@ const WinnerData = ({ first, second, third, heading }) => {
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <h3 className={`winner-title ${item.color}`} style={{ fontSize: '2rem' }}>{item.place}</h3>
+                                    {/* <h3 className={`winner-title ${item.color}`} style={{ fontSize: '2rem' }}>{item.place}</h3> */}
                                 </div>
                                 <div className="winner-info">
                                     <h3 className="winner-title">{item.title}</h3>
