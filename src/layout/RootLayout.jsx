@@ -14,7 +14,7 @@ const RootLayout = () => {
         <Outlet key={location.pathname} />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
