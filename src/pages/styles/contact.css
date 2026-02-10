@@ -35,9 +35,8 @@
 .contact-hero {
   padding-top: 8rem;
   padding-bottom: 28px;
-  background: linear-gradient(135deg,
-      rgba(236, 32, 136, 0.1) 0%,
-      rgba(18, 177, 231, 0.05) 100%);
+  background: linear-gradient(45deg, #EC2088, #12B1E7);
+  ;
   text-align: center;
 }
 
@@ -50,7 +49,7 @@
 
 .contact-hero-subtitle {
   font-size: clamp(16px, 2.5vw, 20px);
-  color: var(--text-light);
+  color: #ffffff;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;

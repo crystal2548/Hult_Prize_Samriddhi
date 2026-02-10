@@ -64,7 +64,7 @@ const BlogCard = () => {
                         <Card
                             hoverable
                             className="blog-card-recent"
-                            bodyStyle={{ display: 'none' }}
+                            styles={{ body: { display: 'none' } }}
                             cover={
                                 <div className="recent-card-cover">
                                     <img
@@ -107,7 +107,7 @@ const BlogCard = () => {
                         <Card
                             hoverable
                             className="blog-card-standard"
-                            bodyStyle={{ padding: '24px' }}
+                            styles={{ body: { padding: '24px' } }}
                             cover={
                                 <div className="standard-card-cover">
                                     <img

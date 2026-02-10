@@ -41,7 +41,7 @@ const WinningTeam = () => {
                         <div className="winner-card">
                             <div className="winner-card-front">
                                 <div className="winner-lighting-overlay"></div>
-                                <div className="winner-image" style={{ backgroundImage: `url(${item.image})` }}></div>
+                                <div className="winner-image" style={{ backgroundImage: item.image ? `url(${item.image})` : 'none' }}></div>
                                 <div className="winner-info">
                                     <h3 className="winner-title">{item.title}</h3>
                                     <span className="winner-year">{item.year}</span>

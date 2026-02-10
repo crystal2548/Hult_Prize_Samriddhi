@@ -16,6 +16,7 @@
     min-height: 100vh;
     background: var(--black);
     color: white;
+    font-family: 'Figtree', sans-serif;
 }
 
 .ourstory-hero {
@@ -25,10 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg,
-            rgba(236, 32, 136, 0.3),
-            rgba(138, 40, 144, 0.25),
-            rgba(18, 177, 231, 0.2));
+    background: linear-gradient(45deg, #EC2088, #12B1E7);
 }
 
 .ourstory-hero-content {
@@ -37,8 +35,8 @@
 }
 
 .ourstory-hero-label {
-    color: var(--heritage);
-    font-size: 12px;
+    color: #ffffff;
+    font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 16px;
@@ -75,7 +73,7 @@
     font-weight: 900;
     margin-bottom: 16px;
 }
-
+/* 
 .ourstory-section:nth-child(1) h2 {
     color: var(--heritage);
 }
@@ -86,7 +84,7 @@
 
 .ourstory-section:nth-child(3) h2 {
     color: var(--sky);
-}
+} */
 
 .ourstory-section p {
     color: #d1d5db;
@@ -111,21 +109,6 @@
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 900;
     margin-bottom: 8px;
-}
-
-.ourstory-stat:nth-child(1) .ourstory-stat-number {
-    color: var(--heritage);
-}
-
-.ourstory-stat:nth-child(2) .ourstory-stat-number {
-    color: var(--purple);
-}
-
-.ourstory-stat:nth-child(3) .ourstory-stat-number {
-    color: var(--sky);
-}
-
-.ourstory-stat:nth-child(4) .ourstory-stat-number {
     color: var(--heritage);
 }
 

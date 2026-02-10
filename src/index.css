@@ -52,13 +52,64 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
+    /* Official Hult Prize Colors */
+    --heritage: #EC2088;
+    --purple: #8A2890;
+    --sky: #12B1E7;
+    --sun: #FDD40E;
+    --midnight: #292563;
+
+    /* Background Colors */
+    --black: #191919;
+    --dark: #0a0a0a;
+    --card-bg: #1a1a1a;
+
+    /* Text Colors */
+    --text-white: #ffffff;
+    --text-gray: #d1d5db;
+    --text-light: #9ca3af;
+
+    /* Borders */
+    --border: rgba(255, 255, 255, 0.1);
+    --border-accent: rgba(236, 32, 136, 0.2);
+
+    /* Spacing Standards */
+    --section-padding: 80px 24px;
+    --container-max-width: 1200px;
+    --hero-padding-top: 8rem;
+
+    /* Typography */
+    --font-family: 'Figtree', sans-serif;
+
+    /* Legacy support */
+    --color-dark-charcoal: #191919;
+}
+
+/* ============================================
+   GLOBAL RESETS
+   ============================================ */
+html {
+    scroll-behavior: auto;
+    /* Prevent smooth scroll from interfering */
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
     font-family: var(--font-family);
+    font-family: var(--font-family);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    background: var(--black);
+    color: var(--text-white);
     overflow-x: hidden;
     background: var(--black);
     color: var(--text-white);
@@ -69,6 +120,91 @@ input,
 select,
 textarea {
     font-family: inherit;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.container-standard {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-standard {
+    padding: var(--section-padding);
+}
+
+.hero-standard {
+    padding-top: var(--hero-padding-top);
+}
+
+/* ============================================
+   GLOBAL ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.8s ease-out both;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.animate-delay-100 {
+    animation-delay: 0.1s;
+}
+
+.animate-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animate-delay-300 {
+    animation-delay: 0.3s;
+}
+
+.animate-delay-400 {
+    animation-delay: 0.4s;
+}
+
+.animate-delay-500 {
+    animation-delay: 0.5s;
+}
+
+.animate-delay-600 {
+    animation-delay: 0.6s;
+}
+
+.animate-delay-800 {
+    animation-delay: 0.8s;
+}
+
+.animate-fill-both {
+    animation-fill-mode: both;
 }
 
 /* ============================================
