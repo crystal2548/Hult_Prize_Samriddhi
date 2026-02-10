@@ -183,15 +183,15 @@ const TeamsProject = () => {
 
                       <div className="tpp-info-item">
                         <GlobalOutlined className="tpp-info-icon" />
-                        <span className="tpp-info-text">{yearData.participants} Students</span>
+                        <span className="tpp-info-text">{yearData.participations} Students</span>
                       </div>
 
-                      {yearData.status === 'Completed' && (
+                      {
                         <div className="tpp-info-item">
                           <TrophyOutlined className="tpp-info-icon" />
-                          <span className="tpp-info-text">Winners Announced</span>
+                          <span className="tpp-info-text">{yearData.status}</span>
                         </div>
-                      )}
+                      }
                     </div>
 
                     <div className="tpp-card-footer">
