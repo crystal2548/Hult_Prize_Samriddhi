@@ -15,24 +15,23 @@ const WinnerData = ({ first, second, third, heading }) => {
                     {heading}
                 </h2>
             )}
-            
+
             <div className="home-winners-grid">
                 {winners.map((item, index) => (
-                    <div 
-                        key={index} 
-                        className={`winner-card-wrapper home-animate ${
-                            index === 0 ? 'winner-first' : 
-                            index === 1 ? 'winner-second' : 
-                            'winner-third'
-                        }`}
+                    <div
+                        key={index}
+                        className={`winner-card-wrapper home-animate ${index === 0 ? 'winner-first' :
+                            index === 1 ? 'winner-second' :
+                                'winner-third'
+                            }`}
                         style={{ animationDelay: `${index * 0.2}s` }}
                     >
                         <div className="winner-card">
                             <div className="winner-card-front">
                                 <div className="winner-lighting-overlay"></div>
                                 {/* Placeholder Gradient since no image is provided yet */}
-                                <div className="winner-image" style={{ 
-                                    background: 'linear-gradient(45deg, #1a1a1a, #2a2a2a)',
+                                <div className="winner-image" style={{
+                                    backgroundImage: `url(${item.image})`,
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center'
