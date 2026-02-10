@@ -23,8 +23,8 @@ const Partners = () => {
       {/* Hero Section */}
       <div className="partners-hero">
         <div className="partners-hero-content">
-          <p className="partners-hero-label animate-fade-in-down">Thank You</p>
-          <h1 className="partners-hero-title animate-fade-in-up animate-delay-200">Our Partners</h1>
+          <p className="partners-hero-label animate-fade-in-down">Meet Our</p>
+          <h1 className="partners-hero-title animate-fade-in-up animate-delay-200">Partners</h1>
           <p className="partners-hero-subtitle animate-fade-in-up animate-delay-400">
             Working together to empower the next generation of changemakers
           </p>
