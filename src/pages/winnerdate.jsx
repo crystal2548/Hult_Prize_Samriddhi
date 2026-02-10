@@ -30,14 +30,13 @@ const WinnerData = ({ first, second, third, heading }) => {
                         <div className="winner-card">
                             <div className="winner-card-front">
                                 <div className="winner-lighting-overlay"></div>
-                                {/* Placeholder Gradient since no image is provided yet */}
                                 <div className="winner-image" style={{ 
-                                    background: 'linear-gradient(45deg, #1a1a1a, #2a2a2a)',
+                                    backgroundImage: `url(${item.image})`,
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center'
                                 }}>
-                                    <h3 className={`winner-title ${item.color}`} style={{ fontSize: '2rem' }}>{item.place}</h3>
+                                    {/* <h3 className={`winner-title ${item.color}`} style={{ fontSize: '2rem' }}>{item.place}</h3> */}
                                 </div>
                                 <div className="winner-info">
                                     <h3 className="winner-title">{item.title}</h3>
