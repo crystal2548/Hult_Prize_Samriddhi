@@ -3,7 +3,7 @@ const developerData = [
     id: 1,
     name: "Crystal Karki",
     role: "Project Manager/Developer",
-    image: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=800&fit=crop",
+    image: "https://media.licdn.com/dms/image/v2/D5603AQGGB-F7iIrsRw/profile-displayphoto-shrink_800_800/B56ZxGkHVeJIAg-/0/1770710399535?e=1772064000&v=beta&t=iO0xYCeceTmKlkoHfMX_OQbHSKN0OVRoQCOO9emzd48",
     bio: "Building scalable systems and robust architectures. Passionate about clean code and performance.",
     stack: ["React", "Python", "Node.js", "Dev-Ops"],
     socials: { github: "https://github.com/crystal2548", linkedin: "https://www.linkedin.com/in/crystal-karki-a26a7a33a/" }
