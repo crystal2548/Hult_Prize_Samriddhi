@@ -1,90 +1,74 @@
-import AadarsanDahal from "../assets/OC/AadarsanDahal.png";
-import SagunShrestha from "../assets/OC/SagunShrestha.png";
-import DikshantNeupane from "../assets/OC/DikshantNeupane.png";
-import BinitaGautam from "../assets/OC/BinitaGautam.png";
-import AchyutaGajurel from "../assets/OC/AchyutaGajurel.png";
-import AayushPandey from "../assets/OC/AayushPandey.png";
-import KushalSuwal from "../assets/OC/KushalSuwal.png";
-import AayushmaLuitel from "../assets/OC/AayushmaLuitel.png";
-import NimeshAdhikari from "../assets/OC/NimeshAdhikari.png";
-import SumnimaKarki from "../assets/OC/SumnimaKarki.png";
-import KarunAcharya from "../assets/OC/KarunAcharya.png";
-import PritikaThapa from "../assets/OC/PritikaThapa.png";
-import SwastikRawat from "../assets/OC/SwastikRawat.png";
-import SarishmaGhimire from "../assets/OC/SarishmaGhimire.png";
-
-
-const organizersData = [
+const OCData = [
     { 
         name: "Aadarsan Dahal", 
         role: "Campus Director",
-        image: AadarsanDahal
+        image: ""
     },
     { 
         name: "Sagun Shrestha", 
         role: "Deputy CD",
-        image: SagunShrestha
+        image: ""
     },
     { 
         name: "Dikshant Neupane", 
         role: "Marketing and Communication",
-        image: DikshantNeupane
+        image: ""
     },
     { 
         name: "Binita Gautam", 
         role: "Event Management",
-        image: BinitaGautam
+        image: ""
     },
     { 
-        name: "Achyuta Gajurel",
+        name: "Achyuta Gajurel", 
         role: "Event Management",
-        image: AchyutaGajurel
+        image: ""
     },
     { 
         name: "Aayush Pandey", 
         role: "Event Management",
-        image: AayushPandey
+        image: ""
     },
     { 
         name: "Kushal Suwal", 
         role: "Graphics Designer",
-        image: KushalSuwal
+        image: ""
     },
     { 
         name: "Aayushma Luitel", 
         role: "Social media",
-        image: AayushmaLuitel
+        image: ""
     },
     { 
         name: "Nimesh adhikari", 
         role: "Video Editor",
-        image: NimeshAdhikari
+        image: ""
     },
     { 
         name: "Sumnima Karki", 
         role: "Social media",
-        image: SumnimaKarki
+        image: ""
     },
     { 
-        name: "Karun Acharya", 
+        name: "Karun Acharya",
         role: "Techinical Head",
-        image: KarunAcharya
+        image: ""
     },
     { 
         name: "Pritika Thapa", 
         role: "Logistic",
-        image: PritikaThapa
+        image: ""
     },
     { 
         name: "Swastik Rawat", 
         role: "Logistic",
-        image: SwastikRawat
+        image: ""
     },
     { 
         name: "Sarishma Ghimire", 
         role: "Startup team Advisor",
-        image: SarishmaGhimire
+        image: ""
     }
 ];
 
-export default organizersData;
+export default OCData;

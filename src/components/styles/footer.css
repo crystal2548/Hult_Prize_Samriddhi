@@ -39,6 +39,20 @@
     line-height: 1.5;
 }
 
+.footer-logo-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: center;
+    justify-content: center; /* Center by default (Mobile) */
+}
+
+@media (min-width: 768px) {
+    .footer-logo-container {
+        justify-content: flex-start; /* Align left on desktop */
+    }
+}
+
 .footer-copyright {
     color: #6b7280;
     text-align: center;
@@ -73,8 +87,11 @@
 }
 
 @media (min-width: 768px) {
-    .footer-links-section {
+    .footer-logo {
+        margin-right: 4rem;
+    }
 
+    .footer-links-section {
         flex-direction: row;
         justify-content: space-around;
         align-items: flex-start;
