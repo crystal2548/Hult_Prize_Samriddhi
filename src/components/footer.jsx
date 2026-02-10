@@ -77,16 +77,16 @@ const Footer = () => {
                             Partners
                         </Link>
                         <Link
-                            to="/support"
-                            className="footer-link"
-                        >
-                            Support
-                        </Link>
-                        <Link
                             to="/contact"
                             className="footer-link"
                         >
                             Contact
+                        </Link>
+                        <Link
+                            to="/developer"
+                            className="footer-link"
+                        >
+                            Developers
                         </Link>
                     </div>
                 </div>
