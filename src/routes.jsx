@@ -15,7 +15,7 @@ import FAQ from "./pages/Faq.jsx";
 // These only download when clicked
 const Winners = lazy(() => import("./pages/winner.jsx"));
 const TeamsProject = lazy(() => import('./pages/TeamsProject.jsx'));
-const JoinUsPage = lazy(() => import("./pages/joinUs.jsx"));
+const JoinUsPage = lazy(() => import("./pages/JoinUs.jsx"));
 const OrganizerMentor = lazy(() => import("./pages/organizerMentor.jsx"));
 const YearPage = lazy(() => import("./pages/Yearpage.jsx"));
 const Blog = lazy(() => import("./pages/Blog.jsx"));
