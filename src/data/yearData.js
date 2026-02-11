@@ -69,7 +69,7 @@ const yearData = {
     },
 
     '2024': {
-        heroImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&auto=format&fit=crop',
+        heroImage: 'https://i.postimg.cc/dDcVgTSr/Gemini-Generated-Image-vbq360vbq360vbq3.png',
         globalTheme: 'Food Security',
         globalDescription: 'Building resilient food systems to ensure access to nutritious food for all communities worldwide.',
         organizingCommittee: [
@@ -335,7 +335,7 @@ const yearData = {
     },
 
     '2026': {
-        heroImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop',
+        heroImage: 'https://i.postimg.cc/dDcVgTSr/Gemini-Generated-Image-vbq360vbq360vbq3.png',
         globalTheme: 'Innovation for Tomorrow',
         globalDescription: 'Pioneering breakthrough solutions for emerging global challenges using cutting-edge technology.',
         organizingCommittee: [
