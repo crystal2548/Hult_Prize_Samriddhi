@@ -5,8 +5,8 @@ const WinnerData = ({ first, second, third, heading }) => {
     const winners = [
         { ...first, place: "1st Place", color: "text-amber-400" },
         { ...second, place: "2nd Place", color: "text-gray-300" },
-        { ...third, place: "3rd Place", color: "text-orange-400" },
-    ];
+        third ? { ...third, place: "3rd Place", color: "text-orange-400", rankClass: 'winner-third' } : null,
+    ].filter(Boolean);
 
     return (
         <div className="home-winners-section" style={{ padding: '60px 24px', background: 'transparent' }}>
@@ -34,7 +34,9 @@ const WinnerData = ({ first, second, third, heading }) => {
                                     backgroundImage: `url(${item.image})`,
                                     display: 'flex',
                                     alignItems: 'center',
-                                    justifyContent: 'center'
+                                    justifyContent: 'center',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'top',
                                 }}>
                                     {/* <h3 className={`winner-title ${item.color}`} style={{ fontSize: '2rem' }}>{item.place}</h3> */}
                                 </div>
