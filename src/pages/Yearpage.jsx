@@ -40,7 +40,7 @@ const YearPage = () => {
       </div>
 
       {/* Hero with Background Image */}
-      <section className="yearpage-hero-section">
+      <section className="yearpage-hero-section" style={{ backgroundColor: currentYearData.heroBgColor || '#FFFFFF' }}>
         <div className="yearpage-hero-bg" style={{ backgroundImage: `url(${currentYearData.heroImage})` }}>
           <div className="yearpage-hero-overlay"></div>
         </div>
@@ -65,7 +65,7 @@ const YearPage = () => {
       </section>
 
       {/* Teams - SECTION 1 */}
-      {currentYearData.teams.length > 0 && (
+      {currentYearData.teams && currentYearData.teams.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Participating Teams & Projects</h2>
@@ -128,7 +128,7 @@ const YearPage = () => {
         <div className="yearpage-container">
           <h2 className="yearpage-section-heading yearpage-animate">Hult Prize {year} Winners</h2>
           <div className="yearpage-winners-grid">
-            {currentYearData.winners.map((winner, idx) => (
+            {currentYearData.winners && currentYearData.winners.map((winner, idx) => (
               <div
                 key={idx}
                 className={`yearpage-winner-card yearpage-animate ${idx === 0 ? 'yearpage-winner-first' :
@@ -151,7 +151,7 @@ const YearPage = () => {
       </section>
 
       {/* Judges - SECTION 3 */}
-      {currentYearData.judges.length > 0 && (
+      {currentYearData.judges && currentYearData.judges.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Judges & Mentors</h2>
@@ -169,7 +169,7 @@ const YearPage = () => {
       )}
 
       {/* Organizing Committee - SECTION 4 */}
-      {currentYearData.organizingCommittee.length > 0 && (
+      {currentYearData.organizingCommittee && currentYearData.organizingCommittee.length > 0 && (
         <section className="yearpage-section">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Organizing Committee</h2>
@@ -187,7 +187,7 @@ const YearPage = () => {
       )}
 
       {/* Sponsors - SECTION 5 (LAST) */}
-      {currentYearData.sponsors.length > 0 && (
+      {currentYearData.sponsors && currentYearData.sponsors.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Our Valued Sponsors</h2>
