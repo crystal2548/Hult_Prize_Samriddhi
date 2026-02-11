@@ -41,7 +41,6 @@
 }
 
 .home-organizer-card {
-    background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     overflow: hidden;
@@ -62,6 +61,7 @@
 }
 
 .organizer-img {
+    background: linear-gradient(to right, #E5007E, #9d00ff, #E5007E);
     width: 100%;
     height: 100%;
     object-fit: contain;

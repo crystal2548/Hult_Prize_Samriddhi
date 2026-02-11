@@ -46,8 +46,7 @@ const HomeOrganizers = () => {
                                     loading='lazy'
                                 />
                                 <div className="organizer-social-overlay">
-                                    <a href="#" className="organizer-social-link"><LinkedinFilled /></a>
-                                    <a href="#" className="organizer-social-link"><TwitterOutlined /></a>
+                                    <a href={member.linkedin} target="_blank" className="organizer-social-link"><LinkedinFilled /></a>
                                 </div>
                             </div>
                             <div className="organizer-info">
