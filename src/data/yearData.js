@@ -1,76 +1,161 @@
 const yearData = {
     '2023': {
-        heroImage: '',
+        heroImage: 'https://media.edusanjal.com/__sized__/news_headers/Hult_Prize_Challenge_2023-thumbnail-1000x525-70.jpg',
         heroBgColor: '#FFFFFF',
-        globalTheme: 'Youth Employment',
-        globalDescription: 'Tackling youth unemployment through sustainable business solutions focused on job creation and skills development.',
+        globalTheme: 'Redesigning Fashion',
+        globalDescription: 'Launch a for-profit social venture to make the clothing and fashion industry more sustainable.',
         organizingCommittee: [
-            { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
-            { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
-            { name: 'Anup Basnet', role: 'Logistics Head', image: null },
-            { name: 'Priya Rai', role: 'Marketing Lead', image: null },
-            { name: 'Sushil Thapa', role: 'Sponsorship Manager', image: null },
+            {
+                name: 'Rohan Karanjit',
+                role: 'Campus Director',
+                image: 'https://i.postimg.cc/XJ2kZktz/Gemini_Generated_Image_t1on0rt1on0rt1on_(1).png',
+            },
+            {
+                name: 'Rhiya Joshi',
+                role: 'Deputy Campus Director',
+                image: 'https://i.postimg.cc/hjC1J1Ns/Gemini_Generated_Image_hfwgbjhfwgbjhfwg_(1).png',
+            },
+            {
+                name: 'Rivu Adhikari',
+                role: 'Content Writer',
+                image: 'https://i.postimg.cc/0Qt060hf/Gemini_Generated_Image_3anlp3anlp3anlp3_(1).png',
+            },
+            {
+                name: 'Nirdeshika Chauhan',
+                role: 'Event Manager',
+                image: 'https://i.postimg.cc/8cjBLrVy/Gemini_Generated_Image_370lls370lls370l_(1).png',
+            },
+            {
+                name: 'Renu Rokaya',
+                role: 'Correspondence',
+                image: 'https://i.postimg.cc/prpYKntG/Gemini_Generated_Image_nw2xmenw2xmenw2x_(1).png',
+            },
+            {
+                name: 'Sagun Sahukhal',
+                role: 'Graphic Designer',
+                image: 'https://i.postimg.cc/CL6xxPJ0/Gemini_Generated_Image_ezzxelezzxelezzx_(1).png',
+            },
+            {
+                name: 'Sajan Tamang',
+                role: 'Video Editor',
+                image: 'https://i.postimg.cc/Y0hfQmwD/Gemini_Generated_Image_y2ktogy2ktogy2kt_(1).png',
+            },
+            {
+                name: 'Salil Shrestha',
+                role: 'Sponsor Co-ordinator',
+                image: 'https://i.postimg.cc/zvVSTR1x/Gemini_Generated_Image_6g5hvt6g5hvt6g5h_(1).png',
+            },
+            {
+                name: 'Shirish Shrestha',
+                role: 'Technical Head',
+                image: 'https://i.postimg.cc/C5zHbfV2/Gemini_Generated_Image_zfwsbqzfwsbqzfws_(1).png',
+            },
+            {
+                name: 'Suchak Niraula',
+                role: 'Volunteering Lead',
+                image: 'https://i.postimg.cc/LXy3q3Gt/Gemini_Generated_Image_fs28v5fs28v5fs28_(1).png',
+            },
+            {
+                name: 'Sujana Pyakurel',
+                role: 'Event Manager',
+                image: 'https://i.postimg.cc/JnT5y5Sc/Gemini_Generated_Image_fysmnyfysmnyfysm_(1).png',
+            },
+            {
+                name: 'Aastha Shrestha',
+                role: 'Logistics Head',
+                image: 'https://i.postimg.cc/kGBFWtdf/Gemini_Generated_Image_wcyjqwcyjqwcyjqw_(1).png',
+            },
+            {
+                name: 'Sumita Shrestha',
+                role: 'Social Media Manager',
+                image: 'https://i.postimg.cc/wM7cDsd5/Gemini_Generated_Image_ue7ahbue7ahbue7a_(1).png',
+            },
+            {
+                name: 'Lasta Pudasaini',
+                role: 'Photographer',
+                image: 'https://i.postimg.cc/gJMHwH1t/Gemini_Generated_Image_pnx3nqpnx3nqpnx3_(1).png',
+            },
+            {
+                name: 'Marmisha Nagarkoti',
+                role: 'Event Manager',
+                image: 'https://i.postimg.cc/3RLFyFzb/Gemini_Generated_Image_r4ui2qr4ui2qr4ui_(1).png',
+            },
+            {
+                name: 'Prasen Chaguthi',
+                role: 'Sponsor Manager',
+                image: 'https://i.postimg.cc/tCm44SDG/Gemini_Generated_Image_g36vw2g36vw2g36v_(1).png',
+            },
         ],
         teams: [
-            {
-                name: 'HealthBridge Solutions',
-                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&auto=format&fit=crop',
-                problemStatement: 'Inadequate mental health support for young adults in rural communities.',
-                solutionOverview: 'Implemented a peer-support network and digital therapy platform accessible through mobile devices, providing affordable mental health services.',
-                impact: '500+ young adults supported, 85% reported improved mental health',
-                tags: ['Mental Health', 'Digital Platform', 'Youth Support'],
-                members: ['Robin Sharma', 'Sanju Kumari', 'Anup Basnet']
-            },
-            {
-                name: 'AgriHarvest Innovations',
-                image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&auto=format&fit=crop',
-                problemStatement: 'Inefficient farming practices leading to low crop yields and farmer poverty.',
-                solutionOverview: 'Introduced an AI-powered agricultural advisory system helping local farmers increase yields and income through data-driven insights.',
-                impact: '200+ farmers reached, 40% average yield increase',
-                tags: ['Agriculture', 'AI Technology', 'Sustainability'],
-                members: ['Priya Rai', 'Sushil Thapa', 'Aisha Singh']
-            },
-            {
-                name: 'SkillBridge Connect',
-                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&auto=format&fit=crop',
-                problemStatement: 'Skills gap preventing youth from accessing quality employment opportunities.',
-                solutionOverview: 'Created an online platform connecting unemployed youth with vocational training and job opportunities.',
-                impact: '300+ youth trained, 70% employment rate',
-                tags: ['Education', 'Employment', 'Skills Training'],
-                members: ['Bijan Dahal', 'Nisha Tamang', 'Suresh Rana']
-            },
+
         ],
         winners: [
             {
                 place: '1ST PLACE',
-                team: 'AgriHarvest Innovations',
-                image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=400&auto=format&fit=crop',
-                description: 'Winner for developing an AI-powered agricultural advisory system that helped 200+ farmers increase yields by 40%.'
+                team: 'Strawhat',
+                image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/476834068_604128345801682_1403652621834224788_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=W3TzjGcB4QIQ7kNvwEPYZIN&_nc_oc=Admeb0hZNQ2IFVOmJKMwEAU6f9rGKaVg1hXYM74CqkEtA-V48ijWQfJaG-puMTSXE5w&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=5uJlJhYu5Gu3F4BBk-fzpg&oh=00_AfsXFcF1ORE013YJn5yvkWzi46JcyQp0GR9xNxYfL1_gOg&oe=69924C73',
+                description: 'Recognized for the most innovative business model that successfully addressed environmental or social gaps within the fashion value chain'
             },
             {
                 place: '2ND PLACE',
-                team: 'HealthBridge Solutions',
-                image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&auto=format&fit=crop',
-                description: 'Runner-up for creating accessible mental health support platform for rural communities.'
+                team: 'Team 3I',
+                image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/476805605_604128595801657_7545505293553871655_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=unStoBHcUU0Q7kNvwHXWY1r&_nc_oc=AdkQ8R10tPJG3L20vSe-jjIGkiVPmdEaJkvSy2VZMwR9if5N_g3xxWRYb3b-10kLEMc&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=lAkZlKLSPsLpDgDQIngmnw&oh=00_AfsNsCJtnV1Oj8e7ol17r3r7s4K0q2C1f-gPW24p1HIw9w&oe=69922802',
+                description: 'Awarded for a high-impact solution focused on reducing waste and promoting ethical production standards in the apparel sector.'
             },
             {
                 place: '3RD PLACE',
-                team: 'SkillBridge Connect',
-                image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&auto=format&fit=crop',
-                description: 'Third place for bridging skills gap with vocational training platform.'
+                team: 'Team Incognito',
+                image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/476656264_604128462468337_4987205295302799147_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=1DwgcoP1VDMQ7kNvwH2C52P&_nc_oc=Adm4F6yHoDVlQqUJCBmGY5MmmF_0skqCY0G78mmehfA21iFcvuSLt7fmwVNF4fggsWo&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=1sO-PTiDCW3RHV55HXtTDQ&oh=00_AftT4sVMEd3ODZ2WRvqumjEoH0b7d9wPO7OnhuH-gA-suQ&oe=69924CFE',
+                description: 'Commended for a creative approach to redesigning consumer behavior or supply chain transparency in fashion.'
             },
         ],
         judges: [
-            { name: 'Dr. Aisha Singh', role: 'Chief Innovation Officer, TechLead', image: null },
-            { name: 'Mr. Bijan Dahal', role: 'Founder & CEO, EcoFuture', image: null },
-            { name: 'Ms. Nisha Tamang', role: 'Social Entrepreneur & Consultant', image: null },
-            { name: 'Prof. Suresh Rana', role: 'Dean, Samriddhi College', image: null },
+            {
+                name: 'Anil Pokhrel',
+                role: 'Formal Advisor, Hult Prize IOST',
+                image: 'https://i.postimg.cc/qvRpfsdj/Gemini_Generated_Image_dgaugodgaugodgau_(1).png'
+            },
+            {
+                name: 'Susan Dangol',
+                role: 'Community Builder for Nepal 2020/2021, Hult Prize Foundation',
+                image: 'https://i.postimg.cc/t4T903Hr/Gemini_Generated_Image_fllprdfllprdfllp_(1).png'
+            },
+            {
+                name: 'Manish Chalise',
+                role: 'Deputy Program Co-ordinator, Coding Olympics Nepal',
+                image: 'https://i.postimg.cc/htjKFLq0/Gemini_Generated_Image_6jui7c6jui7c6jui_(1).png'
+            },
         ],
-        sponsors: ['Nepal Telecom', 'Nabil Bank', 'Vianet Communications', 'Chaudhary Nepal', 'Surya Bank', 'Laxmi Group'],
+        sponsors: [
+            {
+                name: 'ICT FRAME',
+                logo: 'https://i.postimg.cc/7L6qSg66/Media_(1).png'
+            },
+            {
+                name: 'Tasty Donuts',
+                logo: 'https://i.postimg.cc/Gp2bvk2d/Dounuts_(1).png'
+            },
+            {
+                name: 'The Cake Mart',
+                logo: 'https://i.postimg.cc/g0JG3vJG/Cake_mart_(1).png'
+            },
+            {
+                name: 'Iamthegardener',
+                logo: 'https://i.postimg.cc/QMtjcptM/Gardener_(1).png'
+            },
+            {
+                name: 'Oppazz Coffee',
+                logo: 'https://i.postimg.cc/KYzmtnzR/Oppazs_coffee_(1).png'
+            },
+            {
+                name: 'Paudel Enterprises',
+                logo: 'https://i.postimg.cc/wBv9Dhv6/paudel_(1).png'
+            }
+        ],
     },
 
     '2024': {
-        heroImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&auto=format&fit=crop',
+        heroImage: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/480695394_618392527708597_917694294798322702_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=zX3XOhsI-9YQ7kNvwHcMZRz&_nc_oc=AdkK0_No6gDJr-F1CFD85p16c7KypsGq-cGzPxiPDleyrdkv4Dsj5VBjG6iMSIWR9Cw&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=eqvW_OqfQ-9oK9rNRe7Juw&oh=00_Afv1M0ZRN7OfP7MKS2vuzVSqQ9pha_dFn5zPEfKTf2MnAw&oe=69925398',
         heroBgColor: '#FFFFFF',
         globalTheme: 'Unlimited',
         globalDescription: 'Pitch any social enterprise idea of your choice, provided it aligns with at least one UN Sustainable Development Goal (SDG).',
@@ -142,21 +227,15 @@ const yearData = {
         winners: [
             {
                 place: '1ST PLACE',
-                team: 'C',
+                team: 'The Nerd Hub',
                 image: "https://i.postimg.cc/d0qzdw2h/winner2024.jpg",
-                description: 'Competition in progress. Winners will be announced at the 2024 grand finale.'
+                description: 'Winner for demonstrating exceptional innovation and social impact during the 2024 competition.'
             },
             {
                 place: '2ND PLACE',
-                team: 'Coming Soon',
-                image: null,
-                description: 'Competition in progress. Winners will be announced at the 2024 grand finale.'
-            },
-            {
-                place: '3RD PLACE',
-                team: 'Coming Soon',
-                image: null,
-                description: 'Competition in progress. Winners will be announced at the 2024 grand finale.'
+                team: 'Pentasquad',
+                image: "https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/482005269_626229183591598_59633968210638086_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=RWCVWsRL1z4Q7kNvwFF5Kil&_nc_oc=AdmBwJxzlh0e5kTF5SscnroGYIqqoX7C8cdRBEdNN6bKCEABKZKc-ZFqdy292mCQ1cg&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=cv2sNgixUF5F5iEvIvrH8A&oh=00_Aft_xHCmkboI-sqZ-7bhbfg_IhMzh2fzDxV2541H2ZWpwg&oe=69922939",
+                description: 'Runner-up for their outstanding social enterprise solution in the 2024 grand finale.'
             },
         ],
         judges: [
@@ -373,7 +452,7 @@ const yearData = {
     },
 
     '2026': {
-        heroImage: 'https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=1200&auto=format&fit=crop',
+        heroImage: 'https://i.postimg.cc/dDcVgTSr/Gemini-Generated-Image-vbq360vbq360vbq3.png',
         heroBgColor: '#FFFFFF',
         globalTheme: 'Unlimited',
         globalDescription: 'Create a world-changing, for-profit business that addresses a global challenge and supports the UN SDGs.',
