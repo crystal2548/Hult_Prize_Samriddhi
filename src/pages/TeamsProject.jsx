@@ -21,7 +21,6 @@ const TeamsProject = () => {
           return
         }
         setTeamsProjectData(data);
-        console.log(teamsProjectData);
       }
       catch (err) {
         console.log(err);

@@ -12,23 +12,23 @@ const OrganizerMentor = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         async function getOrganizers() {
-            try{
-                const data = await getAllOrganizers();  
+            try {
+                const data = await getAllOrganizers();
                 if (!data) {
                     return
                 }
                 setOrganizers(data);
-                console.log(organizers);
+                // console.log(organizers);
             }
-            catch(err){
+            catch (err) {
                 console.log(err);
             }
         }
 
         getOrganizers();
-    },[])
+    }, [])
 
-    if(loading) return <div>Loading...</div>
+    if (loading) return <div>Loading...</div>
     return (
         <div className='organizer-mentor-page'>
             <div className='organizer-container'>
