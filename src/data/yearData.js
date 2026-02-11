@@ -1,6 +1,7 @@
 const yearData = {
     '2023': {
         heroImage: '',
+        heroBgColor: '#FFFFFF',
         globalTheme: 'Youth Employment',
         globalDescription: 'Tackling youth unemployment through sustainable business solutions focused on job creation and skills development.',
         organizingCommittee: [
@@ -70,40 +71,79 @@ const yearData = {
 
     '2024': {
         heroImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&auto=format&fit=crop',
-        globalTheme: 'Food Security',
-        globalDescription: 'Building resilient food systems to ensure access to nutritious food for all communities worldwide.',
+        heroBgColor: '#FFFFFF',
+        globalTheme: 'Unlimited',
+        globalDescription: 'Pitch any social enterprise idea of your choice, provided it aligns with at least one UN Sustainable Development Goal (SDG).',
         organizingCommittee: [
-            { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
-            { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
-            { name: 'Anup Basnet', role: 'Logistics Head', image: null },
-            { name: 'Priya Rai', role: 'Marketing Lead', image: null },
-            { name: 'Sushil Thapa', role: 'Sponsorship Manager', image: null },
+            {
+                name: 'Rishav Upadhaya',
+                role: 'Campus Director',
+                image: 'https://i.postimg.cc/XYfWxkBZ/Gemini_Generated_Image_30ufju30ufju30uf.png',
+            },
+            {
+                name: 'Devraj Khatiwada',
+                role: 'Deputy Campus Director',
+                image: 'https://i.postimg.cc/8zRGwmfj/Gemini_Generated_Image_ktc08pktc08pktc0.png',
+            },
+            {
+                name: 'Nischal Khadgi',
+                role: 'Photographer',
+                image: 'https://i.postimg.cc/13GSMrV8/Gemini_Generated_Image_r3nu7vr3nu7vr3nu.png',
+            },
+            {
+                name: 'Roshini Shrestha',
+                role: 'Volunteer Head',
+                image: 'https://i.postimg.cc/BnT3NBPQ/Gemini_Generated_Image_ndexxvndexxvndex.png',
+            },
+            {
+                name: 'Shristi Subedi',
+                role: 'Content Creator',
+                image: 'https://i.postimg.cc/W1GVSwqG/Gemini_Generated_Image_zem1x3zem1x3zem1.png',
+            },
+            {
+                name: 'Ronish Ghimire',
+                role: 'Technical Head',
+                image: 'https://i.postimg.cc/9Qd21YwT/Gemini_Generated_Image_pws1vppws1vppws1.png',
+            },
+            {
+                name: 'Cecily Dware',
+                role: 'Event Manager',
+                image: 'https://i.postimg.cc/kgQCwvRb/Gemini_Generated_Image_mn2038mn2038mn20.png',
+            },
+            {
+                name: 'Saurav Gautam',
+                role: 'Social Media Manager',
+                image: 'https://i.postimg.cc/0yYvZ0KK/Gemini_Generated_Image_a010tca010tca010.png',
+            },
+            {
+                name: 'Marmisha Nagarkoti',
+                role: 'Event Head',
+                image: 'https://i.postimg.cc/jSHTv4nP/Gemini_Generated_Image_ug38aeug38aeug38.png',
+            },
+            {
+                name: 'Rohit Dangol',
+                role: 'Graphics Designer',
+                image: 'https://i.postimg.cc/T3VxQJ5W/Gemini_Generated_Image_fgcjisfgcjisfgcj.png',
+            },
+            {
+                name: 'Pranjal Kharel',
+                role: 'Logistics Head',
+                image: 'https://i.postimg.cc/RZ7mGLJc/Gemini_Generated_Image_nco23rnco23rnco2.png',
+            },
+            {
+                name: 'Saksham Rimal',
+                role: 'Sponsor Manager',
+                image: 'https://i.postimg.cc/fRcs5fSv/Gemini_Generated_Image_2rzrrq2rzrrq2rzr_(1).png',
+            },
         ],
         teams: [
-            {
-                name: 'FreshConnect',
-                image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&auto=format&fit=crop',
-                problemStatement: 'Food waste in supply chain and lack of access to fresh produce in urban areas.',
-                solutionOverview: 'Platform connecting farmers directly with consumers, reducing waste and ensuring fresh food delivery through blockchain-verified supply chain.',
-                impact: '1000+ families served, 5 tons of food waste prevented monthly',
-                tags: ['Farm-to-Table', 'Blockchain', 'Waste Reduction'],
-                members: ['Aadarsan Dahal', 'Sagun Shrestha', 'Achyuta Gajurel']
-            },
-            {
-                name: 'NutriAid',
-                image: 'https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=400&auto=format&fit=crop',
-                problemStatement: 'Child malnutrition due to lack of access to nutritious food and nutrition education.',
-                solutionOverview: 'Community-based program providing fortified meals and nutrition education to vulnerable families through local partnerships.',
-                impact: '500+ children reached, 60% improvement in nutrition levels',
-                tags: ['Child Nutrition', 'Education', 'Community'],
-                members: ['Aayush Pandey', 'Nimesh Adhikari', 'Kushal Suwal']
-            },
+
         ],
         winners: [
             {
                 place: '1ST PLACE',
-                team: 'Coming Soon',
-                image: null,
+                team: 'C',
+                image: "https://i.postimg.cc/d0qzdw2h/winner2024.jpg",
                 description: 'Competition in progress. Winners will be announced at the 2024 grand finale.'
             },
             {
@@ -120,95 +160,93 @@ const yearData = {
             },
         ],
         judges: [
-            { name: 'Dr. Aisha Singh', role: 'Chief Innovation Officer', image: null },
-            { name: 'Mr. Bijan Dahal', role: 'Founder & CEO, EcoFuture', image: null },
-            { name: 'Ms. Nisha Tamang', role: 'Social Entrepreneur', image: null },
-            { name: 'Prof. Suresh Rana', role: 'Dean, Samriddhi College', image: null },
-            { name: 'Ms. Kamala Devi', role: 'Impact Investor', image: null },
+            {
+                name: 'Mr. Ishwor Thapa',
+                role: 'Associate CEO at Code Himalaya',
+                image: 'https://i.postimg.cc/rpvFPwFN/Gemini_Generated_Image_xst3apxst3apxst3.png'
+            },
+            {
+                name: 'Ms. Sushma Sharma',
+                role: 'Owner at Peculiar Jewels',
+                image: 'https://i.postimg.cc/BvdQVnQC/Gemini_Generated_Image_c63oa6c63oa6c63o.png'
+            },
+            {
+                name: 'Er. Aditya Raj',
+                role: 'Founder & CEO at Digital Nepal',
+                image: 'https://i.postimg.cc/hGHP5tPx/Gemini_Generated_Image_plw2thplw2thplw2.png'
+            },
         ],
         sponsors: [
-            { name: 'Ather', logo: 'https://www.mg21.com/wp-content/uploads/2024/07/Ather-Energy.png' },
-            { name: 'Deego Nepal', logo: 'https://np-live-21.slatic.net/kf/S1724bfb4d5f143408de12e8c154744322.jpg_200x200.jpg' },
-            { name: 'Vision Cart', logo: 'https://tse4.mm.bing.net/th/id/OIP.H-Ln8DxOa5nDccGGfRvblQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3' },
-            { name: 'Nhu Designs', logo: 'https://www.thenhudesigns.com/images/preference/TXljU-logo1-(1).png' }
+
         ],
 
     },
 
     '2025': {
         heroImage: 'https://i.postimg.cc/dDcVgTSr/Gemini-Generated-Image-vbq360vbq360vbq3.png',
+        heroBgColor: '#FFFFFF',
         globalTheme: 'Unlimited',
         globalDescription: 'Solve any societal problem through a business lens by aligning your startup with at least one UN SDG.',
         organizingCommittee: [
             {
-                name: 'Aadarsan Dahal',
+                name: 'Pranjal Kharel',
                 role: 'Campus Director',
-                image: 'https://i.postimg.cc/wBgzMNx5/Aadarsan-Dahal-(1).png',
+                image: 'https://i.postimg.cc/VsHwvT1B/Gemini_Generated_Image_tfr9rltfr9rltfr9.png',
             },
             {
-                name: 'Sagun Shrestha',
+                name: 'Binisha Basnet',
                 role: 'Deputy Campus Director',
-                image: 'https://i.postimg.cc/PqTHJDf7/Sagun-Shrestha.png',
+                image: 'https://i.postimg.cc/bYFPrM8R/Gemini_Generated_Image_vd3qusvd3qusvd3q.png',
             },
             {
-                name: 'Achyuta Gajurel',
+                name: 'Sushant Dhungel',
+                role: 'Marketing and Communication lead',
+                image: 'https://i.postimg.cc/FFnvzqmb/Gemini_Generated_Image_dyu8qadyu8qadyu8.png',
+            },
+            {
+                name: 'Sajin Shrestha',
                 role: 'Event Manager',
-                image: 'https://i.postimg.cc/HLzgyLVL/Achyuta-Gajurel-(1).png',
+                image: 'https://i.postimg.cc/RCbmh89L/Gemini_Generated_Image_lnjfeqlnjfeqlnjf.png',
             },
             {
-                name: 'Aayush Pandey',
-                role: 'Event Management',
-                image: 'https://i.postimg.cc/d06Yy0LQ/Aayush-Pandey-(1).png',
+                name: 'Dikshya Thapa',
+                role: 'Event Co-ordinator',
+                image: 'https://i.postimg.cc/dQSF3Xvn/Gemini_Generated_Image_u0yl9au0yl9au0yl.png',
             },
             {
-                name: 'Nimesh Adhikari',
-                role: 'Video Editor',
-                image: 'https://i.postimg.cc/VNmwvtsD/Nimesh-Adhikari-(1).png',
+                name: 'Lishan Acharya',
+                role: 'Event Co-ordinator',
+                image: 'https://i.postimg.cc/jqkT29KZ/Gemini_Generated_Image_v32zmxv32zmxv32z.png',
             },
             {
-                name: 'Kushal Suwal',
-                role: 'Graphics Designer',
-                image: 'https://i.postimg.cc/LsDp1sng/Kushal-Suwal-(1).png',
-            },
-            {
-                name: 'Sumnima Karki',
-                role: 'Social Media',
-                image: 'https://i.postimg.cc/GpKCypHn/Sumnima-Karki-(1).png',
-            },
-            {
-                name: 'Swastik Rawat',
-                role: 'Logistics Head',
-                image: 'https://i.postimg.cc/GpKCypHd/Swastik-Rawat-(1).png',
-            },
-            {
-                name: 'Aayushma Luitel',
-                role: 'Social Media',
-                image: 'https://i.postimg.cc/ZqHSdqCb/Aayushma-Luitel-(1).png',
-            },
-            {
-                name: 'Binita Gautam',
-                role: 'Event Management',
-                image: 'https://i.postimg.cc/QMhDC7Nc/Binita-Gautam-(1).png',
-            },
-            {
-                name: 'Dikshant Neupane',
-                role: 'Marketing and Communication',
-                image: 'https://i.postimg.cc/cJ0WC31w/Dikshant-Neupane-(1).png',
-            },
-            {
-                name: 'Karun Acharya',
+                name: 'Kshitij Dahal',
                 role: 'Technical Head',
-                image: 'https://i.postimg.cc/jjtT2fqf/Karun-Acharya-(1).png',
+                image: 'https://i.postimg.cc/PfFHJchS/Gemini_Generated_Image_3l7e4c3l7e4c3l7e.png',
             },
             {
-                name: 'Sarishma Ghimire',
-                role: 'Startup Team Advisor',
-                image: 'https://i.postimg.cc/mrB4k9Z5/Sarishma-Ghimire-(1).png',
+                name: 'Ishika Khadka',
+                role: "Team's Startup Adviser",
+                image: 'https://i.postimg.cc/h43nvwgZ/Gemini_Generated_Image_7ac5q37ac5q37ac5.png',
             },
             {
-                name: 'Pritika Thapa',
-                role: 'Logistics Head',
-                image: 'https://i.postimg.cc/Ls2S5P47/Pritika-Thapa-(1).png',
+                name: 'Subekshya Khareal',
+                role: "Team's startup advisor",
+                image: 'https://i.postimg.cc/zDPNvM5Q/Gemini_Generated_Image_rj3sdxrj3sdxrj3s.png',
+            },
+            {
+                name: 'Ukesh Prajapati',
+                role: 'Graphic Designer',
+                image: 'https://i.postimg.cc/sf0zx8yq/Gemini_Generated_Image_9i2xco9i2xco9i2x.png',
+            },
+            {
+                name: 'Sangam Bakhunchhe',
+                role: 'Graphic Designer',
+                image: 'https://i.postimg.cc/PfFHJchB/Gemini_Generated_Image_7iilcv7iilcv7iil.png',
+            },
+            {
+                name: 'Sabnam Adhikari',
+                role: 'Content & Social Media Manager',
+                image: 'https://i.postimg.cc/nVwxr5Zy/Gemini_Generated_Image_o3qi08o3qi08o3qi.png',
             },
         ],
 
@@ -335,24 +373,95 @@ const yearData = {
     },
 
     '2026': {
-        heroImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop',
-        globalTheme: 'Innovation for Tomorrow',
-        globalDescription: 'Pioneering breakthrough solutions for emerging global challenges using cutting-edge technology.',
+        heroImage: 'https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?w=1200&auto=format&fit=crop',
+        heroBgColor: '#FFFFFF',
+        globalTheme: 'Unlimited',
+        globalDescription: 'Create a world-changing, for-profit business that addresses a global challenge and supports the UN SDGs.',
         organizingCommittee: [
-            { name: 'Robin Sharma', role: 'Lead Organizer', image: null },
-            { name: 'Sanju Kumari', role: 'Event Coordinator', image: null },
-            { name: 'Anup Basnet', role: 'Logistics Head', image: null },
-            { name: 'Priya Rai', role: 'Marketing Lead', image: null },
-            { name: 'Sushil Thapa', role: 'Sponsorship Manager', image: null },
+            {
+                name: 'Aadarsan Dahal',
+                role: 'Campus Director',
+                image: 'https://i.postimg.cc/wBgzMNx5/Aadarsan-Dahal-(1).png',
+            },
+            {
+                name: 'Sagun Shrestha',
+                role: 'Deputy Campus Director',
+                image: 'https://i.postimg.cc/PqTHJDf7/Sagun-Shrestha.png',
+            },
+            {
+                name: 'Achyuta Gajurel',
+                role: 'Event Manager',
+                image: 'https://i.postimg.cc/HLzgyLVL/Achyuta-Gajurel-(1).png',
+            },
+            {
+                name: 'Aayush Pandey',
+                role: 'Event Management',
+                image: 'https://i.postimg.cc/d06Yy0LQ/Aayush-Pandey-(1).png',
+            },
+            {
+                name: 'Nimesh Adhikari',
+                role: 'Video Editor',
+                image: 'https://i.postimg.cc/VNmwvtsD/Nimesh-Adhikari-(1).png',
+            },
+            {
+                name: 'Kushal Suwal',
+                role: 'Graphics Designer',
+                image: 'https://i.postimg.cc/LsDp1sng/Kushal-Suwal-(1).png',
+            },
+            {
+                name: 'Sumnima Karki',
+                role: 'Social Media',
+                image: 'https://i.postimg.cc/GpKCypHn/Sumnima-Karki-(1).png',
+            },
+            {
+                name: 'Swastik Rawat',
+                role: 'Logistics Head',
+                image: 'https://i.postimg.cc/GpKCypHd/Swastik-Rawat-(1).png',
+            },
+            {
+                name: 'Aayushma Luitel',
+                role: 'Social Media',
+                image: 'https://i.postimg.cc/ZqHSdqCb/Aayushma-Luitel-(1).png',
+            },
+            {
+                name: 'Binita Gautam',
+                role: 'Event Management',
+                image: 'https://i.postimg.cc/QMhDC7Nc/Binita-Gautam-(1).png',
+            },
+            {
+                name: 'Dikshant Neupane',
+                role: 'Marketing and Communication',
+                image: 'https://i.postimg.cc/cJ0WC31w/Dikshant-Neupane-(1).png',
+            },
+            {
+                name: 'Karun Acharya',
+                role: 'Technical Head',
+                image: 'https://i.postimg.cc/jjtT2fqf/Karun-Acharya-(1).png',
+            },
+            {
+                name: 'Sarishma Ghimire',
+                role: 'Startup Team Advisor',
+                image: 'https://i.postimg.cc/mrB4k9Z5/Sarishma-Ghimire-(1).png',
+            },
+            {
+                name: 'Pritika Thapa',
+                role: 'Logistics Head',
+                image: 'https://i.postimg.cc/Ls2S5P47/Pritika-Thapa-(1).png',
+            },
         ],
         teams: [],
         winners: [
-            { place: '1ST PLACE', team: 'Coming Soon', image: null, description: 'Registration opens Q1 2026.' },
-            { place: '2ND PLACE', team: 'Coming Soon', image: null, description: 'Registration opens Q1 2026.' },
-            { place: '3RD PLACE', team: 'Coming Soon', image: null, description: 'Registration opens Q1 2026.' },
+            { place: '1ST PLACE', team: 'Coming Soon', image: null, description: 'The winner will be announced on 13 February 2026.' },
+            { place: '2ND PLACE', team: 'Coming Soon', image: null, description: 'The winner will be announced on 13 February 2026.' },
+            { place: '3RD PLACE', team: 'Coming Soon', image: null, description: 'The winner will be announced on 13 February 2026.' },
         ],
         judges: [],
-        sponsors: [],
+        sponsors: [
+            { name: 'Ather', logo: 'https://i.postimg.cc/GhMMJw9h/Ather.jpg' },
+            { name: 'Deego Nepal', logo: 'https://i.postimg.cc/dtWWmPD7/Dami.jpg' },
+            { name: 'Vision Cart', logo: 'https://i.postimg.cc/hPCCbWhG/Pal.jpg' },
+            { name: 'Nhu Designs', logo: 'https://i.postimg.cc/Kv99rS4k/Yugi.jpg' }
+        ],
     },
 };
 
