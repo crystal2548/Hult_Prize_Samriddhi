@@ -1,6 +1,6 @@
 import React from 'react';
-import CountUp from 'react-countup';
 import './styles/ourstory.css';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const OurStory = () => {
   return (
@@ -52,25 +52,25 @@ const OurStory = () => {
           <div className="ourstory-stats">
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                <CountUp end={4} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={4} suffix="+" />
               </div>
               <div className="ourstory-stat-label">Years Active</div>
             </div>
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                <CountUp end={14} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={14} suffix="+" />
               </div>
               <div className="ourstory-stat-label">Teams Formed</div>
             </div>
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                <CountUp end={70} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={70} suffix="+" />
               </div>
               <div className="ourstory-stat-label">Students Engaged</div>
             </div>
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                <CountUp end={350} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                 <AnimatedCounter end={350} suffix="+" />
               </div>
               <div className="ourstory-stat-label">Total Participants</div>
             </div>

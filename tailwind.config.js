@@ -5,6 +5,9 @@ module.exports = {
             colors: {
                 'dark-charcoal': '#191919',
             },
+            fontFamily: {
+                sans: ['Figtree', 'sans-serif'],
+            },
         },
     },
 }

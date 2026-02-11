@@ -1,4 +1,4 @@
-const organizersData = [
+const OCData = [
     { 
         name: "Aadarsan Dahal", 
         role: "Campus Director",
@@ -50,7 +50,7 @@ const organizersData = [
         image: ""
     },
     { 
-        name: "Karun Acharya", 
+        name: "Karun Acharya",
         role: "Techinical Head",
         image: ""
     },
@@ -71,4 +71,4 @@ const organizersData = [
     }
 ];
 
-export default organizersData;
+export default OCData;

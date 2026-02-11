@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CountUp from 'react-countup';
 import './styles/LearnMore.css';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const LearnMore = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const LearnMore = () => {
 
   return (
     <div className="learn-page-wrapper">
-
+      
       {/* Hero Section */}
       <section className="learn-hero-section">
         <div className="learn-hero-overlay"></div>
@@ -31,14 +31,14 @@ const LearnMore = () => {
           <div className="learn-content-block">
             <h2 className="learn-section-title">What is Hult Prize?</h2>
             <p className="learn-text">
-              The Hult Prize is a global competition that challenges students to solve the world's
-              most pressing issues through social entrepreneurship. Since 2010, the Hult Prize has
-              mobilized over 1 million students from 100+ countries to create sustainable business
+              The Hult Prize is a global competition that challenges students to solve the world's 
+              most pressing issues through social entrepreneurship. Since 2010, the Hult Prize has 
+              mobilized over 1 million students from 100+ countries to create sustainable business 
               solutions aligned with the United Nations Sustainable Development Goals.
             </p>
             <p className="learn-text">
-              Each year, teams compete for the chance to win $1,000,000 USD in seed funding to
-              launch their social enterprise. Beyond the prize money, participants gain access to
+              Each year, teams compete for the chance to win $1,000,000 USD in seed funding to 
+              launch their social enterprise. Beyond the prize money, participants gain access to 
               mentorship, networking opportunities, and a global platform to showcase their innovations.
             </p>
           </div>
@@ -46,25 +46,25 @@ const LearnMore = () => {
           <div className="learn-stats-grid">
             <div className="learn-stat-card">
               <div className="learn-stat-number">
-                <CountUp end={1} prefix="$" suffix="M" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={1} prefix="$" suffix="M" decimals={0} />
               </div>
               <div className="learn-stat-label">Prize Funding</div>
             </div>
             <div className="learn-stat-card">
               <div className="learn-stat-number">
-                <CountUp end={1} suffix="M+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={1} suffix="M+" decimals={0} />
               </div>
               <div className="learn-stat-label">Students Engaged</div>
             </div>
             <div className="learn-stat-card">
               <div className="learn-stat-number">
-                <CountUp end={100} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={100} suffix="+" decimals={0} />
               </div>
               <div className="learn-stat-label">Countries</div>
             </div>
             <div className="learn-stat-card">
               <div className="learn-stat-number">
-                <CountUp end={14} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+                <AnimatedCounter end={14} suffix="+" decimals={0} />
               </div>
               <div className="learn-stat-label">Years Running</div>
             </div>
@@ -79,15 +79,15 @@ const LearnMore = () => {
             <div className="learn-split-text">
               <h2 className="learn-section-title">Hult Prize @ Samriddhi College</h2>
               <p className="learn-text">
-                We are proud to be the official Hult Prize OnCampus program at Samriddhi College.
-                As a local hub, we bring this prestigious global competition directly to our students,
+                We are proud to be the official Hult Prize OnCampus program at Samriddhi College. 
+                As a local hub, we bring this prestigious global competition directly to our students, 
                 providing them with the resources, mentorship, and platform needed to compete on the world stage.
               </p>
               <p className="learn-text">
-                Our mission is to empower Samriddhi students to develop innovative solutions for local
+                Our mission is to empower Samriddhi students to develop innovative solutions for local 
                 and global challenges, fostering a culture of social entrepreneurship and sustainable innovation.
               </p>
-
+              
               <div className="learn-highlights">
                 <div className="learn-highlight-item">
                   <div className="learn-highlight-icon">🎓</div>
@@ -114,8 +114,8 @@ const LearnMore = () => {
             </div>
 
             <div className="learn-split-image">
-              <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=800&fit=crop"
+              <img 
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&h=800&fit=crop" 
                 alt="Students collaborating"
               />
             </div>
@@ -134,7 +134,7 @@ const LearnMore = () => {
               <div className="learn-journey-number">01</div>
               <h3 className="learn-journey-title">OnCampus</h3>
               <p className="learn-journey-text">
-                Compete at Samriddhi College. Teams pitch their ideas, receive mentorship,
+                Compete at Samriddhi College. Teams pitch their ideas, receive mentorship, 
                 and the winning team advances to regional competition.
               </p>
             </div>
@@ -143,7 +143,7 @@ const LearnMore = () => {
               <div className="learn-journey-number">02</div>
               <h3 className="learn-journey-title">Regional Finals</h3>
               <p className="learn-journey-text">
-                Campus winners compete against other universities in their region. Top teams
+                Campus winners compete against other universities in their region. Top teams 
                 earn a spot at the Hult Prize Accelerator.
               </p>
             </div>
@@ -152,7 +152,7 @@ const LearnMore = () => {
               <div className="learn-journey-number">03</div>
               <h3 className="learn-journey-title">Accelerator</h3>
               <p className="learn-journey-text">
-                Selected teams receive intensive training, mentorship, and resources to
+                Selected teams receive intensive training, mentorship, and resources to 
                 refine their business models over 6 weeks.
               </p>
             </div>
@@ -161,7 +161,7 @@ const LearnMore = () => {
               <div className="learn-journey-number">04</div>
               <h3 className="learn-journey-title">Global Finals</h3>
               <p className="learn-journey-text">
-                The top 6 teams pitch to a panel of judges and compete for the $1M USD prize
+                The top 6 teams pitch to a panel of judges and compete for the $1M USD prize 
                 at the United Nations headquarters.
               </p>
             </div>
@@ -180,7 +180,7 @@ const LearnMore = () => {
               <div className="learn-story-year">2023</div>
               <h3 className="learn-story-title">AgriHarvest Innovations</h3>
               <p className="learn-story-desc">
-                Developed an AI-powered agricultural advisory system that helped 200+ local farmers
+                Developed an AI-powered agricultural advisory system that helped 200+ local farmers 
                 increase their crop yields by 40%, demonstrating the power of technology in traditional farming.
               </p>
               <div className="learn-story-impact">
@@ -193,7 +193,7 @@ const LearnMore = () => {
               <div className="learn-story-year">2024</div>
               <h3 className="learn-story-title">FreshConnect</h3>
               <p className="learn-story-desc">
-                Created a blockchain-verified farm-to-table platform connecting local farmers with urban
+                Created a blockchain-verified farm-to-table platform connecting local farmers with urban 
                 consumers, reducing food waste and ensuring fresh produce delivery to 1000+ families.
               </p>
               <div className="learn-story-impact">
@@ -206,7 +206,7 @@ const LearnMore = () => {
               <div className="learn-story-year">2025</div>
               <h3 className="learn-story-title">EcoTech Solutions</h3>
               <p className="learn-story-desc">
-                Providing affordable renewable energy solutions using solar and wind power for off-grid
+                Providing affordable renewable energy solutions using solar and wind power for off-grid 
                 rural communities, reducing carbon emissions and powering sustainable development.
               </p>
               <div className="learn-story-impact">
@@ -222,7 +222,7 @@ const LearnMore = () => {
       <section className="learn-section">
         <div className="learn-container">
           <h2 className="learn-section-title learn-centered">Why Participate?</h2>
-
+          
           <div className="learn-benefits-grid">
             <div className="learn-benefit-card">
               <div className="learn-benefit-icon">💡</div>
@@ -269,19 +269,19 @@ const LearnMore = () => {
           <div className="learn-cta-box">
             <h2 className="learn-cta-title">Ready to Learn More?</h2>
             <p className="learn-cta-text">
-              Visit the official Hult Prize website to explore past winners, learn about the global
+              Visit the official Hult Prize website to explore past winners, learn about the global 
               competition process, and discover how you can be part of this incredible movement.
             </p>
             <div className="learn-cta-buttons">
-              <a
-                href="https://www.hultprize.org"
-                target="_blank"
+              <a 
+                href="https://www.hultprize.org" 
+                target="_blank" 
                 rel="noopener noreferrer"
                 className="learn-cta-btn learn-cta-primary"
               >
                 Visit Hult Prize →
               </a>
-              <button
+              <button 
                 onClick={() => navigate('/contact')}
                 className="learn-cta-btn learn-cta-secondary"
               >

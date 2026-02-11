@@ -23,7 +23,6 @@
 .joinus-page {
   background: var(--black);
   color: white;
-  font-family: 'Figtree', sans-serif;
   min-height: 100vh;
 }
 
@@ -38,7 +37,9 @@
   padding-right: 1.5rem;
   overflow: hidden;
   text-align: center;
-  background: linear-gradient(45deg,  #EC2088, #12B1E7);
+  background: linear-gradient(135deg,
+      rgba(236, 32, 136, 0.1) 0%,
+      rgba(18, 177, 231, 0.05) 100%);
 }
 
 .joinus-hero-blur {
@@ -377,6 +378,7 @@
 /* ============================================
    OFFICE HOURS
    ============================================ */
+
 
 
 /* ============================================

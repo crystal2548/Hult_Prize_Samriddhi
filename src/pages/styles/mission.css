@@ -2,177 +2,179 @@
    MISSION PAGE - CONSISTENT STYLING
    ============================================ */
 
-
-
 :root {
-    --heritage: #EC2088;
-    --purple: #8A2890;
-    --sky: #12B1E7;
-    --black: #191919;
-    --dark: #0a0a0a;
+  --heritage: #ec2088;
+  --purple: #8a2890;
+  --sky: #12b1e7;
+  --black: #191919;
+  --dark: #0a0a0a;
 }
 
 .mission-page {
-    min-height: 100vh;
-    background: var(--black);
-    color: white;
-    font-family: 'Figtree', sans-serif;
+  min-height: 100vh;
+  background: var(--black);
+  color: white;
+  font-family: "Figtree", sans-serif;
 }
 
 .mission-hero {
-    position: relative;
-    min-height: 60vh;
-    padding-top: 8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(45deg, #EC2088, #12B1E7);
+  position: relative;
+  min-height: 60vh;
+  padding-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #ec2088, #12b1e7);
 }
 
 .mission-hero-content {
-    text-align: center;
-    padding: 0 24px;
+  text-align: center;
+  padding: 0 24px;
 }
 
 .mission-hero-label {
-    color: #ffffff;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-    font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  font-weight: 700;
 }
 
 .mission-hero-title {
-    font-size: clamp(48px, 8vw, 72px);
-    font-weight: 900;
-    margin-bottom: 16px;
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 900;
+  margin-bottom: 16px;
 }
 
 .mission-hero-subtitle {
-    font-size: clamp(16px, 2.5vw, 20px);
-    color: #d1d5db;
-    max-width: 700px;
-    margin: 0 auto;
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: #d1d5db;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .mission-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
 
 .mission-statement {
-    text-align: center;
-    margin-bottom: 64px;
+  text-align: center;
+  margin-bottom: 64px;
 }
 
 .mission-statement-title {
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 900;
-    margin-bottom: 24px;
-    background: linear-gradient(135deg, var(--heritage), var(--purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 900;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--heritage), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .mission-statement-text {
-    font-size: clamp(16px, 2vw, 20px);
-    color: #d1d5db;
-    line-height: 1.7;
-    max-width: 900px;
-    margin: 0 auto;
+  font-size: clamp(16px, 2vw, 20px);
+  color: #d1d5db;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .mission-values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
-    margin-bottom: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
 }
 
 .mission-value-card {
-    padding: 40px;
-    background: linear-gradient(to bottom right, rgba(236, 32, 136, 0.1), transparent);
-    border-radius: 16px;
-    border: 1px solid rgba(236, 32, 136, 0.2);
-    transition: all 0.3s ease;
+  padding: 40px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(236, 32, 136, 0.1),
+    transparent
+  );
+  border-radius: 16px;
+  border: 1px solid rgba(236, 32, 136, 0.2);
+  transition: all 0.3s ease;
 }
 
 .mission-value-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(236, 32, 136, 0.4);
+  transform: translateY(-4px);
+  border-color: rgba(236, 32, 136, 0.4);
 }
 
 .mission-value-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
+  font-size: 48px;
+  margin-bottom: 16px;
 }
 
 .mission-value-title {
-    font-size: 24px;
-    font-weight: 900;
-    margin-bottom: 12px;
-    color: var(--heritage);
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: var(--heritage);
 }
 
 .mission-value-text {
-    color: #d1d5db;
-    line-height: 1.6;
+  color: #d1d5db;
+  line-height: 1.6;
 }
 
 .mission-actions-section {
-    margin-top: 64px;
+  margin-top: 64px;
 }
 
 .mission-actions-title {
-    font-size: clamp(28px, 4vw, 36px);
-    font-weight: 900;
-    text-align: center;
-    margin-bottom: 48px;
-    color: var(--heritage);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 48px;
+  color: var(--heritage);
 }
 
 .mission-actions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 
 .mission-action-item {
-    display: flex;
-    gap: 16px;
+  display: flex;
+  gap: 16px;
 }
 
 .mission-action-icon {
-    color: var(--heritage);
-    font-size: 24px;
-    flex-shrink: 0;
+  color: var(--heritage);
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
 .mission-action-content h3 {
-    font-weight: 900;
-    font-size: 18px;
-    margin-bottom: 8px;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
 .mission-action-content p {
-    color: #9ca3af;
-    line-height: 1.6;
-    font-size: 15px;
+  color: #9ca3af;
+  line-height: 1.6;
+  font-size: 15px;
 }
 
 @media (max-width: 768px) {
-    .mission-content {
-        padding: 60px 16px;
-    }
+  .mission-content {
+    padding: 60px 16px;
+  }
 
-    .mission-values-grid {
-        grid-template-columns: 1fr;
-    }
+  .mission-values-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .mission-actions-grid {
-        grid-template-columns: 1fr;
-    }
+  .mission-actions-grid {
+    grid-template-columns: 1fr;
+  }
 }

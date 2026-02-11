@@ -1,8 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import hultLogo from '../assets/Logo.png';
 import samriddhiLogo from '../assets/SamriddhiLogo.png';
 import './styles/footer.css';
-import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -77,16 +77,16 @@ const Footer = () => {
                             Partners
                         </Link>
                         <Link
-                            to="/support"
-                            className="footer-link"
-                        >
-                            Support
-                        </Link>
-                        <Link
                             to="/contact"
                             className="footer-link"
                         >
                             Contact
+                        </Link>
+                        <Link
+                            to="/developer"
+                            className="footer-link"
+                        >
+                            Developers
                         </Link>
                     </div>
                 </div>

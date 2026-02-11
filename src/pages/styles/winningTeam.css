@@ -1,10 +1,17 @@
-/* Winners Section (3D Flip) */
+@media (max-width: 768px) {
+    .home-winners-section {
+        padding-top: 6rem !important; /* Reduced padding for mobile */
+    }
+    .home-winners-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+}
 .home-winners-section {
     padding-top: 8rem !important;
     padding-bottom: 0 !important;
     margin-bottom: -80px;
     background: var(--black);
-    font-family: 'Figtree', sans-serif;
 }
 
 .section-heading-home {

@@ -1,10 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Winnersdata from './winnerdate.jsx'
-
-
-import pastWinnersData from '../data/pastWinnersData.js';
+import { getAllPastWinners } from '../lib/services/pastwinners.service.js';
+// import pastWinnersData from '../data/pastWinnersData.js';
 
 const Winner = () => {
+  const [pastWinnersData, setPastWinnersData] = useState([]);
+  // const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    async function getPastWinners() {
+      try {
+        // setLoading(true);
+        const data = await getAllPastWinners();
+        if (!data) {
+          return
+        }
+        setPastWinnersData(data);
+        // console.log(pastWinnersData);
+      }
+      catch (err) {
+        console.log(err);
+      }
+    }
+    // setLoading(false);
+    getPastWinners();
+  }, [])
   return (
     <div className="home-container">
       {pastWinnersData.map((data, index) => (

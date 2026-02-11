@@ -1,9 +1,7 @@
 import React from 'react'
-// import { Carousel } from 'antd';
 import Stats from "../components/stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
 import HomeOrganizers from "../components/HomeOrganizers.jsx";
-// import CardData from "../components/carddata.jsx";
 import "./styles/home.css";
 import left from '../assets/Left.svg'
 import right from '../assets/Right.svg'
@@ -11,7 +9,6 @@ import logo from '../assets/SamriddhiLogo.png'
 
 const contentStyle = {
   margin: 0,
-  // height: '600px',
   color: '#fff',
   lineHeight: '600px',
   textAlign: 'center',
@@ -51,7 +48,7 @@ const Home = () => {
                 <div className="hero-text-anim-wrapper">
                     <div className="hero-title-row">
                         <h1 className="home-hero-title">
-                            One million to change the world
+                            Changing the World through <b style={{color:'#EC2088'}}>Social Enterprise</b>
                         </h1>
                     </div>
                     <p className="home-hero-subtitle">

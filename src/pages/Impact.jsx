@@ -1,10 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import CountUp from 'react-countup';
 import './styles/impact.css';
+import AnimatedCounter from '../components/AnimatedCounter';
 
 const Impact = () => {
-  const navigate = useNavigate();
   return (
     <div className="impact-page">
       {/* Hero Section */}
@@ -23,28 +21,28 @@ const Impact = () => {
         <div className="impact-metrics">
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <CountUp end={350} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              <AnimatedCounter end={350} suffix="+" />
             </div>
             <div className="impact-metric-label">Students Impacted</div>
           </div>
 
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <CountUp end={14} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              <AnimatedCounter end={14} suffix="+" />
             </div>
             <div className="impact-metric-label">Innovative Projects</div>
           </div>
 
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <CountUp end={70} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              <AnimatedCounter end={70} suffix="+" />
             </div>
             <div className="impact-metric-label">Active Participants</div>
           </div>
 
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <CountUp end={4} suffix="+" duration={2.5} enableScrollSpy scrollSpyOnce />
+              <AnimatedCounter end={4} suffix="+" />
             </div>
             <div className="impact-metric-label">Years of Impact</div>
           </div>
@@ -151,7 +149,7 @@ const Impact = () => {
             Join us in our mission to create lasting change through social entrepreneurship.
             Every idea has the potential to transform lives.
           </p>
-          <button className="impact-cta-btn" onClick={() => navigate('/joinus')}>
+          <button className="impact-cta-btn">
             Get Involved
           </button>
         </div>

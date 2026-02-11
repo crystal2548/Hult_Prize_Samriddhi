@@ -6,7 +6,6 @@
     /* Added top padding to account for fixed navbar if needed, or just visual spacing */
     display: flex;
     justify-content: center;
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .organizer-container {

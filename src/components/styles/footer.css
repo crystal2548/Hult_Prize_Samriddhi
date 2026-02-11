@@ -37,20 +37,27 @@
     font-size: 0.875rem;
     max-width: 20rem;
     line-height: 1.5;
+}
+
+.footer-logo-container {
     display: flex;
-    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 12px;
     align-items: center;
+    justify-content: center; /* Center by default (Mobile) */
+}
+
+@media (min-width: 768px) {
+    .footer-logo-container {
+        justify-content: flex-start; /* Align left on desktop */
+    }
 }
 
 .footer-copyright {
-    color: #E5007E !important;
+    color: #6b7280;
     text-align: center;
     font-size: 0.75rem;
     margin-top: 0.5rem;
-}
-
-.footer-tagline-highlight {
-    color: #E5007E !important;
 }
 
 .footer-links-section {
@@ -80,8 +87,11 @@
 }
 
 @media (min-width: 768px) {
-    .footer-links-section {
+    .footer-logo {
+        margin-right: 4rem;
+    }
 
+    .footer-links-section {
         flex-direction: row;
         justify-content: space-around;
         align-items: flex-start;
