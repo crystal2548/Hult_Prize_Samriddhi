@@ -543,14 +543,14 @@
     .home-hero-logo {
         width: 250px;
         height: 250px;
-        animation: moveLogo 2.5s ease-in-out 2.5s forwards;
+        animation: moveLogo 2.2s ease-in-out 2.2s forwards;
     }
 
     .home-hero-title {
-        animation: fadeInUp 0.8s ease-out, maxWidthForBreak 1.5s ease-in-out 2.5s forwards;
+        animation: fadeInUp 1s ease-out, maxWidthForBreak 1.5s ease-in-out 2.5s forwards;
     }
 
     .home-hero-subtitle {
-        animation: fadeInUp 0.8s ease-out 0.2s both, subtitleAlignLeft 1.5s ease-in-out 2.5s forwards;
+        animation: fadeInUp 1s ease-out 0.2s both, subtitleAlignLeft 1.5s ease-in-out 2.5s forwards;
     }
 }
