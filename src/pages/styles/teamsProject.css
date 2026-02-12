@@ -134,10 +134,7 @@
 .tpp-stat-number {
   font-size: clamp(48px, 6vw, 72px);
   font-weight: 900;
-  background: linear-gradient(135deg, #EC2088, #8A2890, #12B1E7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--heritage);
   margin-bottom: 12px;
   line-height: 1;
   letter-spacing: -2px;
