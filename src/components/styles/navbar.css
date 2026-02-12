@@ -38,7 +38,7 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
-    
+
 }
 
 .navbar-logo-divider,
@@ -117,6 +117,15 @@
     }
 }
 
+/* Logo Image Styling */
+.navbar-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+
 /* ============================================
    MOBILE VIEW - Bottom Navbar Styles
    ============================================ */
@@ -189,8 +198,9 @@
 }
 
 .mobile-nav-item.active span {
-    opacity: 0;
-    transform: translateY(10px);
+    opacity: 1;
+    color: white;
+    font-weight: 600;
 }
 
 /* The Moving Indicator (Pink Circle) */
@@ -222,16 +232,30 @@
     .mobile-navbar-container {
         display: block;
     }
+
     .navbar-container {
         justify-content: center;
     }
+
     .navbar-header {
-        padding: 10px 15px; /* Reduced padding for mobile */
+        padding: 10px 15px;
+        justify-content: center;
     }
-    .navbar-logo-section img {
-        height: 40px; /* Smaller logo on mobile */
+
+    .navbar-logo-section {
+        margin: 0 auto;
+    }
+
+    .mobile-menu-btn-container {
+        display: none !important;
+    }
+
+    .navbar-logo-section .navbar-logo {
+        height: 40px;
         width: 40px;
+        object-fit: contain;
     }
+
     .navbar-logo-divider {
         height: 40px;
     }

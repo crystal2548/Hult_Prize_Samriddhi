@@ -33,7 +33,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
+  background-image:
     linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
   background-size: 40px 40px;
@@ -120,7 +120,7 @@
    CARDS SECTION
    ============================================ */
 .dev-cards-section {
-  padding: 80px 24px;
+  padding: 10px 24px;
   position: relative;
   z-index: 2;
 }
@@ -301,7 +301,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  
+
   /* Custom styles */
   color: var(--text-secondary);
   font-size: 20px;
@@ -341,23 +341,55 @@
 
 /* Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
 }
 
 @keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
-  50% { box-shadow: 0 0 25px rgba(0, 243, 255, 0.6); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.6);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsiveness */
 @media (max-width: 768px) {
-  .dev-hero { padding-top: 8rem; }
-  .dev-hero-title { font-size: 48px; }
-  .dev-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .dev-hero {
+    margin-top: -2rem;
+  }
+
+  .dev-hero-title {
+    font-size: 48px;
+  }
+
+  .dev-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  .dev-wrapper {
+    margin-top: 2rem;
+    height: 100vh;
+  }
 }

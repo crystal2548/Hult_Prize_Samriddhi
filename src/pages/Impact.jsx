@@ -150,7 +150,7 @@ const Impact = () => {
             Join us in our mission to create lasting change through social entrepreneurship.
             Every idea has the potential to transform lives.
           </p>
-          <Link to="/joinus" className="impact-cta-btn">
+          <Link to="/contact" className="impact-cta-btn">
             Get Involved
           </Link>
         </div>

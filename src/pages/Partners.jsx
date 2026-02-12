@@ -4,6 +4,7 @@ import './styles/partners.css';
 import yearData from '../data/yearData';
 import AnimatedCounter from '../components/AnimatedCounter';
 
+
 const Partners = () => {
   const allSponsors = useMemo(() => {
     const sponsorsMap = new Map();
@@ -198,9 +199,7 @@ const Partners = () => {
         </div>
 
         {/* Recognition */}
-        {/* Supporter Recognition Section Hidden */}
-        {/* 
-        <div className="partners-section">
+        {/* <div className="partners-section">
           <h3 className="partners-section-title">Supporter Recognition</h3>
           <div className="support-recognition-grid">
             <div className="support-recognition-card">
@@ -227,8 +226,7 @@ const Partners = () => {
               </p>
             </div>
           </div>
-        </div>
-        */}
+        </div> */}
 
         {/* Corporate Partnership */}
         <div className="support-corporate">
@@ -265,12 +263,12 @@ const Partners = () => {
             Let's create lasting impact together.
           </p>
           <div className="partners-cta-buttons">
-            <a href="/contact" className="partners-cta-btn-primary">
+            <Link to="/contact" className="partners-cta-btn-primary">
               Get In Touch
-            </a>
-            <a href="/contact" className="partners-cta-btn-secondary">
+            </Link>
+            {/* <Link to="/contact" className="partners-cta-btn-secondary">
               Download Partnership Package
-            </a>
+            </Link> */}
           </div>
         </div>
       </div>

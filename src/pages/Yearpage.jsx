@@ -4,6 +4,7 @@ import { Avatar, Button } from 'antd';
 import { UserOutlined, ArrowLeftOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import './styles/Yearpage.css';
 import yearData from '../data/yearData.js';
+import Sponser from '../components/Sponsors.jsx';
 
 const YearPage = () => {
   const { year } = useParams();
@@ -186,28 +187,7 @@ const YearPage = () => {
         </section>
       )}
 
-      {/* Sponsors - SECTION 5 (LAST) */}
-      {currentYearData.sponsors && currentYearData.sponsors.length > 0 && (
-        <section className="yearpage-section yearpage-section-dark">
-          <div className="yearpage-container">
-            <h2 className="yearpage-section-heading yearpage-animate">Our Valued Sponsors</h2>
-            <div className="yearpage-sponsors-grid">
-              {currentYearData.sponsors.map((sponsor, idx) => (
-                <div key={idx} className="yearpage-sponsor-card yearpage-animate">
-                  <div className="yearpage-sponsor-logo-box">
-                    {sponsor.logo ? (
-                      <img src={sponsor.logo} alt={sponsor.name} className="yearpage-sponsor-logo" />
-                    ) : (
-                      <span className="yearpage-sponsor-placeholder">{sponsor.name || sponsor}</span>
-                    )}
-                  </div>
-                  <p className="yearpage-sponsor-name">{sponsor.name || sponsor}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      <Sponser year={year} />
     </div>
   );
 
