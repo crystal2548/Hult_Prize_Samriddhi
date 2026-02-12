@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './styles/impact.css';
 import AnimatedCounter from '../components/AnimatedCounter';
 
-import { Link } from 'react-router-dom';
-
 const Impact = () => {
   return (
     <div className="impact-page">

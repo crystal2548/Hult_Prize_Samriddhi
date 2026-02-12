@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './styles/partners.css';
 import yearData from '../data/yearData';
 import AnimatedCounter from '../components/AnimatedCounter';
-import { Link } from 'react-router-dom';
+
 
 const Partners = () => {
   const allSponsors = useMemo(() => {
