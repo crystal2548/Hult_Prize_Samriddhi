@@ -663,6 +663,12 @@
 
   .yearpage-sponsors-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .yearpage-sponsor-logo {
+    max-width: 130px;
+    max-height: 60px;
   }
 }
 

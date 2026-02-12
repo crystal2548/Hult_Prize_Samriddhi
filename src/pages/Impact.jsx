@@ -2,6 +2,8 @@ import React from 'react';
 import './styles/impact.css';
 import AnimatedCounter from '../components/AnimatedCounter';
 
+import { Link } from 'react-router-dom';
+
 const Impact = () => {
   return (
     <div className="impact-page">
@@ -149,9 +151,9 @@ const Impact = () => {
             Join us in our mission to create lasting change through social entrepreneurship.
             Every idea has the potential to transform lives.
           </p>
-          <button className="impact-cta-btn">
+          <Link to="/contact" className="impact-cta-btn">
             Get Involved
-          </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -239,7 +239,15 @@
 
     .navbar-header {
         padding: 10px 15px;
-        /* Reduced padding for mobile */
+        justify-content: center;
+    }
+
+    .navbar-logo-section {
+        margin: 0 auto;
+    }
+
+    .mobile-menu-btn-container {
+        display: none !important;
     }
 
     .navbar-logo-section .navbar-logo {

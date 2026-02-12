@@ -75,7 +75,7 @@ const Home = () => {
       </div>
 
       <div className="home-animate visible delay-3">
-        <Sponsors />
+        <Sponsors year="2026" />
       </div>
 
       <div className="home-contact-wrapper home-animate visible delay-3">

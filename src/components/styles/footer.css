@@ -44,12 +44,16 @@
     gap: 12px;
     margin-bottom: 12px;
     align-items: center;
-    justify-content: center; /* Center by default (Mobile) */
+    justify-content: center;
+    margin: 0 auto 12px auto;
+    /* Force center in block context */
+    /* Center by default (Mobile) */
 }
 
 @media (min-width: 768px) {
     .footer-logo-container {
-        justify-content: flex-start; /* Align left on desktop */
+        justify-content: flex-start;
+        /* Align left on desktop */
     }
 }
 

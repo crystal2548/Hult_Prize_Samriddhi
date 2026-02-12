@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/footer.jsx";
 import ScrollToTop from "../components/ScrollToTop.jsx";
-import LoadingSpinner from "../components/LoadingSpinner.jsx";
+import SkeletonLoader from "../components/SkeletonLoader.jsx";
 
 const RootLayout = () => {
   const location = useLocation();
@@ -19,7 +19,7 @@ const RootLayout = () => {
   }, []);
 
   if (loading) {
-    return <LoadingSpinner />;
+    return <SkeletonLoader />;
   }
 
   return (

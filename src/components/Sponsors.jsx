@@ -2,21 +2,25 @@ import React from 'react';
 import yearData from '../data/yearData.js';
 import './styles/sponsors.css';
 
-const Sponsors = () => {
-    // Collect all sponsors from all years
+const Sponsors = ({ year }) => {
+    // Collect sponsors based on props
     const allSponsors = [];
 
-    Object.keys(yearData).forEach(year => {
-        if (yearData[2026].sponsors && yearData[2026].sponsors.length > 0) {
-            yearData[2026].sponsors.forEach(sponsor => {
-                // Avoid duplicates by checking if sponsor already exists
-                const exists = allSponsors.find(s => s.name === sponsor.name);
-                if (!exists) {
-                    allSponsors.push(sponsor);
-                }
-            });
+    // If year is provided, show only that year's sponsors
+    if (year) {
+        if (yearData[year] && yearData[year].sponsors) {
+            allSponsors.push(...yearData[year].sponsors);
         }
-    });
+    } else {
+        // If no year provided (default to current year / home page), show 2026 sponsors
+        // or you can choose to show ALL unique sponsors across all years if that's the requirement.
+        // The user said: "home page display the sponsers of the current year"
+        // Assuming current year is 2026 based on yearData structure in previous diffs.
+        const currentYear = '2026';
+        if (yearData[currentYear] && yearData[currentYear].sponsors) {
+            allSponsors.push(...yearData[currentYear].sponsors);
+        }
+    }
 
     if (allSponsors.length === 0) {
         return null;

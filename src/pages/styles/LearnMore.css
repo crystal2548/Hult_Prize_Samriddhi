@@ -565,7 +565,11 @@
     padding: 60px 0;
   }
 
-  .learn-stats-grid,
+  .learn-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
   .learn-journey-grid,
   .learn-stories-grid,
   .learn-benefits-grid {

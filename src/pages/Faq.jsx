@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './styles/faq.css';
+import { Link } from 'react-router-dom';
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -94,9 +95,9 @@ const FAQ = () => {
           <p className="faq-cta-text">
             Can't find the answer you're looking for? Feel free to reach out to us directly.
           </p>
-          <a href="/contact" className="faq-cta-btn">
+          <Link to="/contact" className="faq-cta-btn">
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </div>

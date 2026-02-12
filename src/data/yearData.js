@@ -373,7 +373,7 @@ const yearData = {
                 solutionOverview: 'LandNova is a secure, AI-driven real estate platform connecting users with verified properties using government-based verification, AI matchmaking, virtual tours, and secure authentication.',
                 impact: 'Reduces real estate fraud, improves transaction security, simplifies property search, and promotes transparent digital property markets in Nepal.',
                 tags: ['PropTech', 'Real Estate Marketplace', 'AI Matchmaking', 'Fraud Prevention', 'Digital Property Platform', 'Smart Housing', 'FinTech Integration', 'SDG 9', 'SDG 11'],
-                members: ['Samana Neupane' ,' Aaska Prajapati' , 'Achyuta Gajurel']
+                members: ['Samana Neupane', ' Aaska Prajapati', 'Achyuta Gajurel']
             },
             {
                 name: 'The pirates',

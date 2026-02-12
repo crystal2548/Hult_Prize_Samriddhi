@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import hultLogo from '../assets/Logo.png';
 import samriddhiLogo from '../assets/SamriddhiLogo.png';
 import './styles/footer.css';
+import Item from 'antd/es/list/Item';
 
 const Footer = () => {
     return (
@@ -96,7 +97,7 @@ const Footer = () => {
             <div className="footer-copyright">
                 © {new Date().getFullYear()} Hult Prize at Samriddhi College. All rights reserved.
             </div>
-        </footer>
+        </footer >
     );
 };
 

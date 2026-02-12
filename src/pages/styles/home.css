@@ -72,13 +72,12 @@
     width: 100%;
     max-width: 1300px;
     height: 100%;
-    max-height: 400px;
-    padding: 0 20px;
+    padding: 80px 20px 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-anim-container {
@@ -86,9 +85,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    height: 100%;
-    max-height: 400px;
+    gap: 30px;
+    height: auto;
     width: 100%;
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
@@ -109,8 +107,8 @@
 }
 
 .home-hero-logo {
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
     animation: fadeInUp 1s ease-out 0.4s forwards;
 }
@@ -535,6 +533,14 @@
    ============================================ */
 
 @media (min-width: 768px) {
+    .home-hero-content {
+        flex-direction: row;
+        padding: 0 20px;
+        height: 100%;
+        overflow: visible;
+        /* Ensure overlay animation works */
+    }
+
     .hero-anim-container {
         flex-direction: row;
         animation: fadeInUp 1s ease-out forwards, moveToLeftAndScale 1.5s ease-in-out 2.5s forwards;
@@ -552,5 +558,20 @@
 
     .home-hero-subtitle {
         animation: fadeInUp 1s ease-out 0.2s both, subtitleAlignLeft 1.5s ease-in-out 2.5s forwards;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .home-stat-item {
+        padding: 1rem;
+    }
+
+    .home-stat-number {
+        font-size: 32px;
     }
 }
