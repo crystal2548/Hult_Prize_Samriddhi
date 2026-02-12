@@ -59,10 +59,15 @@
    ============================================ */
 
 .yearpage-back-section {
-  background: var(--dark);
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding-top: 8rem;
-  padding-bottom: 28px;
+  padding-bottom: 24px;
   border-bottom: 1px solid rgba(236, 32, 136, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .yearpage-back-btn {
@@ -90,12 +95,13 @@
 
 .yearpage-hero-section {
   position: relative;
-  min-height: 60vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-bottom: 1px solid rgba(236, 32, 136, 0.15);
+  background: linear-gradient(45deg, #EC2088, #12B1E7);
 }
 
 .yearpage-hero-bg {
@@ -105,15 +111,29 @@
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
+  opacity: 0.55;
+  /* Fades the image against the black background */
+  transform: scale(1);
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
 }
 
 .yearpage-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg,
-      rgba(236, 32, 136, 0.85) 0%,
-      rgba(138, 40, 144, 0.75) 50%,
-      rgba(18, 177, 231, 0.65) 100%);
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.7) 100%);
   z-index: 1;
 }
 
@@ -130,7 +150,7 @@
   color: var(--white);
   line-height: 1.1;
   letter-spacing: -0.03em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
   margin: 0;
 }
 
@@ -139,7 +159,7 @@
    ============================================ */
 
 .yearpage-themes-section {
-  padding: 80px 0;
+  padding: 100px 0;
   background: var(--dark);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -202,12 +222,13 @@
 }
 
 .yearpage-section-heading {
-  font-size: clamp(36px, 5vw, 52px);
+  font-size: clamp(34px, 5vw, 48px);
   font-weight: 900;
   color: var(--white);
   text-align: center;
   margin-bottom: 64px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   position: relative;
 }
 
@@ -242,6 +263,11 @@
   margin-bottom: 20px !important;
   box-shadow: 0 8px 24px rgba(236, 32, 136, 0.3) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.yearpage-avatar img {
+  object-fit: cover !important;
+  object-position: top center !important;
 }
 
 .yearpage-avatar:hover {
@@ -292,7 +318,8 @@
 
 .yearpage-team-card:hover {
   border-color: var(--heritage);
-  box-shadow: 0 12px 32px rgba(236, 32, 136, 0.25);
+  box-shadow: 0 20px 48px rgba(236, 32, 136, 0.3);
+  transform: translateY(-4px);
 }
 
 .yearpage-team-header {
@@ -317,21 +344,22 @@
 }
 
 .yearpage-team-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
   background-size: cover;
   background-position: center;
-  border: 2px solid var(--heritage);
+  border: 3px solid var(--heritage);
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(236, 32, 136, 0.2);
 }
 
 .yearpage-team-name {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 900;
   color: var(--white);
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .yearpage-team-icon {
@@ -397,6 +425,17 @@
   margin: 0;
 }
 
+.yearpage-team-members {
+  font-size: 16px;
+  color: var(--white);
+  line-height: 1.6;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 4px solid var(--heritage);
+}
+
 .yearpage-team-tags {
   display: flex;
   flex-wrap: wrap;
@@ -425,17 +464,23 @@
    ============================================ */
 
 .yearpage-winners-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 32px;
 }
 
 .yearpage-winner-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 360px;
   background: var(--card-bg);
   border: 2px solid rgba(236, 32, 136, 0.2);
   border-radius: 16px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
 }
 
 /* 1ST PLACE - GOLDEN GLOW */
@@ -443,8 +488,7 @@
   border-color: #FFD700;
   transform: translateY(-12px);
   box-shadow:
-    0 0 30px rgba(255, 215, 0, 0.6),
-    0 0 60px rgba(255, 215, 0, 0.4),
+    0 0 20px rgba(255, 215, 0, 0.4),
     0 20px 48px rgba(255, 215, 0, 0.3);
 }
 
@@ -472,7 +516,7 @@
   width: 100%;
   height: 200px;
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   border-bottom: 2px solid rgba(236, 32, 136, 0.2);
 }
 
@@ -520,22 +564,33 @@
 }
 
 .yearpage-sponsor-card {
-  background: var(--card-bg);
-  border: 2px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 40px 32px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 20px !important;
   text-align: center;
-  font-weight: 700;
-  font-size: 16px;
-  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .yearpage-sponsor-card:hover {
-  border-color: var(--heritage);
-  background: rgba(236, 32, 136, 0.05);
+  background: transparent !important;
   transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(236, 32, 136, 0.2);
+}
+
+.yearpage-sponsor-logo {
+  max-width: 180px;
+  max-height: 80px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.7);
+  transition: all 0.4s ease;
+}
+
+.yearpage-sponsor-card:hover .yearpage-sponsor-logo {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.1);
 }
 
 /* ============================================
@@ -548,7 +603,8 @@
   }
 
   .yearpage-winners-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -568,6 +624,11 @@
 
   .yearpage-themes-section {
     padding: 60px 0;
+  }
+
+  .yearpage-winner-image {
+    height: 350px !important;
+    background-position: top center;
   }
 
   .yearpage-theme-card {

@@ -40,7 +40,7 @@ const YearPage = () => {
       </div>
 
       {/* Hero with Background Image */}
-      <section className="yearpage-hero-section">
+      <section className="yearpage-hero-section" style={{ backgroundColor: currentYearData.heroBgColor || '#FFFFFF' }}>
         <div className="yearpage-hero-bg" style={{ backgroundImage: `url(${currentYearData.heroImage})` }}>
           <div className="yearpage-hero-overlay"></div>
         </div>
@@ -65,14 +65,14 @@ const YearPage = () => {
       </section>
 
       {/* Teams - SECTION 1 */}
-      {currentYearData.teams.length > 0 && (
+      {currentYearData.teams && currentYearData.teams.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Participating Teams & Projects</h2>
             <div className="yearpage-teams-list">
               {currentYearData.teams.map((team, idx) => (
                 <div key={idx} className="yearpage-team-card yearpage-animate">
-                  <div 
+                  <div
                     className="yearpage-team-header"
                     onClick={() => toggleTeam(idx)}
                   >
@@ -86,7 +86,7 @@ const YearPage = () => {
                       {expandedTeams[idx] ? <MinusOutlined /> : <PlusOutlined />}
                     </div>
                   </div>
-                  
+
                   {expandedTeams[idx] && (
                     <div className="yearpage-team-details">
                       <div className="yearpage-team-block">
@@ -101,6 +101,14 @@ const YearPage = () => {
                         <h4>Impact:</h4>
                         <p>{team.impact}</p>
                       </div>
+                      {team.members && team.members.length > 0 && (
+                        <div className="yearpage-team-block">
+                          <h4>Team Members:</h4>
+                          <div className="yearpage-team-members">
+                            {team.members.join(', ')}
+                          </div>
+                        </div>
+                      )}
                       <div className="yearpage-team-tags">
                         {team.tags.map((tag, i) => (
                           <span key={i} className="yearpage-tag">{tag}</span>
@@ -120,14 +128,13 @@ const YearPage = () => {
         <div className="yearpage-container">
           <h2 className="yearpage-section-heading yearpage-animate">Hult Prize {year} Winners</h2>
           <div className="yearpage-winners-grid">
-            {currentYearData.winners.map((winner, idx) => (
-              <div 
-                key={idx} 
-                className={`yearpage-winner-card yearpage-animate ${
-                  idx === 0 ? 'yearpage-winner-first' : 
-                  idx === 1 ? 'yearpage-winner-second' : 
-                  'yearpage-winner-third'
-                }`}
+            {currentYearData.winners && currentYearData.winners.map((winner, idx) => (
+              <div
+                key={idx}
+                className={`yearpage-winner-card yearpage-animate ${idx === 0 ? 'yearpage-winner-first' :
+                  idx === 1 ? 'yearpage-winner-second' :
+                    'yearpage-winner-third'
+                  }`}
               >
                 {winner.image && (
                   <div className="yearpage-winner-image" style={{ backgroundImage: `url(${winner.image})` }}></div>
@@ -144,14 +151,14 @@ const YearPage = () => {
       </section>
 
       {/* Judges - SECTION 3 */}
-      {currentYearData.judges.length > 0 && (
+      {currentYearData.judges && currentYearData.judges.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Judges & Mentors</h2>
             <div className="yearpage-judges-grid">
               {currentYearData.judges.map((judge, idx) => (
                 <div key={idx} className="yearpage-judge-item yearpage-animate">
-                  <Avatar size={100} icon={<UserOutlined />} className="yearpage-avatar yearpage-avatar-judge" />
+                  <Avatar size={100} src={judge.image} icon={<UserOutlined />} className="yearpage-avatar yearpage-avatar-judge" />
                   <h3 className="yearpage-judge-name">{judge.name}</h3>
                   <p className="yearpage-judge-role">{judge.role}</p>
                 </div>
@@ -162,14 +169,14 @@ const YearPage = () => {
       )}
 
       {/* Organizing Committee - SECTION 4 */}
-      {currentYearData.organizingCommittee.length > 0 && (
+      {currentYearData.organizingCommittee && currentYearData.organizingCommittee.length > 0 && (
         <section className="yearpage-section">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Organizing Committee</h2>
             <div className="yearpage-committee-grid">
               {currentYearData.organizingCommittee.map((member, idx) => (
                 <div key={idx} className="yearpage-committee-item yearpage-animate">
-                  <Avatar size={100} icon={<UserOutlined />} className="yearpage-avatar" />
+                  <Avatar size={100} src={member.image} icon={<UserOutlined />} className="yearpage-avatar" />
                   <h3 className="yearpage-member-name">{member.name}</h3>
                   <p className="yearpage-member-role">{member.role}</p>
                 </div>
@@ -180,23 +187,27 @@ const YearPage = () => {
       )}
 
       {/* Sponsors - SECTION 5 (LAST) */}
-      {currentYearData.sponsors.length > 0 && (
+      {currentYearData.sponsors && currentYearData.sponsors.length > 0 && (
         <section className="yearpage-section yearpage-section-dark">
           <div className="yearpage-container">
             <h2 className="yearpage-section-heading yearpage-animate">Our Valued Sponsors</h2>
             <div className="yearpage-sponsors-grid">
               {currentYearData.sponsors.map((sponsor, idx) => (
                 <div key={idx} className="yearpage-sponsor-card yearpage-animate">
-                  {sponsor}
+                  {sponsor.logo ? (
+                    <img src={sponsor.logo} alt={sponsor.name} className="yearpage-sponsor-logo" />
+                  ) : (
+                    sponsor.name || sponsor
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </section>
-      )}    
+      )}
     </div>
   );
-  
+
 };
 
 export default YearPage;

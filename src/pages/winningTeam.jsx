@@ -13,7 +13,7 @@ const WinningTeam = () => {
                     return
                 }
                 setwinner(data);
-                console.log(winner);
+                // console.log(winner);
             }
             catch (err) {
                 console.log(err);

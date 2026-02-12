@@ -31,7 +31,6 @@ const RootLayout = () => {
       </main>
       <Footer />
     </div>
-  );
-};
-
-export default RootLayout;
+  )
+}
+export default RootLayout

@@ -43,6 +43,7 @@ const HomeOrganizers = () => {
                                     src={member.image}
                                     alt={member.name}
                                     className="organizer-img"
+                                    loading='lazy'
                                 />
                                 <div className="organizer-social-overlay">
                                     <a href={member.linkedin} target="_blank" className="organizer-social-link"><LinkedinFilled /></a>

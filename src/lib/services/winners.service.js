@@ -1,7 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-const WinnerRef = collection(db, "globalwinner")
+const WinnerRef = query(collection(db, "globalwinner"), orderBy("year", "desc"));
 
 export async function getAllWinners() {
     const snap = await getDocs(WinnerRef)

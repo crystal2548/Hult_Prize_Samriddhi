@@ -248,8 +248,7 @@ const JoinUsPage = () => {
                     <h4 className="contact-detail-title">Address</h4>
                     <p className="contact-detail-text">
                       Samriddhi College<br />
-                      Kathmandu, Nepal<br />
-                      [Full Address Here]
+                      Lokanthali, Bhaktapur, Nepal
                     </p>
                   </div>
                 </div>

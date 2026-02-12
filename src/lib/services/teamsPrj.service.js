@@ -1,7 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase/config";
 
-const TeamProjectRef = collection(db, "teamProject")
+const TeamProjectRef = query(collection(db, "teamProject"), orderBy("year", "desc"));
 
 export async function getAllProjects() {
     const snap = await getDocs(TeamProjectRef)
