@@ -198,8 +198,9 @@
 }
 
 .mobile-nav-item.active span {
-    opacity: 0;
-    transform: translateY(10px);
+    opacity: 1;
+    color: white;
+    font-weight: 600;
 }
 
 /* The Moving Indicator (Pink Circle) */
