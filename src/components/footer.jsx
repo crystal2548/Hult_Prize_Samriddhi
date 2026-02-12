@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import hultLogo from '../assets/Logo.png';
-import samriddhiLogo from '../assets/SamriddhiLogo.png';
 import './styles/footer.css';
-import Item from 'antd/es/list/Item';
+import logo from '../assets/logo.png';
+import SamriddhiLogo from '../assets/SamriddhiLogo.png';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+    const navigate = useNavigate();
     return (
         <footer className="footer-container">
             <div className="footer-content-wrapper">
                 {/* Brand Section */}
                 <div className="footer-brand">
-                    <div style={{ display: 'flex', gap: '12px', marginBottom: '12px', alignItems: 'center' }}>
-                        <img src={hultLogo} alt="Hult Prize" style={{ height: '40px' }} />
-                        <img src={samriddhiLogo} alt="Samriddhi College" style={{ height: '40px' }} />
+                    <div className="navbar-logo-section">
+                        <img src={logo} alt="LOGO" className="navbar-logo" onClick={() => navigate('/')} />
+                        <div className="navbar-logo-divider"></div>
+                        <img src={SamriddhiLogo} alt="SamriddhiLogo" className="navbar-logo" onClick={() => navigate('/')} />
                     </div>
                     <p className="footer-tagline">
                         Empowering the next generation of social entrepreneurs.

@@ -2,7 +2,7 @@
 import { Suspense } from 'react';
 import { RouterProvider } from 'react-router-dom'
 import router from './routes'
-import LoadingSpinner from './components/LoadingSpinner';
+import SkeletonLoader from './components/SkeletonLoader';
 // import Cards1 from './Cards1'
 import Test from './Test'
 import './App.css'
@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <Suspense fallback={<LoadingSpinner />}>
+      <Suspense fallback={<SkeletonLoader />}>
         <RouterProvider router={router} />
 
       </Suspense>

@@ -7,8 +7,7 @@ import {
   EnvironmentOutlined,
   FacebookFilled,
   InstagramFilled,
-  LinkedinFilled,
-  TwitterOutlined
+  LinkedinFilled
 } from '@ant-design/icons';
 import { UserPlus, Briefcase, HeartHandshake } from "lucide-react";
 import emailjs from '@emailjs/browser';
@@ -259,7 +258,7 @@ const JoinUsPage = () => {
                 <h3 className="social-title">Follow Us</h3>
                 <div className="social-links">
                   <a
-                    href="https://facebook.com/hultprizesamriddhi"
+                    href="https://www.facebook.com/officialhultsamriddhi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link facebook"
@@ -267,7 +266,7 @@ const JoinUsPage = () => {
                     <FacebookFilled />
                   </a>
                   <a
-                    href="https://instagram.com/hultprizesamriddhi"
+                    href="https://www.instagram.com/ht.at.samriddhi/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link instagram"
@@ -275,21 +274,14 @@ const JoinUsPage = () => {
                     <InstagramFilled />
                   </a>
                   <a
-                    href="https://linkedin.com/company/hultprizesamriddhi"
+                    href="https://www.linkedin.com/company/hult-prize-at-samriddhi-college/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link linkedin"
                   >
                     <LinkedinFilled />
                   </a>
-                  <a
-                    href="https://twitter.com/hultprizesamri"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link twitter"
-                  >
-                    <TwitterOutlined />
-                  </a>
+
                 </div>
               </div>
 

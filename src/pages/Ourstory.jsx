@@ -58,19 +58,19 @@ const OurStory = () => {
             </div>
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                <AnimatedCounter end={14} suffix="+" />
+                <AnimatedCounter end={46} suffix="+" />
               </div>
               <div className="ourstory-stat-label">Teams Formed</div>
             </div>
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                <AnimatedCounter end={70} suffix="+" />
+                <AnimatedCounter end={40} suffix="+" />
               </div>
-              <div className="ourstory-stat-label">Students Engaged</div>
+              <div className="ourstory-stat-label">Active Participants</div>
             </div>
             <div className="ourstory-stat">
               <div className="ourstory-stat-number">
-                 <AnimatedCounter end={350} suffix="+" />
+                <AnimatedCounter end={180} suffix="+" />
               </div>
               <div className="ourstory-stat-label">Total Participants</div>
             </div>

@@ -103,26 +103,47 @@
 }
 
 .partner-card {
-    height: 128px;
-    background: linear-gradient(to bottom right, rgba(26, 26, 26, 1), rgba(10, 10, 10, 1));
-    border-radius: 16px;
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 12px;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(236, 32, 136, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
 }
 
 .partner-card:hover {
-    border-color: rgba(236, 32, 136, 0.5);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(236, 32, 136, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(236, 32, 136, 0.3);
+}
+
+.partner-logo-box {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #f5f5f5;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.partner-logo-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .partner-name {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
-    color: #d1d5db;
+    color: white;
+    text-align: center;
 }
 
 .media-partners-grid {
@@ -274,9 +295,9 @@
     margin: 80px 0 64px;
     padding: 40px 24px;
     background: linear-gradient(to right,
-        rgba(236, 32, 136, 0.05),
-        rgba(138, 40, 144, 0.05),
-        rgba(18, 177, 231, 0.05));
+            rgba(236, 32, 136, 0.05),
+            rgba(138, 40, 144, 0.05),
+            rgba(18, 177, 231, 0.05));
     border-radius: 16px;
 }
 
@@ -381,9 +402,9 @@
     margin-bottom: 64px;
     padding: 40px;
     background: linear-gradient(to right,
-        rgba(236, 32, 136, 0.1),
-        rgba(138, 40, 144, 0.1),
-        rgba(18, 177, 231, 0.1));
+            rgba(236, 32, 136, 0.1),
+            rgba(138, 40, 144, 0.1),
+            rgba(18, 177, 231, 0.1));
     border-radius: 16px;
     border: 1px solid rgba(236, 32, 136, 0.2);
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/impact.css';
 import AnimatedCounter from '../components/AnimatedCounter';
 
@@ -23,21 +24,21 @@ const Impact = () => {
         <div className="impact-metrics">
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <AnimatedCounter end={350} suffix="+" />
+              <AnimatedCounter end={180} suffix="+" />
             </div>
             <div className="impact-metric-label">Students Impacted</div>
           </div>
 
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <AnimatedCounter end={14} suffix="+" />
+              <AnimatedCounter end={46} suffix="+" />
             </div>
-            <div className="impact-metric-label">Innovative Projects</div>
+            <div className="impact-metric-label">Teams Involved</div>
           </div>
 
           <div className="impact-metric">
             <div className="impact-metric-number">
-              <AnimatedCounter end={70} suffix="+" />
+              <AnimatedCounter end={40} suffix="+" />
             </div>
             <div className="impact-metric-label">Active Participants</div>
           </div>

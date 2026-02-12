@@ -6,8 +6,7 @@ import {
   EnvironmentOutlined,
   FacebookFilled,
   InstagramFilled,
-  LinkedinFilled,
-  TwitterOutlined
+  LinkedinFilled
 } from '@ant-design/icons';
 import emailjs from '@emailjs/browser';
 import './styles/contact.css';
@@ -239,8 +238,7 @@ const Contact = () => {
                     <h4 className="contact-detail-title">Address</h4>
                     <p className="contact-detail-text">
                       Samriddhi College<br />
-                      Kathmandu, Nepal<br />
-                      [Full Address Here]
+                      Lokanthali, Bhaktapur, Nepal
                     </p>
                   </div>
                 </div>
@@ -251,7 +249,7 @@ const Contact = () => {
                 <h3 className="social-title">Follow Us</h3>
                 <div className="social-links">
                   <a
-                    href="https://facebook.com/hultprizesamriddhi"
+                    href="https://www.facebook.com/officialhultsamriddhi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link facebook"
@@ -259,7 +257,7 @@ const Contact = () => {
                     <FacebookFilled />
                   </a>
                   <a
-                    href="https://instagram.com/hultprizesamriddhi"
+                    href="https://www.instagram.com/ht.at.samriddhi/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link instagram"
@@ -267,20 +265,12 @@ const Contact = () => {
                     <InstagramFilled />
                   </a>
                   <a
-                    href="https://linkedin.com/company/hultprizesamriddhi"
+                    href="https://www.linkedin.com/company/hult-prize-at-samriddhi-college/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link linkedin"
                   >
                     <LinkedinFilled />
-                  </a>
-                  <a
-                    href="https://twitter.com/hultprizesamri"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-link twitter"
-                  >
-                    <TwitterOutlined />
                   </a>
                 </div>
               </div>

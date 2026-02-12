@@ -21,7 +21,6 @@ const RootLayout = () => {
   if (loading) {
     return <SkeletonLoader />;
   }
-
   return (
     <div className="w-full">
       <ScrollToTop />

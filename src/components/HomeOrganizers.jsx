@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './styles/homeOrganizers.css';
 // import organizersData from '../data/organizersData.js';
-import { LinkedinFilled, TwitterOutlined } from '@ant-design/icons';
+import { LinkedinFilled } from '@ant-design/icons';
 
 import { getAllOrganizers } from '../lib/services/organizations.service.js';
 

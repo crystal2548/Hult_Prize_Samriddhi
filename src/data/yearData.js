@@ -447,7 +447,7 @@ const yearData = {
             { name: 'Ather', logo: 'https://www.mg21.com/wp-content/uploads/2024/07/Ather-Energy.png' },
             { name: 'Deego Nepal', logo: 'https://np-live-21.slatic.net/kf/S1724bfb4d5f143408de12e8c154744322.jpg_200x200.jpg' },
             { name: 'Vision Cart', logo: 'https://tse4.mm.bing.net/th/id/OIP.H-Ln8DxOa5nDccGGfRvblQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3' },
-            { name: 'Nhu Designs', logo: 'https://www.thenhudesigns.com/images/preference/TXljU-logo1-(1).png' }
+            { name: 'Nhu designs', logo: 'https://www.thenhudesigns.com/images/preference/TXljU-logo1-(1).png' }
         ],
     },
 
@@ -537,9 +537,9 @@ const yearData = {
         judges: [],
         sponsors: [
             { name: 'Ather', logo: 'https://i.postimg.cc/GhMMJw9h/Ather.jpg' },
-            { name: 'Deego Nepal', logo: 'https://i.postimg.cc/dtWWmPD7/Dami.jpg' },
-            { name: 'Vision Cart', logo: 'https://i.postimg.cc/hPCCbWhG/Pal.jpg' },
-            { name: 'Nhu Designs', logo: 'https://i.postimg.cc/Kv99rS4k/Yugi.jpg' }
+            { name: 'Dami experience', logo: 'https://i.postimg.cc/dtWWmPD7/Dami.jpg' },
+            { name: 'Gifting Partner', logo: 'https://i.postimg.cc/hPCCbWhG/Pal.jpg' },
+            { name: 'Yajju Culture and Dance Dress Hire Center', logo: 'https://i.postimg.cc/Kv99rS4k/Yugi.jpg' }
         ],
     },
 };
