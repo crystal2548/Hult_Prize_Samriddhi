@@ -38,7 +38,7 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
-    
+
 }
 
 .navbar-logo-divider,
@@ -116,6 +116,15 @@
         display: flex;
     }
 }
+
+/* Logo Image Styling */
+.navbar-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
 
 /* ============================================
    MOBILE VIEW - Bottom Navbar Styles
@@ -222,16 +231,22 @@
     .mobile-navbar-container {
         display: block;
     }
+
     .navbar-container {
         justify-content: center;
     }
+
     .navbar-header {
-        padding: 10px 15px; /* Reduced padding for mobile */
+        padding: 10px 15px;
+        /* Reduced padding for mobile */
     }
-    .navbar-logo-section img {
-        height: 40px; /* Smaller logo on mobile */
+
+    .navbar-logo-section .navbar-logo {
+        height: 40px;
         width: 40px;
+        object-fit: contain;
     }
+
     .navbar-logo-divider {
         height: 40px;
     }
