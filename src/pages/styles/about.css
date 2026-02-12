@@ -5,108 +5,199 @@
    ============================================ */
 
 :root {
-  --heritage: #EC2088;
-  --purple: #8A2890;
-  --sky: #12B1E7;
-  --sun: #FDD40E;
-  --black: #191919;
-  --dark: #0a0a0a;
-  --card-bg: #1a1a1a;
-  --text-gray: #d1d5db;
-  --text-light: #9ca3af;
+    --heritage: #EC2088;
+    --purple: #8A2890;
+    --sky: #12B1E7;
+    --sun: #FDD40E;
+    --black: #191919;
+    --dark: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-gray: #d1d5db;
+    --text-light: #9ca3af;
 }
 
 /* Page Wrapper */
 .abt-wrapper {
-  background: var(--black);
-  min-height: 100vh;
-  font-family: 'Figtree', sans-serif;
-  color: white;
+    background: var(--black);
+    min-height: 100vh;
+    font-family: 'Figtree', sans-serif;
+    color: white;
 }
 
 /* ============================================
    HERO SECTION
    ============================================ */
 .abt-hero {
-  position: relative;
-  padding-top: 8rem;
-  height: 500px; /* Matching TeamsProject */
-  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+    position: relative;
+    padding-top: 8rem;
+    height: 500px;
+    /* Matching TeamsProject */
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .abt-hero-bg {
-  position: absolute;
-  inset: 0;
-  background: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1600&h=900&fit=crop') center/cover;
-  opacity: 0.15;
-  filter: grayscale(30%);
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1600&h=900&fit=crop') center/cover;
+    opacity: 0.15;
+    filter: grayscale(30%);
 }
 
 .abt-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(236, 32, 136, 0.3), rgba(18, 177, 231, 0.2));
-  z-index: 1;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(236, 32, 136, 0.3), rgba(18, 177, 231, 0.2));
+    z-index: 1;
 }
 
 .abt-hero-inner {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  width: 100%;
-  padding: 0 48px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 0 48px;
 }
 
 .abt-hero-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--heritage);
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  margin: 0 0 20px 0;
-  animation: fadeInDown 0.8s ease-out;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--heritage);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+    animation: fadeInDown 0.8s ease-out;
 }
 
 .abt-hero-title {
-  font-size: clamp(48px, 7vw, 80px);
-  font-weight: 900;
-  color: #ffffff;
-  letter-spacing: -1.5px;
-  margin: 0 0 24px 0;
-  line-height: 1.1;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -1.5px;
+    margin: 0 0 24px 0;
+    line-height: 1.1;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .abt-hero-subtitle {
-  font-size: clamp(16px, 2vw, 20px);
-  font-weight: 500;
-  color: #cccccc;
-  line-height: 1.6;
-  max-width: 700px;
-  margin: 0 auto;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 500;
+    color: #cccccc;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .text-stroke {
     color: transparent;
-    -webkit-text-stroke: 1px white;
+    -webkit-text-stroke: 2px white;
 }
 
 /* Animations */
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES - HERO SECTION
+   ============================================ */
+@media (max-width: 768px) {
+    .abt-hero {
+        height: auto;
+        min-height: 450px;
+        padding: 100px 20px 60px 20px;
+    }
+
+    .abt-hero-inner {
+        padding: 0 20px;
+    }
+
+    .abt-hero-label {
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+    }
+
+    .abt-hero-title {
+        font-size: clamp(36px, 12vw, 56px);
+        line-height: 1.2;
+        margin-bottom: 20px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* Fix text-stroke visibility on mobile */
+    .text-stroke {
+        -webkit-text-stroke: 1.5px white;
+        /* Fallback for better visibility */
+        color: rgba(255, 255, 255, 0.1);
+        -webkit-text-fill-color: transparent;
+        paint-order: stroke fill;
+    }
+
+    .abt-hero-subtitle {
+        font-size: 15px;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .abt-hero {
+        padding: 90px 15px 50px 15px;
+        min-height: 400px;
+    }
+
+    .abt-hero-inner {
+        padding: 0 10px;
+    }
+
+    .abt-hero-title {
+        font-size: clamp(32px, 11vw, 48px);
+        margin-bottom: 16px;
+    }
+
+    /* Ensure CHANGEMAKERS is fully visible on small screens */
+    .text-stroke {
+        -webkit-text-stroke: 1.2px white;
+        display: block;
+        width: 100%;
+        word-break: keep-all;
+        white-space: nowrap;
+        overflow: visible;
+    }
+
+    .abt-hero-subtitle {
+        font-size: 14px;
+        padding: 0 5px;
+    }
 }
 
 /* ============================================
@@ -187,7 +278,7 @@
     aspect-ratio: 16/9;
     background: #111;
     border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -214,8 +305,15 @@
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .abt-impact-label {
@@ -234,8 +332,9 @@
     border: 1px solid rgba(236, 32, 136, 0.3);
     padding: 24px;
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    display: none; /* Mobile hidden by default */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    display: none;
+    /* Mobile hidden by default */
 }
 
 @media (min-width: 768px) {
@@ -278,7 +377,7 @@
 
 .abt-mission-card {
     background: var(--card-bg);
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
     padding: 40px 32px;
     transition: all 0.3s ease;
@@ -340,7 +439,7 @@
 }
 
 .abt-text-stroke {
-    -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
     color: transparent;
 }
 
@@ -354,7 +453,7 @@
 .abt-divider {
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     margin-bottom: 32px;
 }
 
@@ -364,4 +463,132 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text-light);
+}
+
+/* ============================================
+   ADDITIONAL MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Story Section Mobile */
+@media (max-width: 768px) {
+    .abt-story-section {
+        padding: 60px 20px;
+    }
+
+    .abt-story-grid {
+        gap: 40px;
+    }
+
+    .abt-section-heading {
+        font-size: 32px;
+        margin-bottom: 12px;
+    }
+
+    .abt-text-primary {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .abt-video-card {
+        border-radius: 16px;
+    }
+}
+
+/* Mission Section Mobile */
+@media (max-width: 768px) {
+    .abt-mission-section {
+        padding: 60px 20px;
+    }
+
+    .abt-mission-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .abt-mission-card {
+        padding: 32px 24px;
+        border-radius: 16px;
+    }
+
+    .abt-card-title {
+        font-size: 1.5rem;
+    }
+
+    .abt-card-desc {
+        font-size: 15px;
+    }
+}
+
+/* Global Section Mobile */
+@media (max-width: 768px) {
+    .abt-global-section {
+        padding: 60px 20px;
+    }
+
+    .abt-globe-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 24px;
+    }
+
+    .abt-global-title {
+        font-size: 28px;
+        margin-bottom: 24px;
+        line-height: 1.2;
+    }
+
+    .abt-global-text {
+        font-size: 16px;
+        margin-bottom: 32px;
+        line-height: 1.6;
+    }
+
+    .abt-divider {
+        margin-bottom: 24px;
+    }
+
+    .abt-location-text {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* Extra small devices - Additional optimizations */
+@media (max-width: 480px) {
+    .abt-story-section {
+        padding: 50px 15px;
+    }
+
+    .abt-mission-section {
+        padding: 50px 15px;
+    }
+
+    .abt-global-section {
+        padding: 50px 15px;
+    }
+
+    .abt-section-heading {
+        font-size: 28px;
+    }
+
+    .abt-text-primary {
+        font-size: 15px;
+    }
+
+    .abt-mission-card {
+        padding: 28px 20px;
+    }
+
+    .abt-card-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .abt-global-title {
+        font-size: 24px;
+    }
+
+    .abt-global-text {
+        font-size: 15px;
+    }
 }

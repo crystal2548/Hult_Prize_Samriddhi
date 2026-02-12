@@ -74,9 +74,9 @@ const NavBar = () => {
         <div className="navbar-container">
           {/* Left side - Logo */}
           <div className="navbar-logo-section">
-            <img src={logo} alt="LOGO" width={60} height={60} onClick={() => navigate('/')} />
+            <img src={logo} alt="LOGO" className="navbar-logo" onClick={() => navigate('/')} />
             <div className="navbar-logo-divider"></div>
-            <img src={SamriddhiLogo} alt="SamriddhiLogo" width={60} height={60} onClick={() => navigate('/')} />
+            <img src={SamriddhiLogo} alt="SamriddhiLogo" className="navbar-logo" onClick={() => navigate('/')} />
           </div>
 
           {/* Right side - Mobile Menu Button (Hidden, using bottom nav instead) */}

@@ -38,7 +38,7 @@
     color: white;
     font-size: 24px;
     cursor: pointer;
-    
+
 }
 
 .navbar-logo-divider,
@@ -217,22 +217,55 @@
     box-shadow: 0 0 10px rgba(229, 0, 126, 0.5);
 }
 
+/* Logo Styling - Desktop */
+.navbar-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    object-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
 /* Show Mobile Bottom Navbar on Mobile Devices */
 @media (max-width: 768px) {
     .mobile-navbar-container {
         display: block;
     }
+
     .navbar-container {
         justify-content: center;
     }
+
     .navbar-header {
-        padding: 10px 15px; /* Reduced padding for mobile */
+        padding: 10px 15px;
+        /* Reduced padding for mobile */
     }
-    .navbar-logo-section img {
-        height: 40px; /* Smaller logo on mobile */
-        width: 40px;
+
+    /* Mobile Logo Styling - Prevents Stretching */
+    .navbar-logo {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+        /* Prevents stretching, maintains aspect ratio */
+        object-position: center;
+        max-width: 45px;
+        max-height: 45px;
     }
+
     .navbar-logo-divider {
-        height: 40px;
+        height: 45px;
+        margin: 0 8px;
+        /* Slightly reduced margin for mobile */
+    }
+
+    .navbar-logo-section {
+        gap: 0;
+        /* Remove any extra gap */
     }
 }
