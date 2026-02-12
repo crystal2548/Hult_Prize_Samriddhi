@@ -194,11 +194,14 @@ const YearPage = () => {
             <div className="yearpage-sponsors-grid">
               {currentYearData.sponsors.map((sponsor, idx) => (
                 <div key={idx} className="yearpage-sponsor-card yearpage-animate">
-                  {sponsor.logo ? (
-                    <img src={sponsor.logo} alt={sponsor.name} className="yearpage-sponsor-logo" />
-                  ) : (
-                    sponsor.name || sponsor
-                  )}
+                  <div className="yearpage-sponsor-logo-box">
+                    {sponsor.logo ? (
+                      <img src={sponsor.logo} alt={sponsor.name} className="yearpage-sponsor-logo" />
+                    ) : (
+                      <span className="yearpage-sponsor-placeholder">{sponsor.name || sponsor}</span>
+                    )}
+                  </div>
+                  <p className="yearpage-sponsor-name">{sponsor.name || sponsor}</p>
                 </div>
               ))}
             </div>

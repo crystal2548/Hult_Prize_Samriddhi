@@ -205,10 +205,7 @@
 .learn-stat-number {
   font-size: 48px;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--heritage), var(--sky));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--heritage);
   margin-bottom: 12px;
   line-height: 1;
 }
@@ -390,8 +387,8 @@
 }
 
 .learn-story-impact span {
-  background: rgba(18, 177, 231, 0.15);
-  color: var(--sky);
+  background: rgba(236, 32, 136, 0.15);
+  color: var(--heritage);
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 12px;
