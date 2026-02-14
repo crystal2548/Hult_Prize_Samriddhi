@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import './styles/partners.css';
+import yearData from '../data/yearData';
 import AnimatedCounter from '../components/AnimatedCounter';
 
-const Partners = () => {
-  const sponsors = [
-    "Nepal Telecom",
-    "Nabil Bank",
-    "Vianet Communications",
-    "Chaudhary Nepal",
-    "Surya Bank",
-    "Laxmi Group"
-  ];
 
-  const mediaPartners = [
-    "Kantipur Publications",
-    "The Himalayan Times",
-    "Online Khabar",
-    "Setopati"
-  ];
+const Partners = () => {
+  const allSponsors = useMemo(() => {
+    const sponsorsMap = new Map();
+
+    Object.keys(yearData)
+      .sort((a, b) => b - a)
+      .forEach(yearKey => {
+        const year = yearData[yearKey];
+        if (year.sponsors) {
+          year.sponsors.forEach(sponsor => {
+            // Use name as key to remove duplicates, prefer the one with a logo
+            if (!sponsorsMap.has(sponsor.name) || (sponsor.logo && !sponsorsMap.get(sponsor.name).logo)) {
+              sponsorsMap.set(sponsor.name, sponsor);
+            }
+          });
+        }
+      });
+
+    return Array.from(sponsorsMap.values());
+  }, []);
 
   const supportWays = [
     {
@@ -94,27 +101,21 @@ const Partners = () => {
 
         {/* Valued Sponsors */}
         <div className="partners-section">
-          <h3 className="partners-section-title">Our Valued Sponsors</h3>
+          <h3 className="partners-section-title">Our Valued Sponsors & Partners</h3>
           <div className="partners-grid">
-            {sponsors.map((sponsor, index) => (
+            {allSponsors.map((sponsor, index) => (
               <div key={index} className="partner-card">
-                <span className="partner-name">{sponsor}</span>
+                <div className="partner-logo-box">
+                  <img src={sponsor.logo} alt={sponsor.name} />
+                </div>
+                <span className="partner-name">{sponsor.name}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Media Partners */}
-        <div className="partners-section">
-          <h3 className="partners-section-title">Media Partners</h3>
-          <div className="partners-grid media-partners-grid">
-            {mediaPartners.map((partner, index) => (
-              <div key={index} className="partner-card media-partner-card">
-                <span className="partner-name media-partner-name">{partner}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Media Partners Section Removed */}
 
         {/* Partnership Benefits */}
         <div className="partners-benefits">
@@ -198,7 +199,7 @@ const Partners = () => {
         </div>
 
         {/* Recognition */}
-        <div className="partners-section">
+        {/* <div className="partners-section">
           <h3 className="partners-section-title">Supporter Recognition</h3>
           <div className="support-recognition-grid">
             <div className="support-recognition-card">
@@ -225,7 +226,7 @@ const Partners = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Corporate Partnership */}
         <div className="support-corporate">
@@ -262,12 +263,12 @@ const Partners = () => {
             Let's create lasting impact together.
           </p>
           <div className="partners-cta-buttons">
-            <a href="/contact" className="partners-cta-btn-primary">
+            <Link to="/contact" className="partners-cta-btn-primary">
               Get In Touch
-            </a>
-            <a href="/contact" className="partners-cta-btn-secondary">
+            </Link>
+            {/* <Link to="/contact" className="partners-cta-btn-secondary">
               Download Partnership Package
-            </a>
+            </Link> */}
           </div>
         </div>
       </div>

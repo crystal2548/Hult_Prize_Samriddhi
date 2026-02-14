@@ -2,6 +2,7 @@ import React from 'react'
 import Stats from "../components/stats.jsx";
 import WinningTeam from "./winningTeam.jsx";
 import HomeOrganizers from "../components/HomeOrganizers.jsx";
+import Sponsors from "../components/Sponsors.jsx";
 import "./styles/home.css";
 import left from '../assets/Left.svg'
 import right from '../assets/Right.svg'
@@ -22,42 +23,42 @@ const Home = () => {
       {/* Hero Section */}
       <div className="home-hero-section">
         <div className="home-hero-bg">
-            <video
+          <video
             className="hero-video"
             autoPlay
             loop
             muted
             playsInline
-            >
+          >
             <source src="/hultweb.mp4" type="video/mp4" />
             Your browser does not support the video tag.
-            </video>
+          </video>
         </div>
-        
+
         <div className="home-hero-overlay"></div>
-        
-        {/* Decorative Shapes */ }
-        <img className="home-hero-left-shape" src={left} alt="LEFT"  />
+
+        {/* Decorative Shapes */}
+        <img className="home-hero-left-shape" src={left} alt="LEFT" />
         <img className="home-hero-right-shape" src={right} alt="RIGHT" />
 
         <div className="home-hero-content">
-            <div className="hero-anim-container">
-                <div className="home-hero-logo-wrapper">
-                    <img className="home-hero-logo" src={logo} alt="LOGO" />
-                </div>
-                <div className="hero-text-anim-wrapper">
-                    <div className="hero-title-row">
-                        <h1 className="home-hero-title">
-                            Changing the World through <b style={{color:'#EC2088'}}>Social Enterprise</b>
-                        </h1>
-                    </div>
-                    <p className="home-hero-subtitle">
-                        Join the world's largest student startup competition.
-                    </p>
-                </div>
+          <div className="hero-anim-container">
+            <div className="home-hero-logo-wrapper">
+              <img className="home-hero-logo" src={logo} alt="LOGO" />
             </div>
-           {/* Overlay Content cmd*/}
-           {/* <CardData /> */}
+            <div className="hero-text-anim-wrapper">
+              <div className="hero-title-row">
+                <h1 className="home-hero-title">
+                  Changing the World through <b style={{ color: '#EC2088' }}>Social Enterprise</b>
+                </h1>
+              </div>
+              <p className="home-hero-subtitle">
+                Join the world's largest student startup competition.
+              </p>
+            </div>
+          </div>
+          {/* Overlay Content cmd*/}
+          {/* <CardData /> */}
         </div>
       </div>
 
@@ -73,12 +74,16 @@ const Home = () => {
         <HomeOrganizers />
       </div>
 
+      <div className="home-animate visible delay-3">
+        <Sponsors year="2026" />
+      </div>
+
       <div className="home-contact-wrapper home-animate visible delay-3">
         <div className="home-section">
-            <div className="home-contact-card home-section-inner">
-                <h2 className="home-contact-title">Hult Prize at Samriddhi College</h2>
-                <p className="home-contact-text">Contact: hultprize@samriddhi.edu</p>
-            </div>
+          <div className="home-contact-card home-section-inner">
+            <h2 className="home-contact-title">Hult Prize at Samriddhi College</h2>
+            <p className="home-contact-text">Contact: hultprize@samriddhi.edu</p>
+          </div>
         </div>
       </div>
 

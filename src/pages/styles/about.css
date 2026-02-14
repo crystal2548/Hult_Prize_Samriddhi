@@ -82,6 +82,11 @@
     margin: 0 0 24px 0;
     line-height: 1.1;
     animation: fadeInUp 0.8s ease-out 0.2s both;
+<<<<<<< HEAD
+=======
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+>>>>>>> crystal
 }
 
 .abt-hero-subtitle {
@@ -96,7 +101,14 @@
 
 .text-stroke {
     color: transparent;
+<<<<<<< HEAD
     -webkit-text-stroke: 2px white;
+=======
+    -webkit-text-stroke: 1px white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+>>>>>>> crystal
 }
 
 /* Animations */
@@ -122,6 +134,7 @@
         opacity: 1;
         transform: translateY(0);
     }
+<<<<<<< HEAD
 }
 
 /* ============================================
@@ -198,6 +211,8 @@
         font-size: 14px;
         padding: 0 5px;
     }
+=======
+>>>>>>> crystal
 }
 
 /* ============================================
@@ -427,7 +442,8 @@
 
 .abt-globe-icon {
     color: rgba(255, 255, 255, 0.1);
-    margin-bottom: 32px;
+    margin: 0 auto 32px;
+    display: block;
 }
 
 .abt-global-title {
@@ -466,6 +482,7 @@
 }
 
 /* ============================================
+<<<<<<< HEAD
    ADDITIONAL MOBILE RESPONSIVE STYLES
    ============================================ */
 
@@ -590,5 +607,27 @@
 
     .abt-global-text {
         font-size: 15px;
+=======
+   MOBILE RESPONSIVENESS
+   ============================================ */
+@media (max-width: 768px) {
+    .abt-hero-title {
+        font-size: clamp(32px, 10vw, 48px);
+        letter-spacing: -0.5px;
+    }
+
+    .abt-hero-inner {
+        padding: 0 24px;
+    }
+
+    .text-stroke {
+        -webkit-text-stroke: 0.5px white;
+    }
+}
+
+@media (max-width: 480px) {
+    .abt-hero-title {
+        font-size: clamp(28px, 12vw, 35px);
+>>>>>>> crystal
     }
 }

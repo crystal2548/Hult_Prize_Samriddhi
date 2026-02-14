@@ -115,27 +115,27 @@ const TeamsProject = () => {
       <section className="tpp-stats-section" ref={statsRef}>
         <div className="tpp-stats-container">
           <Row gutter={[48, 48]}>
-            <Col xs={24} sm={12} md={6}>
+            <Col xs={12} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number" data-target="14">0+</div>
+                <div className="tpp-stat-number" data-target="46">0+</div>
                 <div className="tpp-stat-label">Total Teams</div>
               </div>
             </Col>
-            <Col xs={24} sm={12} md={6}>
+            <Col xs={12} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number" data-target="70">0+</div>
-                <div className="tpp-stat-label">Students Engaged</div>
+                <div className="tpp-stat-number" data-target="40">0+</div>
+                <div className="tpp-stat-label">Active Participants</div>
               </div>
             </Col>
-            <Col xs={24} sm={12} md={6}>
+            <Col xs={12} sm={12} md={6}>
               <div className="tpp-stat-box">
                 <div className="tpp-stat-number" data-target="4">0</div>
                 <div className="tpp-stat-label">Years of Impact</div>
               </div>
             </Col>
-            <Col xs={24} sm={12} md={6}>
+            <Col xs={12} sm={12} md={6}>
               <div className="tpp-stat-box">
-                <div className="tpp-stat-number" data-target="350">0+</div>
+                <div className="tpp-stat-number" data-target="180">0+</div>
                 <div className="tpp-stat-label">Total Participants</div>
               </div>
             </Col>

@@ -138,6 +138,23 @@
     }
 
     .home-organizers-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .organizer-img-wrapper {
+        height: 200px;
+    }
+
+    .organizer-info {
+        padding: 16px;
+    }
+
+    .organizer-name {
+        font-size: 1rem;
+    }
+
+    .organizer-role {
+        font-size: 0.75rem;
     }
 }

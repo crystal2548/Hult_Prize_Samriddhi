@@ -1,11 +1,26 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/footer.jsx";
 import ScrollToTop from "../components/ScrollToTop.jsx";
+import SkeletonLoader from "../components/SkeletonLoader.jsx";
 
 const RootLayout = () => {
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    // Show loading screen on initial app load
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500); // 1.5 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
   return (
     <div className="w-full">
       <ScrollToTop />
