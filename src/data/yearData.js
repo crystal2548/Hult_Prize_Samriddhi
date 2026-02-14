@@ -346,7 +346,7 @@ const yearData = {
                 solutionOverview: 'Krishi Bazaar is an all-in-one agri-platform providing seeds, fertilizers, tools, fresh market access, agri-tech insights, weather updates, financial support, storage, logistics, and expert guidance—connecting farmers directly with businesses and urban buyers.',
                 impact: 'Ensures fair pricing for farmers, reduces post-harvest losses, improves productivity, strengthens farm-to-market links, and promotes sustainable, organic agriculture.',
                 tags: ['AgriTech', 'Farm-to-Market', 'Organic Farming', 'Farmer Empowerment', 'Supply Chain', 'B2B & D2C', 'Sustainable Agriculture', 'SDG 2', 'SDG 8'],
-                members: ['Dikshant Neupane', 'Swastik Rawat', 'Pritika Thapa', 'Rajan Panta']
+                members: ['Swastik Rawat', 'Rajan Panta', 'Dikshant Neupane', 'Pritika Thapa']
             },
             {
                 name: 'Sage',
@@ -355,7 +355,7 @@ const yearData = {
                 solutionOverview: 'EventXpert is an all-in-one event management platform offering automated budget planning, vendor coordination, guest management, and end-to-end event execution through a single app.',
                 impact: 'Reduces event costs, improves coordination and security, supports local vendors and venues, and accelerates digital transformation in the event industry.',
                 tags: ['EventTech', 'Event Management', 'Automation', 'Vendor Marketplace', 'Digital Coordination', 'Hospitality Tech', 'Local Business Support', 'SDG 8'],
-                members: ['Aadarshan Dahal', 'Nimesh Adhikari', 'Rishab Adhikari', 'Aayushma Luitel']
+                members: ['Aadarshan Dahal', 'Aayushma Luitel', 'Nimesh Adhikari', 'Rishab Adhikari']
             },
             {
                 name: 'Drikshya',
@@ -364,7 +364,7 @@ const yearData = {
                 solutionOverview: 'ClearShield is a reusable full-face mask with high-efficiency filtration, UV protection, and ergonomic design offering 99.9% protection against germs, dust, bacteria, and viruses.',
                 impact: 'Improves public health protection, reduces pollution-related illnesses, lowers long-term mask costs through reusability, and promotes sustainable protective solutions.',
                 tags: ['Air Pollution', 'HealthTech', 'Protective Gear', 'Reusable Masks', 'Urban Health', 'UV Protection', 'Public Health Innovation', 'SDG 3', 'SDG 11'],
-                members: ["Kanchan Joshi", "Nimesh Chaulagain", "Aanchal Pathak", "Hitesh D. Thakuri"]
+                members: ["Hitesh D. Thakuri", "Aanchal Pathak", "Kanchan Joshi", "Nimesh Chaulagain"]
             },
             {
                 name: 'Daffodils',
@@ -373,7 +373,7 @@ const yearData = {
                 solutionOverview: 'LandNova is a secure, AI-driven real estate platform connecting users with verified properties using government-based verification, AI matchmaking, virtual tours, and secure authentication.',
                 impact: 'Reduces real estate fraud, improves transaction security, simplifies property search, and promotes transparent digital property markets in Nepal.',
                 tags: ['PropTech', 'Real Estate Marketplace', 'AI Matchmaking', 'Fraud Prevention', 'Digital Property Platform', 'Smart Housing', 'FinTech Integration', 'SDG 9', 'SDG 11'],
-                members: ['Samana Neupane', ' Aaska Prajapati', 'Achyuta Gajurel']
+                members: ['Samana Neupane', 'Achyuta Gajurel', ' Aaska Prajapati']
             },
             {
                 name: 'The pirates',
@@ -382,7 +382,7 @@ const yearData = {
                 solutionOverview: 'A sustainable bio-based polyethylene made from sugarcane molasses acting as a drop-in replacement for traditional plastic with lower carbon footprint and full recyclability.',
                 impact: 'Reduces plastic pollution and emissions, supports local farmers and sugar industries, reduces plastic imports, and accelerates Nepal’s shift to sustainable materials.',
                 tags: ['Sustainable Materials', 'Bio-based Plastic', 'Circular Economy', 'Plastic Alternatives', 'Green Manufacturing', 'Climate Action', 'SDG 12', 'SDG 13'],
-                members: ['Anjeela Rana', 'Ojashwi Paudel', 'Anustha Lamichhane', 'Aawart K.C']
+                members: ['Anjeela Rana', 'Aawart K.C', 'Anustha Lamichhane', 'Ojaswee Paudel']
             },
             {
                 name: 'Strikers',
@@ -391,7 +391,7 @@ const yearData = {
                 solutionOverview: 'Nepal-Trip is a smart tourism platform offering trip planning, booking, translation, offline maps, cultural information, and real-time weather updates.',
                 impact: 'Improves tourist safety and experience, supports local tourism businesses, promotes eco-tourism, and strengthens Nepal’s tourism economy.',
                 tags: ['TravelTech', 'Smart Tourism', 'Tourism Safety', 'Digital Travel Platform', 'Eco-Tourism', 'Cultural Tourism', 'SDG 8', 'SDG 11'],
-                members: ['Dikshant Neupane', 'Karun Acharya', 'Sarishma Ghimire']
+                members: ['Samikshya Dhungana', 'Binita Gautam', 'Sumnima Karki', 'Karan Acharya']
             },
             {
                 name: 'prime',
@@ -400,7 +400,7 @@ const yearData = {
                 solutionOverview: 'A one-stop platform connecting travelers with local guides, homestays, trekking updates, cultural events, and a global marketplace for Nepali art and handicrafts.',
                 impact: 'Distributes tourism income, improves traveler safety, boosts local livelihoods, promotes Nepali culture globally, and supports community tourism.',
                 tags: ['TravelTech', 'Community Tourism', 'Cultural Tourism', 'Trekking Safety', 'Local Marketplace', 'Sustainable Tourism', 'SDG 8', 'SDG 11'],
-                members: ['Bijesh karanjit', 'Shirish Shrestha', 'Prajwol Shrestha', 'Avhishek Gautam']
+                members: ['Prajwol Shrestha', 'Bijesh karanjit', 'Avhishek Gautam', 'Shirish Shrestha']
             },
             {
                 name: 'DreamBuilders',
@@ -409,7 +409,7 @@ const yearData = {
                 solutionOverview: 'KonVeda is an eco-friendly skincare brand inspired by traditional Newa beauty practices using natural ingredients like mustard oil, turmeric, rice powder, and orange peel.',
                 impact: 'Promotes chemical-free skincare, supports local farmers and artisans, preserves cultural traditions, and encourages sustainable beauty consumption.',
                 tags: ['Sustainable Beauty', 'Natural Skincare', 'Herbal Cosmetics', 'Cultural Heritage', 'Eco-Friendly Products', 'Local Sourcing', 'SDG 3', 'SDG 12'],
-                members: ['Barsha Dhukuchhu', 'Menuka Lage', 'Priya Gupta']
+                members: ['Priya Gupta', 'Barsha Dhukuchhu', 'Menuka Lage']
             },
             {
                 name: 'Admirals',
@@ -418,7 +418,7 @@ const yearData = {
                 solutionOverview: 'KonVeda is an eco-friendly skincare brand inspired by traditional Newa beauty practices using natural ingredients like mustard oil, turmeric, rice powder, and orange peel.',
                 impact: 'Promotes chemical-free skincare, supports local farmers and artisans, preserves cultural traditions, and encourages sustainable beauty consumption.',
                 tags: ['Sustainable Beauty', 'Natural Skincare', 'Herbal Cosmetics', 'Cultural Heritage', 'Eco-Friendly Products', 'Local Sourcing', 'SDG 3', 'SDG 12'],
-                members: ['Kushal Suwal', 'Sumnima Karki', 'Swastik Rawat']
+                members: ['Name not found']
             },
             {
                 name: 'Starstrik squad',
@@ -427,7 +427,7 @@ const yearData = {
                 solutionOverview: 'Equal Ground Cafe is a fully accessible social enterprise cafe that provides meaningful employment, skills training, and mentoring for individuals with disabilities while delivering high-quality service to the community.',
                 impact: 'Empowers people with disabilities through sustainable jobs and lifelong skills, reduces social stigma through public interaction, closes skill gaps via mentoring, and demonstrates inclusive workplace design.',
                 tags: ['Disability Inclusion', 'Social Enterprise', 'Accessible Workplace', 'Equal Opportunity', 'Skill Development', 'Inclusive Community'],
-                members: ['Aayushma Luitel', 'Binita Gautam', 'Sarishma Ghimire', 'Matina Ghemosu']
+                members: ['Matina Ghemosu', 'Anusha Manandhar', 'Sarishma Ghimire', 'Pratikshya Limbu']
             }
 
         ],
@@ -441,7 +441,7 @@ const yearData = {
         judges: [
             { name: 'Mr. Suman Maharjan', role: 'Director of Operations at Fusemachines', image: "https://i.postimg.cc/tpYRqSqq/suman-maharjhan.jpg" },
             { name: 'Mr. Neeraj Pradhan', role: 'Co-founder of Skill Square', image: "https://i.postimg.cc/dsgSpBVs/Gemini-Generated-Image-o9k028o9k028o9k0.png" },
-            { name: 'Ms. Priyash Pokharel', role: 'CEO at Digipal Technology Pvt.Ltd', image: "https://i.postimg.cc/dsgSpBVJ/Gemini-Generated-Image-8nxjyh8nxjyh8nxj.png" },
+            { name: 'Mr. Priyash Pokharel', role: 'CEO at Digipal Technology Pvt.Ltd', image: "https://i.postimg.cc/dsgSpBVJ/Gemini-Generated-Image-8nxjyh8nxjyh8nxj.png" },
         ],
         sponsors: [
             { name: 'Ather', logo: 'https://www.mg21.com/wp-content/uploads/2024/07/Ather-Energy.png' },
