@@ -528,13 +528,138 @@ const yearData = {
                 image: 'https://i.postimg.cc/Ls2S5P47/Pritika-Thapa-(1).png',
             },
         ],
-        teams: [],
-        winners: [
-            { place: '1ST PLACE', team: 'Coming Soon', image: null, description: 'The winner will be announced on 13 February 2026.' },
-            { place: '2ND PLACE', team: 'Coming Soon', image: null, description: 'The winner will be announced on 13 February 2026.' },
-            { place: '3RD PLACE', team: 'Coming Soon', image: null, description: 'The winner will be announced on 13 February 2026.' },
+        teams: [
+            {
+                name: 'Helix',
+                image: 'https://i.postimg.cc/Bn7MR240/Helix.jpg',
+                problemStatement: 'Massive amounts of floral waste from temples and markets are currently treated as "trash," leading to landfill accumulation and waterway pollution.',
+                solutionOverview: 'Helix operates a circular material recovery system that transforms collected floral waste into eco-friendly, charcoal-free incense and natural paper.',
+                impact: 'The project reduces environmental pollution and advances UN Sustainable Development Goals (6, 11, 12, and 13) by turning low-cost waste into high-value sustainable products.',
+                tags: ['Circular Economy', 'Waste Management', 'Floral Waste', 'Sustainable Products', 'SDG 6', 'SDG 11', 'SDG 12', 'SDG 13'],
+                members: []
+            },
+            {
+                name: 'CreateX',
+                image: 'https://i.postimg.cc/VkZD2X1x/Create-X.jpg',
+                problemStatement: 'Current clean energy solutions like solar panels only work during the day and are expensive, while traditional windmills are noisy, difficult to maintain, and present safety issues.',
+                solutionOverview: 'PowerX is a micro wind turbine inspired by nature that generates electricity continuously 24/7 from low wind flow using a silent, bird-safe, and low-cost design.',
+                impact: 'This technology provides an efficient, eco-friendly energy source for urban and residential areas, contributing to sustainable development by fitting seamlessly into real-world environments while remaining visually clean.',
+                tags: ['Clean Energy', 'Wind Energy', 'Micro-Turbine', 'Urban Infrastructure', 'Sustainability', 'SDG 7', 'Renewable Energy'],
+                members: []
+            },
+            {
+                name: 'AASA',
+                image: 'https://i.postimg.cc/zG204T56/AASA.jpg',
+                problemStatement: 'Households struggle with inefficient food utilization due to limited nutrition knowledge and time-consuming meal planning, resulting in wasted food, financial loss, and unhealthy habits.',
+                solutionOverview: 'Mealio is a mobile application that helps households reduce waste and save money by providing ingredient-based recipe suggestions, leftover transformation ideas, and personalized meal planning.',
+                impact: 'The project improves health habits, achieves household financial savings, and contributes to the UN Sustainable Development Goals for Zero Hunger, Good Health, and Responsible Consumption.',
+                tags: ['Food Waste', 'Meal Planning', 'HealthTech', 'Personalized Nutrition', 'SDG 2', 'SDG 3', 'SDG 12'],
+                members: []
+            },
+            {
+                name: 'Apex',
+                image: 'https://i.postimg.cc/FKfDv1sq/Apex.jpg',
+                problemStatement: 'Widespread plastic bottle pollution is caused by a lack of easy recycling methods and insufficient motivation or awareness among the public to dispose of waste properly.',
+                solutionOverview: 'Bin Bounty implements Reverse Vending Machines (RVMs) that encourage recycling by providing users with instant rewards like cash, points, or mobile credits for returning plastic bottles.',
+                impact: 'This system reduces environmental littering and supports a local circular economy by increasing recycling rates and aligning with global Sustainable Development Goals.',
+                tags: ['Recycling', 'Plastic Pollution', 'Reverse Vending', 'Circular Economy', 'Incentivized Recycling', 'SDG 12', 'SDG 14'],
+                members: []
+            },
+            {
+                name: 'Astra',
+                image: 'https://i.postimg.cc/KYKJb48X/Astra.jpg',
+                problemStatement: 'The snack market is dominated by unhealthy junk foods that contribute to lifestyle diseases, while smallholder millet farmers face unstable incomes and climate change threatens traditional water-intensive crops.',
+                solutionOverview: 'Astra produces Kodo millet chips that are gluten-free, high-fiber, and made with clean-label ingredients sourced directly from smallholder farmers to provide a healthy, climate-resilient snack alternative.',
+                impact: 'The project empowers local farmers, enhances global nutrition by combating obesity and diabetes, and promotes sustainable agriculture by popularizing climate-resilient crops.',
+                tags: ['Healthy Snacking', 'Millet Products', 'AgriTech', 'Farmer Empowerment', 'Gluten-Free', 'SDG 2', 'SDG 3', 'SDG 8'],
+                members: []
+            },
+            {
+                name: "Dreamers",
+                image: 'https://i.postimg.cc/pLcq3Kx7/Dreamers.jpg',
+                problemStatement: 'Plastic and paper cups cause deadly diseases, harm over 800 species through pollution, and release toxic gases like carbon monoxide when burned.',
+                solutionOverview: 'The Edible Cup Maker (ECM) is a compact, user-friendly machine that allows cafes and vendors to create their own biodegradable and edible cups in various flavors.',
+                impact: 'This innovation eliminates cup waste, protects human health from toxins, and enhances the eco-friendly brand image of businesses while providing a profitable, zero-waste alternative.',
+                tags: ['Biodegradable Packaging', 'Edible Tableware', 'Zero Waste', 'Environmental Protection', 'F&B Innovation', 'SDG 12', 'SDG 15'],
+                members: []
+            },
+            {
+                name: 'GROW UP',
+                image: 'https://i.postimg.cc/vm13yDHK/Grow-Up.jpg',
+                problemStatement: 'Conventional polythene bags contribute significantly to environmental pollution, harming ecosystems and taking up to 500 years to decompose while releasing toxic waste.',
+                solutionOverview: 'Verdant Loop transforms discarded banana peels and stems into 100% compostable packaging and seedling bags that look and feel like plastic but disappear in weeks.',
+                impact: 'This innovation eliminates single-use plastic waste, turns agricultural "headaches" into a profitable circular economy, and enriches soil health by acting as a natural fertilizer as it decomposes.',
+                tags: ['Bioplastics', 'Banana Waste', 'Compostable Packaging', 'Circular Economy', 'Sustainable Agriculture', 'SDG 12', 'SDG 13'],
+                members: []
+            },
+            {
+                name: 'Plantasy Home',
+                image: 'https://i.postimg.cc/Bn7MR2sz/Horizon-Builders.jpg',
+                problemStatement: 'Over 80% of plant nurseries and home growers in Nepal operate offline with limited digital reach, causing them to rely on walk-in customers and lose significant margins to middlemen.',
+                solutionOverview: 'Plantasy Home is a sustainable e-commerce marketplace that digitizes the plant economy by connecting local growers directly to urban consumers through a centralized platform for sales and marketing.',
+                impact: 'This project empowers local growers by increasing their income, scales the green economy in Nepal’s urban centers, and promotes mental wellness by making indoor plants more accessible for homes and workspaces.',
+                tags: ['E-commerce', 'Plant Marketplace', 'Green Economy', 'Digital Transformation', 'Urban Gardening', 'SDG 8', 'SDG 11'],
+                members: ['Yoman Limbu', 'Abisek Waiba', 'Bishal Lamichhane']
+            },
+            {
+                name: 'Purity Path',
+                image: 'https://i.postimg.cc/vZ23C5bR/Purity-Path.jpg',
+                problemStatement: 'Nepal faces massive deforestation and high import costs for timber plywood while millions of tons of maize stems are burned as waste, causing air pollution and creating zero economic value for farmers.',
+                solutionOverview: 'EcoMaize Ply transforms discarded maize stems into affordable, durable, and water-resistant building boards using eco-friendly resin and a heat-pressing process.',
+                impact: 'The project reduces carbon emissions and deforestation, provides farmers with a new income stream, and decreases Nepal\'s dependency on expensive imported construction materials.',
+                tags: ['Sustainable Building Materials', 'Agro-Waste', 'Deforestation Prevention', 'Green Construction', 'Circular Economy', 'SDG 11', 'SDG 13', 'SDG 15'],
+                members: []
+            },
+            {
+                name: 'Team Impact',
+                image: 'https://i.postimg.cc/g2tN13dT/Impact.jpg',
+                problemStatement: 'Physically active individuals and fitness enthusiasts often struggle to meet their specific protein requirements due to a lack of personalized guidance and sustainable nutritional habit systems.',
+                solutionOverview: 'Pure Plates is an online nutrition platform that provides affordable, accessible protein nutrition through personalized meal plans and expert guidance tailored to active lifestyles.',
+                impact: 'The platform improves community health and fitness outcomes by building sustainable dietary habits and simplifying protein assessment, aligning with global goals for good health and well-being.',
+                tags: ['Nutrition Technology', 'Fitness', 'Personalized Diet', 'Health and Wellness', 'Protein Assessment', 'SDG 3'],
+                members: []
+            },
+            {
+                name: 'Thinker',
+                image: 'https://i.postimg.cc/wj40nDg8/Thinker.jpg',
+                problemStatement: 'The traditional construction industry in Nepal suffers from high costs, significant carbon footprints, and a heavy reliance on imported materials that are often not eco-friendly.',
+                solutionOverview: 'Thinker manufactures sustainable, low-carbon building blocks and tiles using locally sourced materials and innovative eco-friendly technology to reduce the environmental footprint of housing.',
+                impact: 'This project promotes affordable green housing, reduces national import dependency, and minimizes carbon emissions by offering a durable and sustainable alternative to conventional building materials.',
+                tags: ['Green Building', 'Sustainable Construction', 'Eco-Friendly Materials', 'Carbon Reduction', 'Housing Innovation', 'SDG 9', 'SDG 11', 'SDG 13'],
+                members: []
+            },
+            {
+                name: '404 Labs',
+                image: 'https://i.postimg.cc/zfL0N3X6/404Labs.jpg',
+                problemStatement: 'Public transport in areas like Kathmandu Valley faces deadly racing between drivers for passengers, extreme wait-time uncertainty for commuters, and high pollution from inefficient vehicle use.',
+                solutionOverview: 'BuzEase is an all-in-one transport ecosystem providing live tracking, crowd monitoring for seat availability, anti-racing safety alerts for drivers, and a cashless "Carbon Point" reward economy.',
+                impact: 'The project improves public safety and commuting efficiency while directly supporting UN Sustainable Development Goals 3, 9, 11, and 13 by promoting sustainable urban mobility and reducing environmental impact.',
+                tags: ['Urban Mobility', 'Public Transport', 'Smart Cities', 'Road Safety', 'IoT', 'SDG 3', 'SDG 9', 'SDG 11', 'SDG 13'],
+                members: []
+            }
         ],
-        judges: [],
+        winners: [
+            {place: '1ST PLACE',team: 'Helix',image: 'https://i.postimg.cc/J0TktcTM/Helix.jpg',description: 'Transforms floral waste from temples into eco-friendly, charcoal-free incense and natural paper, reducing landfill accumulation and waterway pollution.'},
+            {place: '2ND PLACE',team: "Dreamers",image: 'https://i.postimg.cc/mkdHhNd4/Dreamers.jpg',description: 'Features the Edible Cup Maker (ECM), a compact machine that allows cafes to produce biodegradable and edible cups, eliminating plastic and paper cup waste.'},
+            {place: '3RD PLACE',team: 'CreateX',image: 'https://i.postimg.cc/2yHZ3FHm/Create-X.jpg',description: 'Develops PowerX, a silent and bird-safe micro wind turbine that generates clean electricity 24/7 from low wind flow for urban and residential environments.'},
+        ],
+        judges: [
+            {
+                name: 'Rabi Shakya',
+                role: 'Cheif Strategy Officer E-Sewa Ltd.',
+                image: ''
+            },
+            {
+                name: 'Aakash Shrestha',
+                role: 'Marketing Manager Nepcoms Services',
+                image: ''
+            },
+            {
+                name: 'Sandeep Shrestha',
+                role: 'Chief Technical Officer Galli Maps',
+                image: ''
+            },
+        ],
         sponsors: [
             { name: 'Ather', logo: 'https://i.postimg.cc/GhMMJw9h/Ather.jpg' },
             { name: 'Dami experience', logo: 'https://i.postimg.cc/dtWWmPD7/Dami.jpg' },

@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './styles/organizerMentor.css'
 import { User } from 'lucide-react'
 
-import organizersData from '../data/organizersData.js';
 import { getAllOrganizers } from '../lib/services/organizations.service.js';
-
-// const organizers = organizersData;
 
 const OrganizerMentor = () => {
     const [organizers, setOrganizers] = useState([]);
