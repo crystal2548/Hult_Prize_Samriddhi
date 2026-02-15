@@ -223,5 +223,4 @@ const TeamsProject = () => {
     </div>
   );
 };
-
 export default TeamsProject;
