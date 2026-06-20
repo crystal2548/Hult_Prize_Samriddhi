@@ -3,20 +3,46 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Avatar, Button } from 'antd';
 import { UserOutlined, ArrowLeftOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import './styles/Yearpage.css';
-import yearData from '../data/yearData.js';
 import Sponser from '../components/Sponsors.jsx';
+import { getYearContent } from '../lib/yearContentStore.js';
+
+const createEmptyYearContent = (year) => ({
+  year: String(year),
+  heroImage: "",
+  heroBgColor: "#FFFFFF",
+  globalTheme: "",
+  globalDescription: "",
+  teams: [],
+  winners: [],
+  judges: [],
+  organizingCommittee: [],
+});
 
 const YearPage = () => {
   const { year } = useParams();
   const navigate = useNavigate();
   const [expandedTeams, setExpandedTeams] = useState({});
+  const [currentYearData, setCurrentYearData] = useState(() => createEmptyYearContent(year || '2024'));
 
   // Scroll animations
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [year]);
 
-  const currentYearData = yearData[year] || yearData['2024'];
+    let active = true;
+
+    async function loadYear() {
+      const data = await getYearContent(year || '2024');
+      if (active) {
+        setCurrentYearData(data);
+      }
+    }
+
+    loadYear();
+
+    return () => {
+      active = false;
+    };
+  }, [year]);
 
   const toggleTeam = (index) => {
     setExpandedTeams(prev => ({

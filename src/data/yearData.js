@@ -93,19 +93,19 @@ const yearData = {
             {
                 place: '1ST PLACE',
                 team: 'Strawhat',
-                image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/476834068_604128345801682_1403652621834224788_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=W3TzjGcB4QIQ7kNvwEPYZIN&_nc_oc=Admeb0hZNQ2IFVOmJKMwEAU6f9rGKaVg1hXYM74CqkEtA-V48ijWQfJaG-puMTSXE5w&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=5uJlJhYu5Gu3F4BBk-fzpg&oh=00_AfsXFcF1ORE013YJn5yvkWzi46JcyQp0GR9xNxYfL1_gOg&oe=69924C73',
+                image: '',
                 description: 'Recognized for the most innovative business model that successfully addressed environmental or social gaps within the fashion value chain'
             },
             {
                 place: '2ND PLACE',
                 team: 'Team 3I',
-                image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/476805605_604128595801657_7545505293553871655_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_ohc=unStoBHcUU0Q7kNvwHXWY1r&_nc_oc=AdkQ8R10tPJG3L20vSe-jjIGkiVPmdEaJkvSy2VZMwR9if5N_g3xxWRYb3b-10kLEMc&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=lAkZlKLSPsLpDgDQIngmnw&oh=00_AfsNsCJtnV1Oj8e7ol17r3r7s4K0q2C1f-gPW24p1HIw9w&oe=69922802',
+                image: '',
                 description: 'Awarded for a high-impact solution focused on reducing waste and promoting ethical production standards in the apparel sector.'
             },
             {
                 place: '3RD PLACE',
                 team: 'Team Incognito',
-                image: 'https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/476656264_604128462468337_4987205295302799147_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=1DwgcoP1VDMQ7kNvwH2C52P&_nc_oc=Adm4F6yHoDVlQqUJCBmGY5MmmF_0skqCY0G78mmehfA21iFcvuSLt7fmwVNF4fggsWo&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=1sO-PTiDCW3RHV55HXtTDQ&oh=00_AftT4sVMEd3ODZ2WRvqumjEoH0b7d9wPO7OnhuH-gA-suQ&oe=69924CFE',
+                image: '',
                 description: 'Commended for a creative approach to redesigning consumer behavior or supply chain transparency in fashion.'
             },
         ],
@@ -228,13 +228,13 @@ const yearData = {
             {
                 place: '1ST PLACE',
                 team: 'The Nerd Hub',
-                image: "https://i.postimg.cc/d0qzdw2h/winner2024.jpg",
+                image: "",
                 description: 'Winner for demonstrating exceptional innovation and social impact during the 2024 competition.'
             },
             {
                 place: '2ND PLACE',
                 team: 'Pentasquad',
-                image: "https://scontent.fktm20-1.fna.fbcdn.net/v/t39.30808-6/482005269_626229183591598_59633968210638086_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=RWCVWsRL1z4Q7kNvwFF5Kil&_nc_oc=AdmBwJxzlh0e5kTF5SscnroGYIqqoX7C8cdRBEdNN6bKCEABKZKc-ZFqdy292mCQ1cg&_nc_zt=23&_nc_ht=scontent.fktm20-1.fna&_nc_gid=cv2sNgixUF5F5iEvIvrH8A&oh=00_Aft_xHCmkboI-sqZ-7bhbfg_IhMzh2fzDxV2541H2ZWpwg&oe=69922939",
+                image: "",
                 description: 'Runner-up for their outstanding social enterprise solution in the 2024 grand finale.'
             },
         ],
@@ -434,9 +434,9 @@ const yearData = {
 
 
         winners: [
-            { place: '1ST PLACE', team: 'Starstrik squad', image: 'https://i.postimg.cc/D0t9bG6f/winner2025.jpg', description: 'A café designed to provide meaningful employment opportunities for individuals with disabilities.' },
-            { place: '2ND PLACE', team: 'DreamBuilders', image: 'https://i.postimg.cc/3wBH6HCz/3rd-2025.jpg', description: 'Promotes chemical-free skincare, supports local farmers and artisans, preserves cultural beauty traditions, and encourages sustainable beauty consumption.' },
-            { place: '3RD PLACE', team: 'The pirates', image: 'https://i.postimg.cc/GpQ1N1JW/2nd-2025.jpg', description: 'A sustainable, bio-based polyethylene made from sugarcane molasses that works as a drop-in replacement for traditional plastic—fully recyclable, lower carbon footprint, and compatible with existing manufacturing systems.' },
+            { place: '1ST PLACE', team: 'Starstrik squad', image: '', description: 'A café designed to provide meaningful employment opportunities for individuals with disabilities.' },
+            { place: '2ND PLACE', team: 'DreamBuilders', image: '', description: 'Promotes chemical-free skincare, supports local farmers and artisans, preserves cultural beauty traditions, and encourages sustainable beauty consumption.' },
+            { place: '3RD PLACE', team: 'The pirates', image: '', description: 'A sustainable, bio-based polyethylene made from sugarcane molasses that works as a drop-in replacement for traditional plastic—fully recyclable, lower carbon footprint, and compatible with existing manufacturing systems.' },
         ],
         judges: [
             { name: 'Mr. Suman Maharjan', role: 'Director of Operations at Fusemachines', image: "https://i.postimg.cc/tpYRqSqq/suman-maharjhan.jpg" },
@@ -639,9 +639,9 @@ const yearData = {
             }
         ],
         winners: [
-            {place: '1ST PLACE',team: 'Helix',image: 'https://i.postimg.cc/J0TktcTM/Helix.jpg',description: 'Transforms floral waste from temples into eco-friendly, charcoal-free incense and natural paper, reducing landfill accumulation and waterway pollution.'},
-            {place: '2ND PLACE',team: "Dreamers",image: 'https://i.postimg.cc/mkdHhNd4/Dreamers.jpg',description: 'Features the Edible Cup Maker (ECM), a compact machine that allows cafes to produce biodegradable and edible cups, eliminating plastic and paper cup waste.'},
-            {place: '3RD PLACE',team: 'CreateX',image: 'https://i.postimg.cc/2yHZ3FHm/Create-X.jpg',description: 'Develops PowerX, a silent and bird-safe micro wind turbine that generates clean electricity 24/7 from low wind flow for urban and residential environments.'},
+            {place: '1ST PLACE',team: 'Helix',image: '',description: 'Transforms floral waste from temples into eco-friendly, charcoal-free incense and natural paper, reducing landfill accumulation and waterway pollution.'},
+            {place: '2ND PLACE',team: "Dreamers",image: '',description: 'Features the Edible Cup Maker (ECM), a compact machine that allows cafes to produce biodegradable and edible cups, eliminating plastic and paper cup waste.'},
+            {place: '3RD PLACE',team: 'CreateX',image: '',description: 'Develops PowerX, a silent and bird-safe micro wind turbine that generates clean electricity 24/7 from low wind flow for urban and residential environments.'},
         ],
         judges: [
             {

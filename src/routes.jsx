@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from 'react';
+import { Navigate } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 
 import Home from "./pages/home.jsx";
@@ -20,6 +21,7 @@ const Blog = lazy(() => import("./pages/Blog.jsx"));
 const LearnMore = lazy(() => import("./pages/LearnMore.jsx"));
 const OurStory = lazy(() => import("./pages/Ourstory.jsx"));
 const Partners = lazy(() => import("./pages/Partners.jsx"));
+const Admin = lazy(() => import("./pages/{admin}/Admin.jsx"));
 
 const Developer = lazy(() => import("./pages/Developer.jsx"));
 
@@ -53,6 +55,16 @@ const router = createBrowserRouter([
       { path: "learnMore", element: <LearnMore /> },
       { path: "our-story", element: <OurStory /> },
       { path: "partners", element: <Partners /> },
+      {
+        path: "admin",
+        children: [
+          { index: true, element: <Navigate to="dashboard" replace /> },
+          { path: "dashboard", element: <Admin /> },
+          { path: "teams-winners", element: <Admin /> },
+          { path: "judges-oc", element: <Admin /> },
+          { path: "preview", element: <Admin /> },
+        ],
+      },
 
       { path: "organizerMentor", element: <OrganizerMentor /> },
       { path: "developer", element: <Developer /> },

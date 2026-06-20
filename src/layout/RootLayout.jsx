@@ -8,6 +8,7 @@ import SkeletonLoader from "../components/SkeletonLoader.jsx";
 const RootLayout = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+  const isAdminRoute = location.pathname.startsWith("/admin");
 
   useEffect(() => {
     // Show loading screen on initial app load
@@ -18,17 +19,17 @@ const RootLayout = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
+  if (loading && !isAdminRoute) {
     return <SkeletonLoader />;
   }
   return (
     <div className="w-full">
       <ScrollToTop />
-      <NavBar />
-      <main className="w-full min-h-screen pt-24 pb-20 md:pb-0">
+      {!isAdminRoute && <NavBar />}
+      <main className={`w-full min-h-screen pb-20 md:pb-0 ${isAdminRoute ? "pt-0" : "pt-24"}`}>
         <Outlet key={location.pathname} />
       </main>
-      <Footer />
+      {!isAdminRoute && <Footer />}
     </div>
   )
 }

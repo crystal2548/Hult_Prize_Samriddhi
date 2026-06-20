@@ -186,13 +186,14 @@
    YEAR CARDS - IMPROVED
    ============================================ */
 .tpp-year-card.ant-card {
-  background: #0a0a0a !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 16px !important;
+  background: #0c0c0d !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 14px !important;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   height: 100%;
   animation: fadeInUp 0.6s ease-out both;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
 }
 
 .tpp-year-card:nth-child(1) {
@@ -212,14 +213,14 @@
 }
 
 .tpp-year-card.ant-card:hover {
-  transform: translateY(-12px);
-  border-color: #EC2088 !important;
-  box-shadow: 0 24px 48px rgba(236, 32, 136, 0.3) !important;
+  transform: translateY(-8px);
+  border-color: rgba(236, 32, 136, 0.42) !important;
+  box-shadow: 0 24px 52px rgba(236, 32, 136, 0.18) !important;
 }
 
 .tpp-year-card .ant-card-body {
-  padding: 28px !important;
-  background: #0a0a0a !important;
+  padding: 0 !important;
+  background: #0c0c0d !important;
 }
 
 .tpp-year-card .ant-card-cover {
@@ -228,9 +229,17 @@
 
 .tpp-year-img-box {
   position: relative;
-  height: 260px;
+  height: 238px;
   overflow: hidden;
   background: #000000;
+}
+
+.tpp-year-img-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 42%, rgba(12, 12, 13, 0.78) 100%);
+  pointer-events: none;
 }
 
 .tpp-year-img {
@@ -246,79 +255,138 @@
 
 .tpp-year-badge {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
   color: #ffffff;
-  padding: 8px 18px;
-  border-radius: 8px;
-  font-size: 11px;
+  padding: 9px 15px;
+  border-radius: 10px;
+  font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.4px;
   backdrop-filter: blur(12px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.34);
 }
 
 /* Card Content */
 .tpp-year-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  min-height: 330px;
+  padding: 24px;
 }
 
 .tpp-year-name {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: #ffffff;
-  margin: 0;
+  margin: 0 0 16px 0;
   line-height: 1.3;
   letter-spacing: -0.4px;
 }
 
+.tpp-global-theme {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: 3px solid #12B1E7;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(18, 177, 231, 0.12), rgba(236, 32, 136, 0.05));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.tpp-global-theme-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(18, 177, 231, 0.12);
+  font-size: 17px;
+  color: #12B1E7;
+}
+
+.tpp-global-theme-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #12B1E7;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.tpp-global-theme-title {
+  margin: 0;
+  color: #f5f5f5;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .tpp-year-description {
   font-size: 13px;
-  line-height: 1.6;
-  color: #999999;
-  margin: 0;
-  font-weight: 500;
-  min-height: 42px;
+  line-height: 1.65;
+  color: #ffffff;
+  margin: 20px 0 0 0;
+  font-weight: 600;
+  min-height: 64px;
 }
 
 .tpp-year-info {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px 0;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 20px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .tpp-info-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .tpp-info-icon {
-  font-size: 16px;
+  width: 20px;
+  font-size: 17px;
   color: #EC2088;
 }
 
 .tpp-info-text {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  color: #cccccc;
+  color: #d5d5d5;
 }
 
 .tpp-card-footer {
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 22px;
 }
 
 .tpp-view-link {
-  font-size: 14px;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 800;
   color: #EC2088;
   letter-spacing: 0.3px;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.tpp-year-card:hover .tpp-view-link {
+  color: #ff4aa6;
+  transform: translateX(3px);
 }
 
 /* ============================================

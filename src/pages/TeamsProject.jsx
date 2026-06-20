@@ -3,35 +3,30 @@ import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col } from 'antd';
 import { TeamOutlined, TrophyOutlined, RocketOutlined, CalendarOutlined, BulbOutlined, GlobalOutlined } from '@ant-design/icons';
 import './styles/teamsProject.css';
-import { getAllProjects } from '../lib/services/teamsPrj.service.js';
-// import teamsProjectData from '../data/teamsProjectData.js';
+import { getTeamProjectCards } from '../lib/yearContentStore.js';
 
 const TeamsProject = () => {
   const navigate = useNavigate();
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef(null);
+  const [yearCards, setYearCards] = useState([]);
 
-  const [teamsProjectData, setTeamsProjectData] = useState([]);
-  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    async function getTeamsProjects() {
-      try {
-        const data = await getAllProjects();
-        if (!data) {
-          return
-        }
-        setTeamsProjectData(data);
-      }
-      catch (err) {
-        console.log(err);
+    let active = true;
+
+    async function loadCards() {
+      const cards = await getTeamProjectCards();
+      if (active) {
+        setYearCards(cards);
       }
     }
 
-    getTeamsProjects();
-  }, [])
+    loadCards();
 
-  // Use data from external file
-  const yearCards = teamsProjectData;
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -165,12 +160,24 @@ const TeamsProject = () => {
                       />
                       <div className="tpp-year-badge" style={{ background: getStatusColor(yearData.status) }}>
                         {yearData.year} {yearData.status}
-                      </div>
+                      </div>short
                     </div>
                   }
                 >
                   <div className="tpp-year-content">
-                    <h3 className="tpp-year-name">{yearData.theme}</h3>
+                    {yearData.theme && yearData.theme !== yearData.globalTheme && (
+                      <h3 className="tpp-year-name">{yearData.theme}</h3>
+                    )}
+
+                    {yearData.globalTheme && (
+                      <div className="tpp-global-theme">
+                        <GlobalOutlined className="tpp-global-theme-icon" />
+                        <div>
+                          <span className="tpp-global-theme-label">Global Theme</span>
+                          <p className="tpp-global-theme-title">{yearData.globalTheme}</p>
+                        </div>
+                      </div>
+                    )}
 
                     <p className="tpp-year-description">{yearData.description}</p>
 
@@ -182,7 +189,7 @@ const TeamsProject = () => {
 
                       <div className="tpp-info-item">
                         <GlobalOutlined className="tpp-info-icon" />
-                        <span className="tpp-info-text">{yearData.participations} Students</span>
+                        <span className="tpp-info-text">{yearData.participants ?? yearData.participations} Students</span>
                       </div>
 
                       {
