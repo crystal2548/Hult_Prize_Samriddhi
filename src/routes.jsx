@@ -67,6 +67,8 @@ const router = createBrowserRouter([
           { path: "dashboard", element: <ProtectedRoute><Admin /></ProtectedRoute> },
           { path: "teams-winners", element: <ProtectedRoute><Admin /></ProtectedRoute> },
           { path: "judges-oc", element: <ProtectedRoute><Admin /></ProtectedRoute> },
+          { path: "sponsors", element: <ProtectedRoute><Admin /></ProtectedRoute> },
+          { path: "developers", element: <ProtectedRoute><Admin /></ProtectedRoute> },
           { path: "preview", element: <ProtectedRoute><Admin /></ProtectedRoute> },
         ],
       },

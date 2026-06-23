@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/developer.css';
 import { FaGithub, FaLinkedin, FaTwitter, FaGlobe, FaCode } from 'react-icons/fa';
-import developers from '../data/developerData';
+import { getDevelopers } from '../lib/developerStore';
 
 const Developer = () => {
+  const [developers, setDevelopers] = useState([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    getDevelopers().then((data) => setDevelopers(data));
   }, []);
 
   return (

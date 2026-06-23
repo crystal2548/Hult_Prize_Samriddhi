@@ -4,10 +4,14 @@ import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/footer.jsx";
 import ScrollToTop from "../components/ScrollToTop.jsx";
 import SkeletonLoader from "../components/SkeletonLoader.jsx";
+import Maintenance from "../pages/Maintenance.jsx";
+import { subscribeToSiteSettings } from "../lib/settingsStore.js";
 
 const RootLayout = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
+  const [siteSettings, setSiteSettings] = useState({ maintenanceMode: false });
+  const [loadingSettings, setLoadingSettings] = useState(true);
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   useEffect(() => {
@@ -16,12 +20,25 @@ const RootLayout = () => {
       setLoading(false);
     }, 1500); // 1.5 seconds loading time
 
-    return () => clearTimeout(timer);
+    const unsubscribe = subscribeToSiteSettings((settings) => {
+      setSiteSettings(settings);
+      setLoadingSettings(false);
+    });
+
+    return () => {
+      clearTimeout(timer);
+      unsubscribe();
+    };
   }, []);
 
-  if (loading && !isAdminRoute) {
+  if ((loading || loadingSettings) && !isAdminRoute) {
     return <SkeletonLoader />;
   }
+
+  if (siteSettings.maintenanceMode && !isAdminRoute) {
+    return <Maintenance />;
+  }
+
   return (
     <div className="w-full">
       <ScrollToTop />

@@ -1003,6 +1003,42 @@
 .admin-loading-bar:nth-child(3) { width: 50%; animation-delay: 0.2s; }
 
 /* ============================================
+   MAINTENANCE MODE & DASHBOARD LAYOUT
+   ============================================ */
+
+.admin-dashboard-header {
+  display: flex;
+  justifyContent: space-between;
+  align-items: flex-start;
+}
+
+.admin-dashboard-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.admin-maintenance-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.admin-maintenance-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text-white);
+}
+
+.admin-maintenance-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -1037,17 +1073,74 @@
   }
 }
 
+@media (max-width: 768px) {
+  .admin-dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .admin-dashboard-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .admin-dashboard-actions .admin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-preview-hero-copy {
+    padding: 20px;
+  }
+
+  .admin-subcard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-subcard-header .admin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 640px) {
   .admin-form-grid {
     grid-template-columns: 1fr;
   }
 
   .admin-stats-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .admin-stat-card {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .admin-stat-icon {
+    position: static;
+    margin-bottom: 8px;
+  }
+
+  .admin-stat-label {
+    margin-bottom: 2px;
+    font-size: 10px;
+  }
+
+  .admin-stat-value {
+    font-size: 1.75rem;
   }
 
   .admin-saved-years {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .admin-topbar-actions {
@@ -1056,6 +1149,27 @@
 
   .admin-btn span.admin-btn-text {
     display: none;
+  }
+
+  .admin-maintenance-field {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .admin-maintenance-field .admin-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-upload-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-upload-preview {
+    width: 100%;
+    height: 120px;
   }
 }
 
