@@ -55,14 +55,27 @@ function normalizeRecord(record = {}) {
 }
 
 function normalizeSummary(year, record = {}, fallback = {}) {
+  const staticData = yearData[year] ?? {};
+  
+  let teamsCount = 0;
+  if (record.teams && Array.isArray(record.teams)) {
+    teamsCount = record.teams.length;
+  } else if (record.teamsCount !== undefined) {
+    teamsCount = record.teamsCount;
+  } else if (staticData.teams && Array.isArray(staticData.teams)) {
+    teamsCount = staticData.teams.length;
+  } else if (fallback.teams !== undefined) {
+    teamsCount = fallback.teams;
+  }
+
   return {
     year: String(year),
-    theme: record.theme ?? fallback.theme ?? "",
-    globalTheme: record.globalTheme ?? fallback.globalTheme ?? record.theme ?? fallback.theme ?? "",
-    status: record.status ?? fallback.status ?? "Draft",
-    image: record.image ?? fallback.image ?? "",
-    description: record.description ?? fallback.description ?? "",
-    teams: record.teamsCount ?? record.teams ?? fallback.teams ?? 0,
+    theme: record.theme ?? fallback.theme ?? staticData.globalTheme ?? "",
+    globalTheme: record.globalTheme ?? staticData.globalTheme ?? fallback.globalTheme ?? record.theme ?? fallback.theme ?? "",
+    status: record.status ?? fallback.status ?? "Completed",
+    image: record.image ?? fallback.image ?? staticData.heroImage ?? "",
+    description: record.description ?? fallback.description ?? staticData.globalDescription ?? "",
+    teams: teamsCount,
     participants: record.participants ?? record.participations ?? fallback.participants ?? fallback.participations ?? 0,
     participations: record.participants ?? record.participations ?? fallback.participants ?? fallback.participations ?? 0,
   };
@@ -179,4 +192,23 @@ export function blankTeam() {
 
 export function blankWinner() {
   return { ...EMPTY_WINNER };
+}
+
+export async function exportAllData() {
+  const snap = await getDocs(yearContentQuery());
+  const data = {};
+  snap.docs.forEach((doc) => {
+    data[doc.id] = doc.data();
+  });
+  return JSON.stringify(data, null, 2);
+}
+
+export async function importAllData(jsonData) {
+  const data = JSON.parse(jsonData);
+  const promises = Object.entries(data).map(([yearKey, record]) => {
+    const payload = { ...record, updatedAt: serverTimestamp() };
+    return setDoc(yearContentDoc(yearKey), payload, { merge: true });
+  });
+  await Promise.all(promises);
+  return true;
 }

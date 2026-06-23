@@ -22,8 +22,12 @@ const LearnMore = lazy(() => import("./pages/LearnMore.jsx"));
 const OurStory = lazy(() => import("./pages/Ourstory.jsx"));
 const Partners = lazy(() => import("./pages/Partners.jsx"));
 const Admin = lazy(() => import("./pages/{admin}/Admin.jsx"));
+const AdminLogin = lazy(() => import("./pages/{admin}/AdminLogin.jsx"));
 
 const Developer = lazy(() => import("./pages/Developer.jsx"));
+
+// Admin auth
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -58,11 +62,12 @@ const router = createBrowserRouter([
       {
         path: "admin",
         children: [
-          { index: true, element: <Navigate to="dashboard" replace /> },
-          { path: "dashboard", element: <Admin /> },
-          { path: "teams-winners", element: <Admin /> },
-          { path: "judges-oc", element: <Admin /> },
-          { path: "preview", element: <Admin /> },
+          { index: true, element: <Navigate to="login" replace /> },
+          { path: "login", element: <AdminLogin /> },
+          { path: "dashboard", element: <ProtectedRoute><Admin /></ProtectedRoute> },
+          { path: "teams-winners", element: <ProtectedRoute><Admin /></ProtectedRoute> },
+          { path: "judges-oc", element: <ProtectedRoute><Admin /></ProtectedRoute> },
+          { path: "preview", element: <ProtectedRoute><Admin /></ProtectedRoute> },
         ],
       },
 
@@ -72,4 +77,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router;
+export default router;

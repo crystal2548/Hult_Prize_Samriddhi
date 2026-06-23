@@ -6,6 +6,22 @@ service cloud.firestore {
       allow read, write: if true;
     }
 
+    match /teamProject/{documentId} {
+      allow read, write: if true;
+    }
+
+    match /globalwinner/{documentId} {
+      allow read, write: if true;
+    }
+
+    match /organizers/{documentId} {
+      allow read, write: if true;
+    }
+
+    match /pastWinners/{documentId} {
+      allow read, write: if true;
+    }
+
     match /{document=**} {
       allow read: if true;
     }

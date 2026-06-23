@@ -1,15 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Avatar, Button, Card, Col, Divider, Input, InputNumber, Row, Select, Space, Tag, Typography, message } from "antd";
-import { ArrowLeftOutlined, DeleteOutlined, PlusOutlined, ReloadOutlined, SaveOutlined, UploadOutlined } from "@ant-design/icons";
+import { Input, InputNumber, Select, message } from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
-import { blankTeam, blankWinner, deleteYearContent, getManagedYears, getTeamProjectCards, getYearDraft, upsertYearContent } from "../../lib/yearContentStore.js";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  LayoutDashboard, Users, Award, Eye, Save, RotateCcw, Trash2,
+  Upload, Plus, X, Menu, ChevronRight, Calendar, Trophy, UserCheck, Image as ImageIcon, Download, LogOut
+} from "lucide-react";
+import { useAuth } from "../../lib/firebase/AuthContext";
+import { blankTeam, blankWinner, deleteYearContent, getManagedYears, getTeamProjectCards, getYearDraft, upsertYearContent, exportAllData, importAllData } from "../../lib/yearContentStore.js";
 import "./styles/admin.css";
 
-const { Title, Paragraph, Text } = Typography;
 const { TextArea } = Input;
 
 const parseList = (value) => String(value || "").split(",").map((item) => item.trim()).filter(Boolean);
-
 const toInputList = (value) => Array.isArray(value) ? value.join(", ") : "";
 
 const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY;
@@ -37,9 +40,28 @@ const createEmptyDraft = (year) => ({
   sponsors: [],
 });
 
+const NAV_ITEMS = [
+  { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { key: "teams-winners", label: "Teams & Winners", icon: Users },
+  { key: "judges-oc", label: "Judges & OC", icon: UserCheck },
+  { key: "preview", label: "Preview", icon: Eye },
+];
+
+const sectionVariants = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] } },
+  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
+};
+
 const Admin = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/admin/login", { replace: true });
+  };
   const fileInputRefs = useRef({});
   const [selectedYear, setSelectedYear] = useState("2026");
   const [yearInput, setYearInput] = useState("2026");
@@ -49,9 +71,13 @@ const Admin = () => {
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(true);
   const [savedCards, setSavedCards] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const currentSection = location.pathname.split("/").filter(Boolean).slice(-1)[0] || "dashboard";
-  const goToSection = (section) => navigate(`/admin/${section}`);
+  const goToSection = (section) => {
+    navigate(`/admin/${section}`);
+    setSidebarOpen(false);
+  };
 
   useEffect(() => {
     let active = true;
@@ -208,7 +234,7 @@ const Admin = () => {
 
     if (!file) return;
 
-    const hide = message.loading(`Uploading ${file.name} to imgbb...`, 0);
+    const hide = message.loading(`Uploading ${file.name}...`, 0);
 
     try {
       const imageUrl = await uploadToImgBB(file);
@@ -219,6 +245,48 @@ const Admin = () => {
     } finally {
       hide();
     }
+  };
+
+  const handleBackup = async () => {
+    try {
+      message.loading({ content: 'Preparing backup...', key: 'backup' });
+      const jsonData = await exportAllData();
+      const blob = new Blob([jsonData], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `hult_prize_backup_${new Date().toISOString().split('T')[0]}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      message.success({ content: 'Backup downloaded successfully!', key: 'backup' });
+    } catch (error) {
+      message.error({ content: 'Failed to generate backup.', key: 'backup' });
+    }
+  };
+
+  const handleRecover = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    event.target.value = ""; // reset input
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      try {
+        message.loading({ content: 'Restoring data...', key: 'restore' });
+        const jsonData = e.target.result;
+        await importAllData(jsonData);
+        
+        await syncCards();
+        const freshDraft = await getYearDraft(selectedYear);
+        setDraft(freshDraft);
+        
+        message.success({ content: 'Data restored successfully!', key: 'restore' });
+      } catch (error) {
+        message.error({ content: 'Failed to restore data. Invalid file format.', key: 'restore' });
+      }
+    };
+    reader.readAsText(file);
   };
 
   const loadYear = () => {
@@ -300,322 +368,487 @@ const Admin = () => {
   const judges = draft.judges.length ? draft.judges : [emptyJudgeRow()];
   const committeeMembers = draft.organizingCommittee.length ? draft.organizingCommittee : [emptyCommitteeRow()];
 
+  const currentNavItem = NAV_ITEMS.find((item) => item.key === currentSection) || NAV_ITEMS[0];
+
+  /* ======== Render helpers ======== */
+
+  const renderUploadField = (label, value, onChangeValue, pickerKey) => (
+    <div className="admin-field">
+      <label className="admin-field-label">{label}</label>
+      <div className="admin-upload-row">
+        {value && <div className="admin-upload-preview" style={{ backgroundImage: `url(${value})` }} />}
+        <Input value={value} onChange={(e) => onChangeValue(e.target.value)} placeholder="https://..." />
+        <button className="admin-btn admin-btn-secondary admin-btn-icon" onClick={() => openFilePicker(pickerKey)} type="button">
+          <Upload />
+        </button>
+        <input
+          ref={(node) => { fileInputRefs.current[pickerKey] = node; }}
+          className="admin-hidden-input"
+          type="file"
+          accept="image/*"
+          onChange={(event) => handleFileUpload(event, (url) => onChangeValue(url))}
+        />
+      </div>
+    </div>
+  );
+
+  /* ======== JSX ======== */
+
   return (
-    <div className="admin-page">
-      <section className="admin-nav-wrap">
-        <div className="admin-shell">
-          <Card className="admin-nav-card" bodyStyle={{ padding: "12px 16px" }}>
-            <div className="admin-nav-bar">
-              <Button type="text" className="admin-nav-link" onClick={() => goToSection("dashboard")}>Dashboard</Button>
-              <Button type="text" className="admin-nav-link" onClick={() => goToSection("teams-winners")}>Teams / Winners</Button>
-              <Button type="text" className="admin-nav-link" onClick={() => goToSection("judges-oc")}>Judges & OC Members</Button>
-              <Button type="text" className="admin-nav-link" onClick={() => goToSection("preview")}>Preview Site</Button>
-              <Button type="primary" className="admin-nav-save" icon={<SaveOutlined />} onClick={saveYear} loading={saving}>Save Changes</Button>
+    <div className="admin-root">
+      {/* Sidebar overlay (mobile) */}
+      <div
+        className={`admin-sidebar-overlay ${sidebarOpen ? "visible" : ""}`}
+        onClick={() => setSidebarOpen(false)}
+      />
+
+      {/* ---- Sidebar ---- */}
+      <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
+        {/* Brand */}
+        <div className="admin-sidebar-brand">
+          <div className="admin-sidebar-brand-inner">
+            <div className="admin-sidebar-logo">HP</div>
+            <div>
+              <div className="admin-sidebar-title">Hult Prize</div>
+              <div className="admin-sidebar-subtitle">Admin Panel</div>
             </div>
-          </Card>
-        </div>
-      </section>
-
-      <section className="admin-hero">
-        <div className="admin-shell">
-          <Button icon={<ArrowLeftOutlined />} onClick={() => navigate(-1)} className="admin-back-btn">
-            Back
-          </Button>
-
-          <div className="admin-hero-grid">
-            <div className="admin-hero-copy">
-              <Tag className="admin-pill">Year content manager</Tag>
-              <Title level={1} className="admin-title">Admin page for teams and winners</Title>
-              <Paragraph className="admin-subtitle">
-                Add or update the details for a year, including the public year card, the hero section, participating teams, and winners.
-                Edits are saved locally in the browser and immediately reflected on the public pages.
-              </Paragraph>
-              <Space wrap>
-                <Button type="primary" icon={<SaveOutlined />} onClick={saveYear} loading={saving}>
-                  Save year
-                </Button>
-                <Button icon={<ReloadOutlined />} onClick={loadYear}>
-                  Reload year
-                </Button>
-                <Button danger icon={<DeleteOutlined />} onClick={deleteYear}>
-                  Delete saved edits
-                </Button>
-              </Space>
-            </div>
-
-            <Card className="admin-hero-card">
-              <Text className="admin-field-label">Year</Text>
-              <Space.Compact className="admin-year-row">
-                <Input value={yearInput} onChange={(event) => setYearInput(event.target.value)} placeholder="2026" />
-                <Button onClick={loadYear}>Load</Button>
-              </Space.Compact>
-              <div className="admin-hint">You can type any year value, then load it to edit.</div>
-              <div className="admin-year-tags">
-                {yearOptions.slice(0, 8).map((year) => (
-                  <Tag key={year} color={year === selectedYear ? "magenta" : "default"} onClick={() => {
-                    setYearInput(year);
-                    setSelectedYear(year);
-                    setReloadToken((current) => current + 1);
-                  }}>
-                    {year}
-                  </Tag>
-                ))}
-              </div>
-
-              <Divider />
-
-              <div className="admin-stat-grid">
-                <div>
-                  <span>Saved years</span>
-                  <strong>{savedCards.length}</strong>
-                </div>
-                <div>
-                  <span>Teams in form</span>
-                  <strong>{draft.teams.length}</strong>
-                </div>
-                <div>
-                  <span>Winners in form</span>
-                  <strong>{draft.winners.length}</strong>
-                </div>
-              </div>
-            </Card>
           </div>
         </div>
-      </section>
 
-      <section className="admin-body">
-        <div className="admin-shell">
-          <Row gutter={[24, 24]}>
-            <Col xs={100} xl={100}>
+        {/* Navigation */}
+        <nav className="admin-sidebar-nav">
+          <div className="admin-sidebar-label">Navigation</div>
+          {NAV_ITEMS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.key}
+                className={`admin-sidebar-link ${currentSection === item.key ? "active" : ""}`}
+                onClick={() => goToSection(item.key)}
+              >
+                <Icon className="admin-sidebar-icon" />
+                {item.label}
+              </button>
+            );
+          })}
+        </nav>
+
+        {/* Year Selector */}
+        <div className="admin-sidebar-year">
+          <div className="admin-sidebar-year-label">Active Year</div>
+          <div className="admin-sidebar-year-input">
+            <input
+              value={yearInput}
+              onChange={(e) => setYearInput(e.target.value)}
+              placeholder="2026"
+              onKeyDown={(e) => e.key === "Enter" && loadYear()}
+            />
+            <button className="admin-btn admin-btn-secondary admin-btn-sm" onClick={loadYear} type="button">
+              Load
+            </button>
+          </div>
+          <div className="admin-sidebar-year-tags">
+            {yearOptions.slice(0, 6).map((year) => (
+              <button
+                key={year}
+                className={`admin-year-tag ${year === selectedYear ? "active" : ""}`}
+                onClick={() => {
+                  setYearInput(year);
+                  setSelectedYear(year);
+                  setReloadToken((current) => current + 1);
+                }}
+              >
+                {year}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Logout */}
+        <div className="admin-sidebar-logout">
+          <div className="admin-sidebar-user-email" title={user?.email}>
+            {user?.email}
+          </div>
+          <button className="admin-btn admin-btn-danger admin-btn-sm admin-logout-btn" onClick={handleLogout} type="button">
+            <LogOut size={14} />
+            Sign Out
+          </button>
+        </div>
+      </aside>
+
+      {/* ---- Main Area ---- */}
+      <main className="admin-main">
+        {/* Top Bar */}
+        <header className="admin-topbar">
+          <div className="admin-topbar-left">
+            <button className="admin-mobile-toggle" onClick={() => setSidebarOpen(true)} type="button">
+              <Menu size={20} />
+            </button>
+            <div className="admin-breadcrumb">
+              <span>Admin</span>
+              <ChevronRight className="admin-breadcrumb-sep" size={14} />
+              <span className="admin-breadcrumb-current">{currentNavItem.label}</span>
+            </div>
+          </div>
+          <div className="admin-topbar-actions">
+            <button className="admin-btn admin-btn-secondary admin-btn-sm" onClick={loadYear} type="button">
+              <RotateCcw size={14} />
+              <span className="admin-btn-text">Reload</span>
+            </button>
+            <button className="admin-btn admin-btn-danger admin-btn-sm" onClick={deleteYear} type="button">
+              <Trash2 size={14} />
+              <span className="admin-btn-text">Delete</span>
+            </button>
+            <button className="admin-btn admin-btn-primary" onClick={saveYear} disabled={saving} type="button">
+              <Save size={16} />
+              <span className="admin-btn-text">{saving ? "Saving..." : "Save Changes"}</span>
+            </button>
+          </div>
+        </header>
+
+        {/* Content */}
+        <div className="admin-content">
+          {loading ? (
+            <div className="admin-loading">
+              <div className="admin-loading-bar" />
+              <div className="admin-loading-bar" />
+              <div className="admin-loading-bar" />
+            </div>
+          ) : (
+            <AnimatePresence mode="wait">
+              {/* ======== DASHBOARD ======== */}
               {currentSection === "dashboard" && (
-                <Card className="admin-panel" title="Dashboard / Year summary">
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Hero image</Text>
-                    <div className="admin-upload-row">
-                      <Input value={draft.heroImage} onChange={(event) => updateField("heroImage", event.target.value)} placeholder="https://..." />
-                      <Button icon={<UploadOutlined />} onClick={() => openFilePicker("heroImage")}>Upload</Button>
-                      <input
-                        ref={(node) => { fileInputRefs.current.heroImage = node; }}
-                        className="admin-hidden-input"
-                        type="file"
-                        accept="image/*"
-                        onChange={(event) => handleFileUpload(event, (url) => updateField("heroImage", url))}
+                <motion.div key="dashboard" variants={sectionVariants} initial="initial" animate="animate" exit="exit">
+                  <div className="admin-section-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div>
+                      <h1 className="admin-section-title">Dashboard</h1>
+                      <p className="admin-section-desc">
+                        Manage year content, hero sections, and metadata for <strong>{selectedYear}</strong>.
+                      </p>
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px' }}>
+                      <button className="admin-btn admin-btn-outline" onClick={handleBackup}>
+                        <Download size={16} /> Backup Data
+                      </button>
+                      <button className="admin-btn admin-btn-primary" onClick={() => fileInputRefs.current.restore?.click()}>
+                        <Upload size={16} /> Recover Data
+                      </button>
+                      <input 
+                        type="file" 
+                        accept=".json" 
+                        style={{ display: "none" }} 
+                        ref={(el) => (fileInputRefs.current.restore = el)}
+                        onChange={handleRecover} 
                       />
                     </div>
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Hero background color</Text>
-                    <Input value={draft.heroBgColor} onChange={(event) => updateField("heroBgColor", event.target.value)} placeholder="#0a0a0a" />
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Global theme</Text>
-                    <Input value={draft.globalTheme} onChange={(event) => updateField("globalTheme", event.target.value)} placeholder="Unlimited" />
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Card image</Text>
-                    <div className="admin-upload-row">
-                      <Input value={draft.image} onChange={(event) => updateField("image", event.target.value)} placeholder="Public year card image" />
-                      <Button icon={<UploadOutlined />} onClick={() => openFilePicker("cardImage")}>Upload</Button>
-                      <input
-                        ref={(node) => { fileInputRefs.current.cardImage = node; }}
-                        className="admin-hidden-input"
-                        type="file"
-                        accept="image/*"
-                        onChange={(event) => handleFileUpload(event, (url) => updateField("image", url))}
-                      />
+                  </div>
+
+                  {/* Stats */}
+                  <div className="admin-stats-row">
+                    <div className="admin-stat-card">
+                      <div className="admin-stat-icon"><Calendar size={18} /></div>
+                      <div className="admin-stat-label">Saved Years</div>
+                      <div className="admin-stat-value">{savedCards.length}</div>
                     </div>
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Status</Text>
-                    <Select
-                      value={draft.status}
-                      onChange={(value) => updateField("status", value)}
-                      options={[
-                        { value: "Completed", label: "Completed" },
-                        { value: "In Progress", label: "In Progress" },
-                        { value: "Draft", label: "Draft" },
-                      ]}
-                    />
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Teams count</Text>
-                    <InputNumber value={draft.teamsCount} onChange={(value) => updateField("teamsCount", value ?? 0)} min={0} className="admin-number" />
-                  </Col>
-                  <Col xs={24} md={12}>
-                    <Text className="admin-field-label">Participants</Text>
-                    <InputNumber value={draft.participants} onChange={(value) => updateField("participants", value ?? 0)} min={0} className="admin-number" />
-                  </Col>
-                  <Col xs={24}>
-                    <Text className="admin-field-label">Short summary</Text>
-                    <TextArea rows={3} value={draft.description} onChange={(event) => updateField("description", event.target.value)} />
-                  </Col>
-                </Row>
-                </Card>
+                    <div className="admin-stat-card">
+                      <div className="admin-stat-icon"><Users size={18} /></div>
+                      <div className="admin-stat-label">Teams</div>
+                      <div className="admin-stat-value">{draft.teams.length}</div>
+                    </div>
+                    <div className="admin-stat-card">
+                      <div className="admin-stat-icon"><Trophy size={18} /></div>
+                      <div className="admin-stat-label">Winners</div>
+                      <div className="admin-stat-value">{draft.winners.length}</div>
+                    </div>
+                    <div className="admin-stat-card">
+                      <div className="admin-stat-icon"><Award size={18} /></div>
+                      <div className="admin-stat-label">Participants</div>
+                      <div className="admin-stat-value">{draft.participants || 0}</div>
+                    </div>
+                  </div>
+
+                  {/* Hero & Card Images */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Hero & Media</h2>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-form-grid">
+                        <div className="admin-field admin-field-full">
+                          {renderUploadField("Hero Image", draft.heroImage, (val) => updateField("heroImage", val), "heroImage")}
+                        </div>
+                        <div className="admin-field admin-field-full">
+                          {renderUploadField("Card Image", draft.image, (val) => updateField("image", val), "cardImage")}
+                        </div>
+                        <div className="admin-field">
+                          <label className="admin-field-label">Hero Background Color</label>
+                          <div className="admin-color-input">
+                            <input type="color" value={draft.heroBgColor || "#0a0a0a"} onChange={(e) => updateField("heroBgColor", e.target.value)} />
+                            <Input value={draft.heroBgColor} onChange={(e) => updateField("heroBgColor", e.target.value)} placeholder="#0a0a0a" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Year Info */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Year Information</h2>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-form-grid">
+                        <div className="admin-field">
+                          <label className="admin-field-label">Global Theme</label>
+                          <Input value={draft.globalTheme} onChange={(e) => updateField("globalTheme", e.target.value)} placeholder="e.g. Unlimited" />
+                        </div>
+                        <div className="admin-field">
+                          <label className="admin-field-label">Status</label>
+                          <Select
+                            value={draft.status}
+                            onChange={(value) => updateField("status", value)}
+                            options={[
+                              { value: "Completed", label: "Completed" },
+                              { value: "In Progress", label: "In Progress" },
+                              { value: "Draft", label: "Draft" },
+                            ]}
+                          />
+                        </div>
+                        <div className="admin-field">
+                          <label className="admin-field-label">Teams Count</label>
+                          <InputNumber value={draft.teamsCount} onChange={(value) => updateField("teamsCount", value ?? 0)} min={0} />
+                        </div>
+                        <div className="admin-field">
+                          <label className="admin-field-label">Participants</label>
+                          <InputNumber value={draft.participants} onChange={(value) => updateField("participants", value ?? 0)} min={0} />
+                        </div>
+                        <div className="admin-field admin-field-full">
+                          <label className="admin-field-label">Short Summary</label>
+                          <TextArea rows={3} value={draft.description} onChange={(e) => updateField("description", e.target.value)} placeholder="Brief description of this year..." />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               )}
 
+              {/* ======== TEAMS & WINNERS ======== */}
               {currentSection === "teams-winners" && (
-                <>
-              <Card className="admin-panel admin-section" title="Teams / Winners" extra={<Button icon={<PlusOutlined />} onClick={addTeam}>Add team</Button>}>
-                <div className="admin-list-stack">
-                  {teams.map((team, index) => (
-                    <Card key={index} className="admin-subcard" size="small" title={`Team ${index + 1}`} extra={<Button type="text" danger icon={<DeleteOutlined />} onClick={() => removeTeam(index)}>Remove</Button>}>
-                      <Row gutter={[16, 16]}>
-                        <Col xs={24} md={12}>
-                          <Text className="admin-field-label">Team name</Text>
-                          <Input value={team.name} onChange={(event) => updateTeam(index, "name", event.target.value)} />
-                        </Col>
-                        <Col xs={24} md={12}>
-                          <Text className="admin-field-label">Image URL</Text>
-                          <div className="admin-upload-row">
-                            <Input value={team.image} onChange={(event) => updateTeam(index, "image", event.target.value)} />
-                            <Button icon={<UploadOutlined />} onClick={() => openFilePicker(`team-${index}`)}>Upload</Button>
-                            <input
-                              ref={(node) => { fileInputRefs.current[`team-${index}`] = node; }}
-                              className="admin-hidden-input"
-                              type="file"
-                              accept="image/*"
-                              onChange={(event) => handleFileUpload(event, (url) => updateTeam(index, "image", url))}
-                            />
-                          </div>
-                        </Col>
-                        <Col xs={24}>
-                          <Text className="admin-field-label">Problem statement</Text>
-                          <TextArea rows={2} value={team.problemStatement} onChange={(event) => updateTeam(index, "problemStatement", event.target.value)} />
-                        </Col>
-                        <Col xs={24}>
-                          <Text className="admin-field-label">Solution overview</Text>
-                          <TextArea rows={2} value={team.solutionOverview} onChange={(event) => updateTeam(index, "solutionOverview", event.target.value)} />
-                        </Col>
-                        <Col xs={24}>
-                          <Text className="admin-field-label">Impact</Text>
-                          <TextArea rows={2} value={team.impact} onChange={(event) => updateTeam(index, "impact", event.target.value)} />
-                        </Col>
-                        <Col xs={24} md={12}>
-                          <Text className="admin-field-label">Members, comma separated</Text>
-                          <Input value={team.membersText ?? toInputList(team.members)} onChange={(event) => updateTeam(index, "membersText", event.target.value)} placeholder="Name 1, Name 2" />
-                        </Col>
-                        <Col xs={24} md={12}>
-                          <Text className="admin-field-label">Tags, comma separated</Text>
-                          <Input value={team.tagsText ?? toInputList(team.tags)} onChange={(event) => updateTeam(index, "tagsText", event.target.value)} placeholder="SDG, Innovation" />
-                        </Col>
-                      </Row>
-                    </Card>
-                  ))}
-                </div>
-              </Card>
+                <motion.div key="teams-winners" variants={sectionVariants} initial="initial" animate="animate" exit="exit">
+                  <div className="admin-section-header">
+                    <h1 className="admin-section-title">Teams & Winners</h1>
+                    <p className="admin-section-desc">Add and manage participating teams and competition winners for {selectedYear}.</p>
+                  </div>
 
-              <Card className="admin-panel admin-section" title="Winners" extra={<Button icon={<PlusOutlined />} onClick={addWinner}>Add winner</Button>}>
-                <div className="admin-list-stack">
-                  {winners.map((winner, index) => (
-                    <Card key={index} className="admin-subcard" size="small" title={`Winner ${index + 1}`} extra={<Button type="text" danger icon={<DeleteOutlined />} onClick={() => removeWinner(index)}>Remove</Button>}>
-                      <Row gutter={[16, 16]}>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Place</Text>
-                          <Input value={winner.place} onChange={(event) => updateWinner(index, "place", event.target.value)} placeholder="1ST PLACE" />
-                        </Col>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Team</Text>
-                          <Input value={winner.team} onChange={(event) => updateWinner(index, "team", event.target.value)} placeholder="Winner team" />
-                        </Col>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Image URL</Text>
-                          <div className="admin-upload-row">
-                            <Input value={winner.image} onChange={(event) => updateWinner(index, "image", event.target.value)} />
-                            <Button icon={<UploadOutlined />} onClick={() => openFilePicker(`winner-${index}`)}>Upload</Button>
-                            <input
-                              ref={(node) => { fileInputRefs.current[`winner-${index}`] = node; }}
-                              className="admin-hidden-input"
-                              type="file"
-                              accept="image/*"
-                              onChange={(event) => handleFileUpload(event, (url) => updateWinner(index, "image", url))}
-                            />
+                  {/* Teams */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Teams ({teams.length})</h2>
+                      <button className="admin-btn admin-btn-secondary admin-btn-sm" onClick={addTeam} type="button">
+                        <Plus size={14} /> Add Team
+                      </button>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-list-stack">
+                        {teams.map((team, index) => (
+                          <div key={index} className="admin-subcard">
+                            <div className="admin-subcard-header">
+                              <div className="admin-subcard-title">
+                                <span className="admin-subcard-number">{index + 1}</span>
+                                {team.name || `Team ${index + 1}`}
+                              </div>
+                              <button className="admin-btn admin-btn-danger admin-btn-sm" onClick={() => removeTeam(index)} type="button">
+                                <X size={14} /> Remove
+                              </button>
+                            </div>
+                            <div className="admin-subcard-body">
+                              <div className="admin-form-grid">
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Team Name</label>
+                                  <Input value={team.name} onChange={(e) => updateTeam(index, "name", e.target.value)} placeholder="Team name" />
+                                </div>
+                                <div className="admin-field">
+                                  {renderUploadField("Image", team.image, (val) => updateTeam(index, "image", val), `team-${index}`)}
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  <label className="admin-field-label">Problem Statement</label>
+                                  <TextArea rows={2} value={team.problemStatement} onChange={(e) => updateTeam(index, "problemStatement", e.target.value)} placeholder="What problem does this team address?" />
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  <label className="admin-field-label">Solution Overview</label>
+                                  <TextArea rows={2} value={team.solutionOverview} onChange={(e) => updateTeam(index, "solutionOverview", e.target.value)} placeholder="What is their proposed solution?" />
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  <label className="admin-field-label">Impact</label>
+                                  <TextArea rows={2} value={team.impact} onChange={(e) => updateTeam(index, "impact", e.target.value)} placeholder="What impact does this solution create?" />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Members (comma-separated)</label>
+                                  <Input value={team.membersText ?? toInputList(team.members)} onChange={(e) => updateTeam(index, "membersText", e.target.value)} placeholder="Name 1, Name 2" />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Tags (comma-separated)</label>
+                                  <Input value={team.tagsText ?? toInputList(team.tags)} onChange={(e) => updateTeam(index, "tagsText", e.target.value)} placeholder="SDG, Innovation" />
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </Col>
-                        <Col xs={24}>
-                          <Text className="admin-field-label">Description</Text>
-                          <TextArea rows={3} value={winner.description} onChange={(event) => updateWinner(index, "description", event.target.value)} />
-                        </Col>
-                      </Row>
-                    </Card>
-                  ))}
-                </div>
-              </Card>
-                </>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Winners */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Winners ({winners.length})</h2>
+                      <button className="admin-btn admin-btn-secondary admin-btn-sm" onClick={addWinner} type="button">
+                        <Plus size={14} /> Add Winner
+                      </button>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-list-stack">
+                        {winners.map((winner, index) => (
+                          <div key={index} className="admin-subcard">
+                            <div className="admin-subcard-header">
+                              <div className="admin-subcard-title">
+                                <span className="admin-subcard-number">{index + 1}</span>
+                                {winner.team || `Winner ${index + 1}`}
+                              </div>
+                              <button className="admin-btn admin-btn-danger admin-btn-sm" onClick={() => removeWinner(index)} type="button">
+                                <X size={14} /> Remove
+                              </button>
+                            </div>
+                            <div className="admin-subcard-body">
+                              <div className="admin-form-grid">
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Place</label>
+                                  <Input value={winner.place} onChange={(e) => updateWinner(index, "place", e.target.value)} placeholder="1ST PLACE" />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Team</label>
+                                  <Input value={winner.team} onChange={(e) => updateWinner(index, "team", e.target.value)} placeholder="Winning team name" />
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  {renderUploadField("Image", winner.image, (val) => updateWinner(index, "image", val), `winner-${index}`)}
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  <label className="admin-field-label">Description</label>
+                                  <TextArea rows={3} value={winner.description} onChange={(e) => updateWinner(index, "description", e.target.value)} placeholder="Describe their achievement..." />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               )}
 
+              {/* ======== JUDGES & OC ======== */}
               {currentSection === "judges-oc" && (
-                <>
-              <Card className="admin-panel admin-section" title="Judges" extra={<Button icon={<PlusOutlined />} onClick={addJudge}>Add judge</Button>}>
-                <div className="admin-list-stack">
-                  {judges.map((judge, index) => (
-                    <Card key={index} className="admin-subcard" size="small" title={`Judge ${index + 1}`} extra={<Button type="text" danger icon={<DeleteOutlined />} onClick={() => removeJudge(index)}>Remove</Button>}>
-                      <Row gutter={[16, 16]}>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Name</Text>
-                          <Input value={judge.name} onChange={(event) => updateJudge(index, "name", event.target.value)} placeholder="Judge name" />
-                        </Col>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Role</Text>
-                          <Input value={judge.role} onChange={(event) => updateJudge(index, "role", event.target.value)} placeholder="Judge role" />
-                        </Col>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Image URL</Text>
-                          <div className="admin-upload-row">
-                            <Input value={judge.image} onChange={(event) => updateJudge(index, "image", event.target.value)} />
-                            <Button icon={<UploadOutlined />} onClick={() => openFilePicker(`judge-${index}`)}>Upload</Button>
-                            <input
-                              ref={(node) => { fileInputRefs.current[`judge-${index}`] = node; }}
-                              className="admin-hidden-input"
-                              type="file"
-                              accept="image/*"
-                              onChange={(event) => handleFileUpload(event, (url) => updateJudge(index, "image", url))}
-                            />
-                          </div>
-                        </Col>
-                      </Row>
-                    </Card>
-                  ))}
-                </div>
-              </Card>
+                <motion.div key="judges-oc" variants={sectionVariants} initial="initial" animate="animate" exit="exit">
+                  <div className="admin-section-header">
+                    <h1 className="admin-section-title">Judges & Organizing Committee</h1>
+                    <p className="admin-section-desc">Manage judges and OC members for {selectedYear}.</p>
+                  </div>
 
-              <Card className="admin-panel admin-section" title="OC Members" extra={<Button icon={<PlusOutlined />} onClick={addCommitteeMember}>Add member</Button>}>
-                <div className="admin-list-stack">
-                  {committeeMembers.map((member, index) => (
-                    <Card key={index} className="admin-subcard" size="small" title={`Member ${index + 1}`} extra={<Button type="text" danger icon={<DeleteOutlined />} onClick={() => removeCommitteeMember(index)}>Remove</Button>}>
-                      <Row gutter={[16, 16]}>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Name</Text>
-                          <Input value={member.name} onChange={(event) => updateCommittee(index, "name", event.target.value)} placeholder="Member name" />
-                        </Col>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Role</Text>
-                          <Input value={member.role} onChange={(event) => updateCommittee(index, "role", event.target.value)} placeholder="Member role" />
-                        </Col>
-                        <Col xs={24} md={8}>
-                          <Text className="admin-field-label">Image URL</Text>
-                          <div className="admin-upload-row">
-                            <Input value={member.image} onChange={(event) => updateCommittee(index, "image", event.target.value)} />
-                            <Button icon={<UploadOutlined />} onClick={() => openFilePicker(`committee-${index}`)}>Upload</Button>
-                            <input
-                              ref={(node) => { fileInputRefs.current[`committee-${index}`] = node; }}
-                              className="admin-hidden-input"
-                              type="file"
-                              accept="image/*"
-                              onChange={(event) => handleFileUpload(event, (url) => updateCommittee(index, "image", url))}
-                            />
+                  {/* Judges */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Judges ({judges.length})</h2>
+                      <button className="admin-btn admin-btn-secondary admin-btn-sm" onClick={addJudge} type="button">
+                        <Plus size={14} /> Add Judge
+                      </button>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-list-stack">
+                        {judges.map((judge, index) => (
+                          <div key={index} className="admin-subcard">
+                            <div className="admin-subcard-header">
+                              <div className="admin-subcard-title">
+                                <span className="admin-subcard-number">{index + 1}</span>
+                                {judge.name || `Judge ${index + 1}`}
+                              </div>
+                              <button className="admin-btn admin-btn-danger admin-btn-sm" onClick={() => removeJudge(index)} type="button">
+                                <X size={14} /> Remove
+                              </button>
+                            </div>
+                            <div className="admin-subcard-body">
+                              <div className="admin-form-grid">
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Name</label>
+                                  <Input value={judge.name} onChange={(e) => updateJudge(index, "name", e.target.value)} placeholder="Judge name" />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Role</label>
+                                  <Input value={judge.role} onChange={(e) => updateJudge(index, "role", e.target.value)} placeholder="e.g. Lead Judge" />
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  {renderUploadField("Photo", judge.image, (val) => updateJudge(index, "image", val), `judge-${index}`)}
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </Col>
-                      </Row>
-                    </Card>
-                  ))}
-                </div>
-              </Card>
-                </>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* OC Members */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">OC Members ({committeeMembers.length})</h2>
+                      <button className="admin-btn admin-btn-secondary admin-btn-sm" onClick={addCommitteeMember} type="button">
+                        <Plus size={14} /> Add Member
+                      </button>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-list-stack">
+                        {committeeMembers.map((member, index) => (
+                          <div key={index} className="admin-subcard">
+                            <div className="admin-subcard-header">
+                              <div className="admin-subcard-title">
+                                <span className="admin-subcard-number">{index + 1}</span>
+                                {member.name || `Member ${index + 1}`}
+                              </div>
+                              <button className="admin-btn admin-btn-danger admin-btn-sm" onClick={() => removeCommitteeMember(index)} type="button">
+                                <X size={14} /> Remove
+                              </button>
+                            </div>
+                            <div className="admin-subcard-body">
+                              <div className="admin-form-grid">
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Name</label>
+                                  <Input value={member.name} onChange={(e) => updateCommittee(index, "name", e.target.value)} placeholder="Member name" />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">Role</label>
+                                  <Input value={member.role} onChange={(e) => updateCommittee(index, "role", e.target.value)} placeholder="e.g. Campus Director" />
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  {renderUploadField("Photo", member.image, (val) => updateCommittee(index, "image", val), `committee-${index}`)}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               )}
 
+              {/* ======== PREVIEW ======== */}
               {currentSection === "preview" && (
-                <Card className="admin-preview-card" title="Live preview">
+                <motion.div key="preview" variants={sectionVariants} initial="initial" animate="animate" exit="exit">
+                  <div className="admin-section-header">
+                    <h1 className="admin-section-title">Live Preview</h1>
+                    <p className="admin-section-desc">Preview how your changes will appear on the public site.</p>
+                  </div>
+
+                  {/* Hero Preview */}
                   <div className="admin-preview-hero" style={{ backgroundColor: draft.heroBgColor || "#0a0a0a" }}>
                     {draft.heroImage ? (
                       <div className="admin-preview-hero-image" style={{ backgroundImage: `url(${draft.heroImage})` }} />
@@ -623,67 +856,94 @@ const Admin = () => {
                       <div className="admin-preview-hero-fallback">No hero image set</div>
                     )}
                     <div className="admin-preview-hero-copy">
-                      <Text className="admin-preview-year">{selectedYear}</Text>
-                      <Title level={3}>{draft.globalTheme || "Global theme goes here"}</Title>
-                      <Space wrap>
-                        <Button type="primary" onClick={() => navigate("/")}>Open Public Site</Button>
-                      </Space>
+                      <div className="admin-preview-year">{selectedYear}</div>
+                      <div className="admin-preview-theme">{draft.globalTheme || "Global theme goes here"}</div>
+                      <button className="admin-btn admin-btn-primary" onClick={() => navigate("/")} type="button">
+                        Open Public Site
+                      </button>
                     </div>
                   </div>
 
-                  <Divider />
-
-                  <div className="admin-preview-block">
-                    <Text className="admin-field-label">Teams</Text>
-                    <div className="admin-preview-list">
-                      {draft.teams.length ? draft.teams.map((team, index) => (
-                        <Card key={index} size="small" className="admin-preview-item">
-                          <Space align="start" size={12}>
-                            <Avatar shape="square" src={team.image}>{team.name?.charAt(0) || "T"}</Avatar>
-                            <div>
-                              <Text strong>{team.name || `Team ${index + 1}`}</Text>
-                              <div className="admin-preview-text">{team.problemStatement || "Problem statement not added yet."}</div>
+                  {/* Teams Preview */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Teams</h2>
+                    </div>
+                    <div className="admin-panel-body">
+                      {draft.teams.length ? (
+                        <div className="admin-preview-list">
+                          {draft.teams.map((team, index) => (
+                            <div key={index} className="admin-preview-item">
+                              <div
+                                className="admin-preview-item-avatar"
+                                style={team.image ? { backgroundImage: `url(${team.image})` } : {}}
+                              >
+                                {!team.image && (team.name?.charAt(0) || "T")}
+                              </div>
+                              <div className="admin-preview-item-info">
+                                <div className="admin-preview-item-name">{team.name || `Team ${index + 1}`}</div>
+                                <div className="admin-preview-item-desc">{team.problemStatement || "No problem statement yet."}</div>
+                              </div>
                             </div>
-                          </Space>
-                        </Card>
-                      )) : <div className="admin-muted">Add a team to see it previewed here.</div>}
-                    </div>
-                  </div>
-
-                  <Divider />
-
-                  <div className="admin-preview-block">
-                    <Text className="admin-field-label">Winners</Text>
-                    <div className="admin-preview-list">
-                      {draft.winners.length ? draft.winners.map((winner, index) => (
-                        <Card key={index} size="small" className="admin-preview-item">
-                          <Text strong>{winner.place || `Place ${index + 1}`}</Text>
-                          <div>{winner.team || "Winner team"}</div>
-                          <div className="admin-muted">{winner.description || "Winner description"}</div>
-                        </Card>
-                      )) : <div className="admin-muted">Add a winner to see it previewed here.</div>}
-                    </div>
-                  </div>
-
-                  <Divider />
-
-                  <div className="admin-preview-block">
-                    <Text className="admin-field-label">Saved years</Text>
-                    <div className="admin-saved-years">
-                      {savedCards.slice(0, 8).map((card) => (
-                        <div key={card.year} className="admin-saved-year">
-                          <Text strong>{card.year}</Text>
-                          <div className="admin-muted">{card.theme || card.globalTheme || "No title yet"}</div>
+                          ))}
                         </div>
-                      ))}
+                      ) : (
+                        <div className="admin-muted" style={{ padding: "16px 0" }}>Add a team to see it previewed here.</div>
+                      )}
                     </div>
                   </div>
-                </Card>
+
+                  {/* Winners Preview */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Winners</h2>
+                    </div>
+                    <div className="admin-panel-body">
+                      {draft.winners.length ? (
+                        <div className="admin-preview-list">
+                          {draft.winners.map((winner, index) => (
+                            <div key={index} className="admin-preview-item">
+                              <div
+                                className="admin-preview-item-avatar"
+                                style={winner.image ? { backgroundImage: `url(${winner.image})` } : {}}
+                              >
+                                {!winner.image && <Trophy size={16} />}
+                              </div>
+                              <div className="admin-preview-item-info">
+                                <div className="admin-preview-item-name">{winner.place || `Place ${index + 1}`}</div>
+                                <div className="admin-preview-item-desc">{winner.team || "Winner team"}</div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="admin-muted" style={{ padding: "16px 0" }}>Add a winner to see it previewed here.</div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Saved Years */}
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">Saved Years</h2>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-saved-years">
+                        {savedCards.slice(0, 8).map((card) => (
+                          <div key={card.year} className="admin-saved-year">
+                            <div className="admin-saved-year-title">{card.year}</div>
+                            <div className="admin-saved-year-desc">{card.theme || card.globalTheme || "No theme set"}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               )}
-            </Col>
-          </Row>
+            </AnimatePresence>
+          )}
         </div>
-      </section>
+      </main>
     </div>
   );
 };
