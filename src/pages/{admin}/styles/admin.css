@@ -1008,7 +1008,7 @@
 
 .admin-dashboard-header {
   display: flex;
-  justifyContent: space-between;
+  justify-content: space-between;
   align-items: flex-start;
 }
 

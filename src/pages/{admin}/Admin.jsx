@@ -1,5 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Input, InputNumber, Select, message } from "antd";
+import { Input } from "../../components/ui/input";
+import { InputNumber } from "../../components/ui/input-number";
+import { Select } from "../../components/ui/select";
+import { Switch } from "../../components/ui/switch";
+import { Textarea as TextArea } from "../../components/ui/textarea";
+import { message } from "../../lib/message";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -36,6 +41,12 @@ import {
   emptyDeveloper,
 } from "../../lib/developerStore.js";
 import {
+  getAllWinners,
+  addGlobalWinner,
+  updateGlobalWinner,
+  deleteGlobalWinner,
+} from "../../lib/services/winners.service.js";
+import {
   blankTeam,
   blankWinner,
   deleteYearContent,
@@ -48,7 +59,6 @@ import {
 } from "../../lib/yearContentStore.js";
 import "./styles/admin.css";
 
-const { TextArea } = Input;
 
 const parseList = (value) =>
   String(value || "")
@@ -64,6 +74,7 @@ const emptyWinnerRow = () => ({ ...blankWinner() });
 const emptyJudgeRow = () => ({ name: "", role: "", image: "" });
 const emptyCommitteeRow = () => ({ name: "", role: "", image: "" });
 const emptySponsorRow = () => ({ name: "", logo: "" });
+const emptyGlobalWinnerRow = () => ({ title: "", year: "", image: "", quote: "", author: "", isVisible: true, isNew: true, id: `temp-${Date.now()}` });
 
 const createEmptyDraft = (year) => ({
   year: String(year),
@@ -89,6 +100,7 @@ const NAV_ITEMS = [
   { key: "teams-winners", label: "Teams & Winners", icon: Users },
   { key: "judges-oc", label: "Judges & OC", icon: UserCheck },
   { key: "sponsors", label: "Sponsors", icon: HeartHandshake },
+  { key: "global-winners", label: "Global Winners", icon: Award },
   { key: "developers", label: "Developers", icon: Code },
   { key: "preview", label: "Preview", icon: Eye },
 ];
@@ -119,11 +131,20 @@ const Admin = () => {
   const [yearOptions, setYearOptions] = useState([]);
   const [draft, setDraft] = useState(() => createEmptyDraft("2026"));
   const [developersDraft, setDevelopersDraft] = useState([]);
+  const [globalWinnersDraft, setGlobalWinnersDraft] = useState([]);
+  const [deletedGlobalWinners, setDeletedGlobalWinners] = useState([]);
   const [siteSettings, setSiteSettings] = useState({ maintenanceMode: false });
   const [saving, setSaving] = useState(false);
   const [loading, setLoading] = useState(true);
   const [savedCards, setSavedCards] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [lastSaved, setLastSaved] = useState(null);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleCard = (key) =>
+    setExpandedCards((prev) => ({ ...prev, [key]: !prev[key] }));
+  const isExpanded = (key) => expandedCards[key] !== false;
 
   const currentSection =
     location.pathname.split("/").filter(Boolean).slice(-1)[0] || "dashboard";
@@ -137,17 +158,19 @@ const Admin = () => {
 
     async function loadMeta() {
       try {
-        const [years, cards, devs, settings] = await Promise.all([
+        const [years, cards, devs, settings, globalWinners] = await Promise.all([
           getManagedYears(),
           getTeamProjectCards(),
           getDevelopers(),
           getSiteSettings(),
+          getAllWinners(),
         ]);
         if (!active) return;
         setYearOptions(years);
         setSavedCards(cards);
         setDevelopersDraft(devs);
         setSiteSettings(settings);
+        setGlobalWinnersDraft(globalWinners);
       } catch (error) {
         message.error("Unable to load admin content list");
       } finally {
@@ -163,6 +186,16 @@ const Admin = () => {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (!isDirty) return;
+    const handler = (e) => {
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [isDirty]);
 
   useEffect(() => {
     let active = true;
@@ -199,6 +232,7 @@ const Admin = () => {
   };
 
   const updateField = (field, value) => {
+    setIsDirty(true);
     setDraft((current) => ({ ...current, [field]: value }));
   };
 
@@ -455,6 +489,52 @@ const Admin = () => {
     message.success(`Loaded ${nextYear}`);
   };
 
+  const saveGlobalWinners = async () => {
+    setSaving(true);
+    try {
+      for (const id of deletedGlobalWinners) {
+        await deleteGlobalWinner(id);
+      }
+      for (const gw of globalWinnersDraft) {
+        const { id, isNew, ...data } = gw;
+        if (isNew) {
+          await addGlobalWinner(data);
+        } else {
+          await updateGlobalWinner(id, data);
+        }
+      }
+      const fresh = await getAllWinners();
+      setGlobalWinnersDraft(fresh);
+      setDeletedGlobalWinners([]);
+      setIsDirty(false);
+      setLastSaved(new Date());
+      message.success("Saved Global Winners successfully");
+    } catch (error) {
+      console.error("Failed to save global winners", error);
+      message.error("Unable to save global winners");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const updateGlobalWinnerState = (index, field, value) => {
+    setGlobalWinnersDraft((current) =>
+      current.map((gw, i) => (i === index ? { ...gw, [field]: value } : gw)),
+    );
+  };
+  const addGlobalWinnerState = () => {
+    setGlobalWinnersDraft((current) => [...current, emptyGlobalWinnerRow()]);
+  };
+  const removeGlobalWinnerState = (index) => {
+    setGlobalWinnersDraft((current) => {
+      const toRemove = current[index];
+      if (!toRemove.isNew && toRemove.id) {
+        setDeletedGlobalWinners((prev) => [...prev, toRemove.id]);
+      }
+      return current.filter((_, i) => i !== index);
+    });
+  };
+
   const saveYear = async () => {
     setSaving(true);
 
@@ -506,6 +586,8 @@ const Admin = () => {
         );
       }
 
+      setIsDirty(false);
+      setLastSaved(new Date());
       message.success(`Saved ${selectedYear}`);
     } catch (error) {
       console.error("Unable to save year content:", error);
@@ -707,6 +789,11 @@ const Admin = () => {
             </div>
           </div>
           <div className="admin-topbar-actions">
+            {lastSaved && (
+              <span style={{ fontSize: "12px", color: "var(--text-muted)", alignSelf: "center", whiteSpace: "nowrap" }}>
+                Saved {lastSaved.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+              </span>
+            )}
             <button
               className="admin-btn admin-btn-secondary admin-btn-sm"
               onClick={loadYear}
@@ -725,10 +812,18 @@ const Admin = () => {
             </button>
             <button
               className="admin-btn admin-btn-primary"
-              onClick={saveYear}
+              onClick={currentSection === "global-winners" ? saveGlobalWinners : saveYear}
               disabled={saving}
               type="button"
+              style={{ position: "relative" }}
             >
+              {isDirty && (
+                <span style={{
+                  position: "absolute", top: "-4px", right: "-4px",
+                  width: "8px", height: "8px", borderRadius: "50%",
+                  background: "#fbbf24", border: "2px solid #0a0a0a"
+                }} />
+              )}
               <Save size={16} />
               <span className="admin-btn-text">
                 {saving ? "Saving..." : "Save Changes"}
@@ -1045,22 +1140,30 @@ const Admin = () => {
                       <div className="admin-list-stack">
                         {teams.map((team, index) => (
                           <div key={index} className="admin-subcard">
-                            <div className="admin-subcard-header">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`team-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="admin-subcard-title">
-                                <span className="admin-subcard-number">
-                                  {index + 1}
-                                </span>
+                                <span className="admin-subcard-number">{index + 1}</span>
                                 {team.name || `Team ${index + 1}`}
                               </div>
-                              <button
-                                className="admin-btn admin-btn-danger admin-btn-sm"
-                                onClick={() => removeTeam(index)}
-                                type="button"
-                              >
-                                <X size={14} /> Remove
-                              </button>
+                              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <ChevronRight
+                                  size={16}
+                                  style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`team-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }}
+                                />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeTeam(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="admin-subcard-body">
+                            {isExpanded(`team-${index}`) && <div className="admin-subcard-body">
                               <div className="admin-form-grid">
                                 <div className="admin-field">
                                   <label className="admin-field-label">
@@ -1172,6 +1275,7 @@ const Admin = () => {
                                 </div>
                               </div>
                             </div>
+                            }
                           </div>
                         ))}
                       </div>
@@ -1196,22 +1300,27 @@ const Admin = () => {
                       <div className="admin-list-stack">
                         {winners.map((winner, index) => (
                           <div key={index} className="admin-subcard">
-                            <div className="admin-subcard-header">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`winner-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="admin-subcard-title">
-                                <span className="admin-subcard-number">
-                                  {index + 1}
-                                </span>
+                                <span className="admin-subcard-number">{index + 1}</span>
                                 {winner.team || `Winner ${index + 1}`}
                               </div>
-                              <button
-                                className="admin-btn admin-btn-danger admin-btn-sm"
-                                onClick={() => removeWinner(index)}
-                                type="button"
-                              >
-                                <X size={14} /> Remove
-                              </button>
+                              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <ChevronRight size={16} style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`winner-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }} />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeWinner(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="admin-subcard-body">
+                            {isExpanded(`winner-${index}`) && <div className="admin-subcard-body">
                               <div className="admin-form-grid">
                                 <div className="admin-field">
                                   <label className="admin-field-label">
@@ -1272,6 +1381,7 @@ const Admin = () => {
                                 </div>
                               </div>
                             </div>
+                            }
                           </div>
                         ))}
                       </div>
@@ -1316,22 +1426,27 @@ const Admin = () => {
                       <div className="admin-list-stack">
                         {judges.map((judge, index) => (
                           <div key={index} className="admin-subcard">
-                            <div className="admin-subcard-header">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`judge-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="admin-subcard-title">
-                                <span className="admin-subcard-number">
-                                  {index + 1}
-                                </span>
+                                <span className="admin-subcard-number">{index + 1}</span>
                                 {judge.name || `Judge ${index + 1}`}
                               </div>
-                              <button
-                                className="admin-btn admin-btn-danger admin-btn-sm"
-                                onClick={() => removeJudge(index)}
-                                type="button"
-                              >
-                                <X size={14} /> Remove
-                              </button>
+                              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <ChevronRight size={16} style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`judge-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }} />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeJudge(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="admin-subcard-body">
+                            {isExpanded(`judge-${index}`) && <div className="admin-subcard-body">
                               <div className="admin-form-grid">
                                 <div className="admin-field">
                                   <label className="admin-field-label">
@@ -1367,6 +1482,7 @@ const Admin = () => {
                                 </div>
                               </div>
                             </div>
+                            }
                           </div>
                         ))}
                       </div>
@@ -1391,22 +1507,27 @@ const Admin = () => {
                       <div className="admin-list-stack">
                         {committeeMembers.map((member, index) => (
                           <div key={index} className="admin-subcard">
-                            <div className="admin-subcard-header">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`member-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="admin-subcard-title">
-                                <span className="admin-subcard-number">
-                                  {index + 1}
-                                </span>
+                                <span className="admin-subcard-number">{index + 1}</span>
                                 {member.name || `Member ${index + 1}`}
                               </div>
-                              <button
-                                className="admin-btn admin-btn-danger admin-btn-sm"
-                                onClick={() => removeCommitteeMember(index)}
-                                type="button"
-                              >
-                                <X size={14} /> Remove
-                              </button>
+                              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <ChevronRight size={16} style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`member-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }} />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeCommitteeMember(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="admin-subcard-body">
+                            {isExpanded(`member-${index}`) && <div className="admin-subcard-body">
                               <div className="admin-form-grid">
                                 <div className="admin-field">
                                   <label className="admin-field-label">
@@ -1496,6 +1617,7 @@ const Admin = () => {
                                 </div>
                               </div>
                             </div>
+                            }
                           </div>
                         ))}
                       </div>
@@ -1537,22 +1659,27 @@ const Admin = () => {
                       <div className="admin-list-stack">
                         {sponsors.map((sponsor, index) => (
                           <div key={index} className="admin-subcard">
-                            <div className="admin-subcard-header">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`sponsor-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="admin-subcard-title">
-                                <span className="admin-subcard-number">
-                                  {index + 1}
-                                </span>
+                                <span className="admin-subcard-number">{index + 1}</span>
                                 {sponsor.name || `Sponsor ${index + 1}`}
                               </div>
-                              <button
-                                className="admin-btn admin-btn-danger admin-btn-sm"
-                                onClick={() => removeSponsor(index)}
-                                type="button"
-                              >
-                                <X size={14} /> Remove
-                              </button>
+                              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <ChevronRight size={16} style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`sponsor-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }} />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeSponsor(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="admin-subcard-body">
+                            {isExpanded(`sponsor-${index}`) && <div className="admin-subcard-body">
                               <div className="admin-form-grid">
                                 <div className="admin-field">
                                   <label className="admin-field-label">
@@ -1580,6 +1707,144 @@ const Admin = () => {
                                 </div>
                               </div>
                             </div>
+                            }
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* ======== GLOBAL WINNERS ======== */}
+              {currentSection === "global-winners" && (
+                <motion.div
+                  key="global-winners"
+                  variants={sectionVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <div className="admin-section-header">
+                    <h1 className="admin-section-title">Global Winners</h1>
+                    <p className="admin-section-desc">
+                      Manage the global winners displayed on the Meet Our Winners page.
+                    </p>
+                  </div>
+
+                  <div className="admin-panel">
+                    <div className="admin-panel-header">
+                      <h2 className="admin-panel-title">
+                        Global Winners ({globalWinnersDraft.length})
+                      </h2>
+                      <button
+                        className="admin-btn admin-btn-secondary admin-btn-sm"
+                        onClick={addGlobalWinnerState}
+                        type="button"
+                      >
+                        <Plus size={14} /> Add Global Winner
+                      </button>
+                    </div>
+                    <div className="admin-panel-body">
+                      <div className="admin-list-stack">
+                        {globalWinnersDraft.map((gw, index) => (
+                          <div key={gw.id || index} className="admin-subcard">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`gw-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
+                              <div className="admin-subcard-title">
+                                <span className="admin-subcard-number">{index + 1}</span>
+                                {gw.title || `Global Winner ${index + 1}`}
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                                <div
+                                  style={{ display: "flex", alignItems: "center", gap: "8px" }}
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <span style={{ color: "var(--text-secondary)", fontSize: "13px" }}>Show on Site</span>
+                                  <Switch
+                                    checked={gw.isVisible !== false}
+                                    onChange={(checked) => {
+                                      setIsDirty(true);
+                                      updateGlobalWinnerState(index, "isVisible", checked);
+                                    }}
+                                  />
+                                </div>
+                                <ChevronRight size={16} style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`gw-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }} />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeGlobalWinnerState(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
+                            </div>
+                            {isExpanded(`gw-${index}`) && <div className="admin-subcard-body">
+                              <div className="admin-form-grid">
+                                <div className="admin-field">
+                                  <label className="admin-field-label">
+                                    Team Title
+                                  </label>
+                                  <Input
+                                    value={gw.title}
+                                    onChange={(e) =>
+                                      updateGlobalWinnerState(index, "title", e.target.value)
+                                    }
+                                    placeholder="e.g. STARSTRIKE SQUAD"
+                                  />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">
+                                    Winning Year
+                                  </label>
+                                  <Input
+                                    value={gw.year}
+                                    onChange={(e) =>
+                                      updateGlobalWinnerState(index, "year", e.target.value)
+                                    }
+                                    placeholder="e.g. 2025"
+                                  />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">
+                                    Quote
+                                  </label>
+                                  <TextArea
+                                    rows={2}
+                                    value={gw.quote}
+                                    onChange={(e) =>
+                                      updateGlobalWinnerState(index, "quote", e.target.value)
+                                    }
+                                    placeholder="Their inspiring quote"
+                                  />
+                                </div>
+                                <div className="admin-field">
+                                  <label className="admin-field-label">
+                                    Author
+                                  </label>
+                                  <Input
+                                    value={gw.author}
+                                    onChange={(e) =>
+                                      updateGlobalWinnerState(index, "author", e.target.value)
+                                    }
+                                    placeholder="Quote Author"
+                                  />
+                                </div>
+                                <div className="admin-field admin-field-full">
+                                  {renderUploadField(
+                                    "Image",
+                                    gw.image,
+                                    (val) =>
+                                      updateGlobalWinnerState(index, "image", val),
+                                    `gw-${index}`,
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                            }
                           </div>
                         ))}
                       </div>
@@ -1621,22 +1886,27 @@ const Admin = () => {
                       <div className="admin-list-stack">
                         {developersDraft.map((dev, index) => (
                           <div key={index} className="admin-subcard">
-                            <div className="admin-subcard-header">
+                            <div
+                              className="admin-subcard-header"
+                              onClick={() => toggleCard(`dev-${index}`)}
+                              style={{ cursor: "pointer" }}
+                            >
                               <div className="admin-subcard-title">
-                                <span className="admin-subcard-number">
-                                  {index + 1}
-                                </span>
+                                <span className="admin-subcard-number">{index + 1}</span>
                                 {dev.name || `Developer ${index + 1}`}
                               </div>
-                              <button
-                                className="admin-btn admin-btn-danger admin-btn-sm"
-                                onClick={() => removeDeveloper(index)}
-                                type="button"
-                              >
-                                <X size={14} /> Remove
-                              </button>
+                              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                                <ChevronRight size={16} style={{ color: "var(--text-muted)", transition: "transform 0.2s", transform: isExpanded(`dev-${index}`) ? "rotate(90deg)" : "rotate(0deg)" }} />
+                                <button
+                                  className="admin-btn admin-btn-danger admin-btn-sm"
+                                  onClick={(e) => { e.stopPropagation(); removeDeveloper(index); }}
+                                  type="button"
+                                >
+                                  <X size={14} /> Remove
+                                </button>
+                              </div>
                             </div>
-                            <div className="admin-subcard-body">
+                            {isExpanded(`dev-${index}`) && <div className="admin-subcard-body">
                               <div className="admin-form-grid">
                                 <div className="admin-field">
                                   <label className="admin-field-label">
@@ -1780,6 +2050,7 @@ const Admin = () => {
                                 </div>
                               </div>
                             </div>
+                            }
                           </div>
                         ))}
                       </div>

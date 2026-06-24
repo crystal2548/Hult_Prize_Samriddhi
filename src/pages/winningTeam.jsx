@@ -22,7 +22,7 @@ const WinningTeam = () => {
 
         getWinners();
     }, [])
-    const winnersInfo = winner;
+    const winnersInfo = winner.filter((item) => item.isVisible !== false);
 
     return (
         <div className="home-winners-section">

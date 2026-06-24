@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { lazy } from 'react';
+import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 
@@ -13,7 +13,7 @@ const FAQ = lazy(() => import("./pages/Faq.jsx"));
 // --- LAZY IMPORTS (Navbar / Heavy Pages) ---
 // These only download when clicked
 const Winners = lazy(() => import("./pages/winner.jsx"));
-const TeamsProject = lazy(() => import('./pages/TeamsProject.jsx'));
+const TeamsProject = lazy(() => import("./pages/TeamsProject.jsx"));
 const JoinUsPage = lazy(() => import("./pages/JoinUs.jsx"));
 const OrganizerMentor = lazy(() => import("./pages/organizerMentor.jsx"));
 const YearPage = lazy(() => import("./pages/Yearpage.jsx"));
@@ -64,12 +64,62 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Navigate to="login" replace /> },
           { path: "login", element: <AdminLogin /> },
-          { path: "dashboard", element: <ProtectedRoute><Admin /></ProtectedRoute> },
-          { path: "teams-winners", element: <ProtectedRoute><Admin /></ProtectedRoute> },
-          { path: "judges-oc", element: <ProtectedRoute><Admin /></ProtectedRoute> },
-          { path: "sponsors", element: <ProtectedRoute><Admin /></ProtectedRoute> },
-          { path: "developers", element: <ProtectedRoute><Admin /></ProtectedRoute> },
-          { path: "preview", element: <ProtectedRoute><Admin /></ProtectedRoute> },
+          {
+            path: "dashboard",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "teams-winners",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "judges-oc",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "sponsors",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "global-winners",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "developers",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "preview",
+            element: (
+              <ProtectedRoute>
+                <Admin />
+              </ProtectedRoute>
+            ),
+          },
         ],
       },
 
@@ -79,4 +129,4 @@ const router = createBrowserRouter([
   },
 ]);
 
-export default router;
+export default router;
